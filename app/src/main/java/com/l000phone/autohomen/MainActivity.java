@@ -11,11 +11,10 @@ import android.view.KeyEvent;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.l000phone.fragment.FindCar;
-import com.l000phone.fragment.Forum;
-import com.l000phone.fragment.HomePage;
+import com.l000phone.fragment.DaoJia;
+import com.l000phone.fragment.HaoDou;
 import com.l000phone.fragment.Mine;
-import com.l000phone.fragment.Sale;
+import com.l000phone.fragment.Square;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -161,13 +160,13 @@ public class MainActivity extends AppCompatActivity {
      */
     private void prepareFragment() {
 
-        FindCar findCar = new FindCar();
-        Forum forum = new Forum();
-        HomePage homePage = new HomePage();
+        HaoDou haoDou = new HaoDou();
+        DaoJia daoJia = new DaoJia();
+        Square square = new Square();
         Mine mine = new Mine();
-        Sale sale = new Sale();
+
         list = new LinkedList<>();
-        Collections.addAll(list, homePage, forum, findCar, sale,mine);
+        Collections.addAll(list, haoDou, daoJia, square,mine);
 
     }
 

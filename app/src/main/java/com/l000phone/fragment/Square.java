@@ -11,7 +11,7 @@ import android.view.ViewGroup;
  * Created by DJ on 2016/11/16.
  */
 
-public class Sale extends Fragment {
+public class Square extends Fragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

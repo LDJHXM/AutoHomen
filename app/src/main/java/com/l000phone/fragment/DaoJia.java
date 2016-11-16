@@ -11,7 +11,7 @@ import android.view.ViewGroup;
  * Created by DJ on 2016/11/16.
  */
 
-public class FindCar extends Fragment {
+public class DaoJia extends Fragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

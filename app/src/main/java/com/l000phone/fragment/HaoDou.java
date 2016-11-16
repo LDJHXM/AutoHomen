@@ -11,7 +11,7 @@ import android.view.ViewGroup;
  * Created by DJ on 2016/11/16.
  */
 
-public class HomePage extends Fragment {
+public class HaoDou extends Fragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class HomePage extends Fragment {
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-
+        
         super.onActivityCreated(savedInstanceState);
     }
 }
