@@ -55,10 +55,10 @@ public class UmengLoginActivity extends AppCompatActivity implements OnClickList
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.tv_login_sina: // 新浪微博登录
+		case R.id.tv_mylogin_sina: // 新浪微博登录
 			login(SHARE_MEDIA.SINA);
 			break;
-		case R.id.tv_login_qq: // qq登录
+		case R.id.tv_mylogin_qq: // qq登录
 			login(SHARE_MEDIA.QQ);
 			break;
 //		case R.id.btn_sina_logout: // 注销新浪账号
