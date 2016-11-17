@@ -27,7 +27,7 @@ import java.util.List;
 
 public class DaoJia extends Fragment {
 
-    private Spinner mSpinner;
+    private TextView mALL;
     private ListView mListView;
     private LinearLayout mContainTab;
     private TextView mLocation;
@@ -47,7 +47,7 @@ public class DaoJia extends Fragment {
 
 
         View view = inflater.inflate(R.layout.daojia_fragment, null);
-        mSpinner = (Spinner) view.findViewById(R.id.spinner_id);
+        mALL = (TextView) view.findViewById(R.id.all_id);
         mListView = (ListView) view.findViewById(R.id.listView_id);
         mContainTab = (LinearLayout) view.findViewById(R.id.tablayout_id);
         mLocation = (TextView) view.findViewById(R.id.location_id);
@@ -123,11 +123,7 @@ public class DaoJia extends Fragment {
      * 1,关于spinner的操做
      */
     private void aboutSpinner() {
-        String []spData=new String[]{"全部","附近","全国"};
-        ArrayAdapter<String> spAdapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_list_item_1, spData);
-        mSpinner.setAdapter(spAdapter);
-        mSpinner.getChildAt(0);
+
 
     }
 }

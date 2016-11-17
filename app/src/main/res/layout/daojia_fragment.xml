@@ -65,15 +65,16 @@
                     android:paddingLeft="5dp"/>
             </android.support.v7.widget.CardView>
 
-
-            <Spinner
-                android:id="@+id/spinner_id"
+            <TextView
+                android:id="@+id/all_id"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="2"
-                android:button="@null"
-                android:gravity="bottom"></Spinner>
+                android:layout_weight="1.5"
+                android:text="全部"
+                android:textSize="15dp"
+                android:gravity="center"
+                android:textColor="#FF8000"
+                android:drawableRight="@drawable/spinner_selece"
+                android:layout_height="match_parent"/>
 
         </LinearLayout>
 
