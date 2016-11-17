@@ -39,4 +39,5 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'
     compile files('libs/fastjson-1.1.40.jar')
     compile files('libs/picasso-2.5.2.jar')
+    compile 'org.xutils:xutils:3.3.38'
 }
