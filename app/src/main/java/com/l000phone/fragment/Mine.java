@@ -1,6 +1,5 @@
 package com.l000phone.fragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,18 +10,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.l000phone.autohomen.MainActivity;
-import com.l000phone.autohomen.MyLoginActivity;
-import com.l000phone.autohomen.MySettingActivity;
 import com.l000phone.autohomen.R;
 
 /**
  * Created by DJ on 2016/11/16.
  */
 
-public class Mine extends Fragment {
+public class Mine extends Fragment implements View.OnClickListener {
     private View views;
     private Button myLogin;
     private Button myRegist;
@@ -84,36 +79,83 @@ public class Mine extends Fragment {
      */
     private void initRightWdger() {
         myName =(TextView)views.findViewById(R.id.tv_myright_user) ;
+        myName.setOnClickListener(this);
+
         mySetting = (ImageView)views.findViewById(R.id.img_myright_setting) ;
-        myRecipe = (TextView) views.findViewById(R.id.tv_myright_user);
+        mySetting.setOnClickListener(this);
+
         myRecipe = (TextView) views.findViewById(R.id.tv_myright_menu);
+        myRecipe.setOnClickListener(this);
+
         myDraft  =  (TextView) views.findViewById(R.id.tv_myright_draft);
+        myDraft.setOnClickListener(this);
+
         myTopic  =  (TextView) views.findViewById(R.id.tv_myright_topic);
+        myTopic.setOnClickListener(this);
+
         myPutRegist = (TextView) views.findViewById(R.id.tv_myright_recipe);
+        myPutRegist.setOnClickListener(this);
+
         myAction = (TextView) views.findViewById(R.id.tv_myright_action);
+        myAction.setOnClickListener(this);
+
         myMessage = (TextView) views.findViewById(R.id.tv_myright_message);
+        myMessage.setOnClickListener(this);
+
         myDownload = (TextView) views.findViewById(R.id.tv_myright_download);
+        myDownload.setOnClickListener(this);
+
         myCollection = (TextView) views.findViewById(R.id.tv_myright_collection);
+        myCollection.setOnClickListener(this);
+
         myOrder = (TextView) views.findViewById(R.id.tv_myright_order);
+        myOrder.setOnClickListener(this);
     }
 
     /**
      * 未登录，界面实例的初始化
      */
     private void intiWidge() {
-        mySetting = (ImageView)views.findViewById(R.id.img_my_setting) ;
+        mySetting = (ImageView) views.findViewById(R.id.img_my_setting);
+        mySetting.setOnClickListener(this);
+
         myLogin = (Button) views.findViewById(R.id.btn_my_login);
+        myLogin.setOnClickListener(this);
+
         myRegist = (Button) views.findViewById(R.id.btn_my_regist);
+        myRegist.setOnClickListener(this);
+
         myRecipe = (TextView) views.findViewById(R.id.tv_my_menu);
+        myRecipe.setOnClickListener(this);
+
         myDraft  =  (TextView) views.findViewById(R.id.tv_my_draft);
+        myDraft.setOnClickListener(this);
+
         myTopic  =  (TextView) views.findViewById(R.id.tv_my_topic);
+        myTopic.setOnClickListener(this);
+
         myPutRegist = (TextView) views.findViewById(R.id.tv_my_recipe);
+        myPutRegist.setOnClickListener(this);
+
         myAction = (TextView) views.findViewById(R.id.tv_my_action);
+        myAction.setOnClickListener(this);
+
         myMessage = (TextView) views.findViewById(R.id.tv_my_message);
+        myMessage.setOnClickListener(this);
+
         myDownload = (TextView) views.findViewById(R.id.tv_my_download);
+        myDownload.setOnClickListener(this);
+
         myCollection = (TextView) views.findViewById(R.id.tv_my_collection);
+        myCollection.setOnClickListener(this);
+
         myOrder = (TextView) views.findViewById(R.id.tv_my_order);
+        myOrder.setOnClickListener(this);
     }
 
 
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent();
+    }
 }

@@ -5,42 +5,42 @@
     android:background="#eeeeee">
 
     <LinearLayout
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
         <ImageView
             android:id="@+id/img_my_setting"
-            android:layout_height="25dp"
             android:layout_width="match_parent"
+            android:layout_height="25dp"
             android:background="#ffffff"
-            android:scaleType="fitEnd"
             android:padding="3dp"
+            android:scaleType="fitEnd"
             android:src="@mipmap/ico_user_operate"/>
     <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:orientation="horizontal"
-    android:background="@mipmap/background">
+        android:background="@mipmap/background"
+        android:orientation="horizontal">
     <Button
-        android:layout_marginTop="10dp"
         android:id="@+id/btn_my_login"
         android:layout_width="0dp"
-        android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:background="#f8f898"
         android:layout_margin="30dp"
-        android:onClick="jumpWidge"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:background="#f8f898"
+
         android:text="登录"/>
 
     <Button
-        android:layout_marginTop="10dp"
         android:id="@+id/btn_my_regist"
         android:layout_width="0dp"
-        android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:background="#f8f898"
         android:layout_margin="30dp"
-        android:onClick="jumpWidge"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:background="#f8f898"
+
         android:text="注册"/>
         </LinearLayout>
         <LinearLayout
@@ -52,107 +52,107 @@
 
                 android:id="@+id/tv_my_menu"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#ffffff"
                 android:drawableTop="@mipmap/btn_user_recipe"
                 android:gravity="center"
-                android:background="#ffffff"
-                android:onClick="jumpWidge"
+
                 android:text="菜谱"/>
 
             <TextView
                 android:id="@+id/tv_my_draft"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:drawableTop="@mipmap/btn_user_the_draft"
-                android:gravity="center"
-                android:onClick="jumpWidge"
+                android:layout_weight="1"
                 android:background="#ffffff"
+                android:drawableTop="@mipmap/btn_user_the_draft"
+
+                android:gravity="center"
                 android:text="草稿"/>
             <TextView
                 android:id="@+id/tv_my_topic"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:drawableTop="@mipmap/btn_user_topic"
-                android:gravity="center"
-                android:onClick="jumpWidge"
+                android:layout_weight="1"
                 android:background="#ffffff"
+                android:drawableTop="@mipmap/btn_user_topic"
+
+                android:gravity="center"
                 android:text="话题"/>
         </LinearLayout>
         <TextView
             android:id="@+id/tv_my_recipe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="#ffffff"
             android:drawableLeft="@mipmap/ico_user_haodouxz"
             android:gravity="center_vertical"
-            android:layout_marginTop="8dp"
             android:padding="5dp"
-            android:background="#ffffff"
-            android:onClick="jumpWidge"
-            android:textSize="15dp"
-            android:text="  发布菜谱"/>
+
+            android:text="  发布菜谱"
+            android:textSize="15dp" />
         <TextView
             android:id="@+id/tv_my_action"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="#ffffff"
             android:drawableLeft="@mipmap/ico_user_my_dynamic"
             android:gravity="center_vertical"
-            android:layout_marginTop="8dp"
             android:padding="5dp"
-            android:background="#ffffff"
-            android:onClick="jumpWidge"
-            android:textSize="15dp"
-            android:text="  我的动态"/>
+
+            android:text="  我的动态"
+            android:textSize="15dp" />
         <TextView
             android:id="@+id/tv_my_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="#ffffff"
             android:drawableLeft="@mipmap/ico_user_my_message"
             android:gravity="center_vertical"
-            android:layout_marginTop="8dp"
             android:padding="5dp"
-            android:background="#ffffff"
-            android:onClick="jumpWidge"
-            android:textSize="15dp"
-            android:text="  我的消息"/>
+
+            android:text="  我的消息"
+            android:textSize="15dp" />
         <TextView
             android:id="@+id/tv_my_download"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="#ffffff"
             android:drawableLeft="@mipmap/ico_user_mydown"
             android:gravity="center_vertical"
-            android:layout_marginTop="8dp"
             android:padding="5dp"
-            android:background="#ffffff"
-            android:onClick="jumpWidge"
-            android:textSize="15dp"
-            android:text="  我的下载"/>
+
+            android:text="  我的下载"
+            android:textSize="15dp" />
         <TextView
             android:id="@+id/tv_my_collection"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="#ffffff"
             android:drawableLeft="@mipmap/ico_user_myfav"
             android:gravity="center_vertical"
-            android:layout_marginTop="8dp"
             android:padding="5dp"
-            android:background="#ffffff"
-            android:onClick="jumpWidge"
-            android:textSize="15dp"
-            android:text="  我的收藏"/>
+
+            android:text="  我的收藏"
+            android:textSize="15dp" />
         <TextView
             android:id="@+id/tv_my_order"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="#ffffff"
             android:drawableLeft="@mipmap/ico_user_myorder"
             android:gravity="center_vertical"
-            android:layout_marginTop="8dp"
+
             android:padding="5dp"
-            android:onClick="jumpWidge"
-            android:background="#ffffff"
-            android:textSize="15dp"
-            android:text="  我的订单"/>
+            android:text="  我的订单"
+            android:textSize="15dp" />
 
 
     </LinearLayout>
