@@ -11,6 +11,18 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.l000phone.autohomen.MyActionActivity;
+import com.l000phone.autohomen.MyCollectionActivity;
+import com.l000phone.autohomen.MyDownLoadActivity;
+import com.l000phone.autohomen.MyDraftActivity;
+import com.l000phone.autohomen.MyLoginActivity;
+import com.l000phone.autohomen.MyMessageActivity;
+import com.l000phone.autohomen.MyOrderActivity;
+import com.l000phone.autohomen.MyPutRecipeActivity;
+import com.l000phone.autohomen.MyRecipeActivity;
+import com.l000phone.autohomen.MyRegistActivity;
+import com.l000phone.autohomen.MySettingActivity;
+import com.l000phone.autohomen.MyTopicActivity;
 import com.l000phone.autohomen.R;
 
 /**
@@ -24,7 +36,7 @@ public class Mine extends Fragment implements View.OnClickListener {
     private TextView myRecipe;
     private TextView myDraft;
     private TextView myTopic;
-    private TextView myPutRegist;
+    private TextView myPutRecipe;
     private TextView myAction;
     private TextView myMessage;
     private TextView myDownload;
@@ -34,7 +46,7 @@ public class Mine extends Fragment implements View.OnClickListener {
     private ImageView mySetting;
 
     //判断是否登录的标记值
-    private boolean flag = true;
+    private boolean flag = false;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,8 +68,7 @@ public class Mine extends Fragment implements View.OnClickListener {
           views = inflater.inflate(R.layout.fragment_myright,null);
            //界面控件实例的初始化
            initRightWdger();
-           //界面空间实例对应的相关跳转
-//            jumpRightWidge();
+
            return views;
        }
 
@@ -69,10 +80,6 @@ public class Mine extends Fragment implements View.OnClickListener {
 
        super.onActivityCreated(savedInstanceState);
     }
-
-//    private void jumpRightWidge() {
-//    }
-
 
     /**
      * 登录，界面实例初始化
@@ -93,8 +100,8 @@ public class Mine extends Fragment implements View.OnClickListener {
         myTopic  =  (TextView) views.findViewById(R.id.tv_myright_topic);
         myTopic.setOnClickListener(this);
 
-        myPutRegist = (TextView) views.findViewById(R.id.tv_myright_recipe);
-        myPutRegist.setOnClickListener(this);
+        myPutRecipe = (TextView) views.findViewById(R.id.tv_myright_recipe);
+        myPutRecipe.setOnClickListener(this);
 
         myAction = (TextView) views.findViewById(R.id.tv_myright_action);
         myAction.setOnClickListener(this);
@@ -134,8 +141,8 @@ public class Mine extends Fragment implements View.OnClickListener {
         myTopic  =  (TextView) views.findViewById(R.id.tv_my_topic);
         myTopic.setOnClickListener(this);
 
-        myPutRegist = (TextView) views.findViewById(R.id.tv_my_recipe);
-        myPutRegist.setOnClickListener(this);
+        myPutRecipe = (TextView) views.findViewById(R.id.tv_my_recipe);
+        myPutRecipe.setOnClickListener(this);
 
         myAction = (TextView) views.findViewById(R.id.tv_my_action);
         myAction.setOnClickListener(this);
@@ -157,5 +164,51 @@ public class Mine extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         Intent intent = new Intent();
+        switch (view.getId()) {
+            case R.id.img_my_setting:
+                intent.setClass(getActivity(), MySettingActivity.class);
+                break;
+            case R.id.btn_my_regist:
+                intent.setClass(getActivity(), MyRegistActivity.class);
+                break;
+            case R.id.tv_myright_user:
+                //intent.setClass(getActivity(), MySettingActivity.class);
+                break;
+            case R.id.img_myright_setting:
+                intent.setClass(getActivity(), MySettingActivity.class);
+                break;
+            case R.id.tv_myright_menu:
+                intent.setClass(getActivity(), MyRecipeActivity.class);
+                break;
+            case R.id.tv_myright_draft:
+                intent.setClass(getActivity(), MyDraftActivity.class);
+                break;
+            case R.id.tv_myright_topic:
+                intent.setClass(getActivity(), MyTopicActivity.class);
+                break;
+            case R.id.tv_myright_recipe:
+                intent.setClass(getActivity(), MyPutRecipeActivity.class);
+                break;
+            case R.id.tv_myright_action:
+                intent.setClass(getActivity(), MyActionActivity.class);
+                break;
+            case R.id.tv_myright_message:
+                intent.setClass(getActivity(), MyMessageActivity.class);
+                break;
+            case R.id.tv_myright_download:
+                intent.setClass(getActivity(), MyDownLoadActivity.class);
+                break;
+            case R.id.tv_myright_collection:
+                intent.setClass(getActivity(), MyCollectionActivity.class);
+                break;
+            case R.id.tv_myright_order:
+                intent.setClass(getActivity(), MyOrderActivity.class);
+                break;
+            default:
+                intent.setClass(getActivity(), MyLoginActivity.class);
+                break;
+        }
+
+        startActivity(intent);
     }
 }

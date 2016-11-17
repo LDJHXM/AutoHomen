@@ -2,6 +2,8 @@ package com.l000phone.autohomen;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.l000phone.myview.SlideSwitch;
@@ -10,6 +12,8 @@ public class MySettingActivity extends AppCompatActivity {
     private SlideSwitch sPic;
     private SlideSwitch sNight;
     private SlideSwitch sMessage;
+    private TextView sReturn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +25,14 @@ public class MySettingActivity extends AppCompatActivity {
         sNight = (SlideSwitch) this.findViewById(R.id.ss_setting_night);
         sMessage = (SlideSwitch) this.findViewById(R.id.ss_setting_mesage);
 
-
+        //取消操作
+        sReturn = (TextView) this.findViewById(R.id.btn_setting_return);
+        sReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         //相关操作
         ImageAction();
         NightAction();
