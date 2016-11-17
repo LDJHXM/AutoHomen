@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="2000dp"
+    android:background="#eeeeee">
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_marginTop="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:orientation="horizontal"
+    android:background="@mipmap/background">
+        <TextView
+            android:id="@+id/tv_rightlongin_uese"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="40dp"
+            android:text="陌上花开"
+            android:textSize="20dp"
+            android:textColor="#f8f"/>
+        </LinearLayout>
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+
+                android:id="@+id/tv_myright_menu"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:drawableTop="@mipmap/btn_user_recipe"
+                android:gravity="center"
+                android:background="#ffffff"
+                android:text="菜谱"/>
+
+            <TextView
+                android:id="@+id/tv_myright_draft"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:drawableTop="@mipmap/btn_user_the_draft"
+                android:gravity="center"
+                android:background="#ffffff"
+                android:text="草稿"/>
+            <TextView
+                android:id="@+id/tv_myright_topic"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:drawableTop="@mipmap/btn_user_topic"
+                android:gravity="center"
+                android:background="#ffffff"
+                android:text="话题"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_myright_recipe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/ico_user_haodouxz"
+            android:gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:padding="5dp"
+            android:background="#ffffff"
+            android:textSize="15dp"
+            android:text="  发布菜谱"/>
+        <TextView
+            android:id="@+id/tv_myright_action"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/ico_user_my_dynamic"
+            android:gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:padding="5dp"
+            android:background="#ffffff"
+            android:textSize="15dp"
+            android:text="  我的动态"/>
+        <TextView
+            android:id="@+id/tv_myright_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/ico_user_my_message"
+            android:gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:padding="5dp"
+            android:background="#ffffff"
+            android:textSize="15dp"
+            android:text="  我的消息"/>
+        <TextView
+            android:id="@+id/tv_myright_download"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/ico_user_mydown"
+            android:gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:padding="5dp"
+            android:background="#ffffff"
+            android:textSize="15dp"
+            android:text="  我的下载"/>
+        <TextView
+            android:id="@+id/tv_myright_collection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/ico_user_myfav"
+            android:gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:padding="5dp"
+            android:background="#ffffff"
+            android:textSize="15dp"
+            android:text="  我的收藏"/>
+        <TextView
+            android:id="@+id/tv_myright_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/ico_user_myorder"
+            android:gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:padding="5dp"
+            android:background="#ffffff"
+            android:textSize="15dp"
+            android:text="  我的订单"/>
+
+
+    </LinearLayout>
+</ScrollView>

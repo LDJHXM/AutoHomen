@@ -37,4 +37,10 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'org.greenrobot:greendao:3.2.0'
     compile files('libs/fastjson-1.1.40.jar')
+    compile files('libs/SocialSDK_umengqq.jar')
+    compile files('libs/umeng_social_api.jar')
+    compile files('libs/SocialSDK_ynote.jar')
+    compile files('libs/SocialSDK_pinterest.jar')
+    compile files('libs/SocialSDK_pocket.jar')
+    compile files('libs/SocialSDK_evernote.jar')
 }
