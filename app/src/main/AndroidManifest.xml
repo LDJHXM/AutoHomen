@@ -59,7 +59,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.l000phone.biz.SettingActivity"></activity>
+        <activity android:name=".MyActionActivity"/>
+        <activity android:name=".MyCollectionActivity"/>
+        <activity android:name=".MyDownLoadActivity"/>
+        <activity android:name=".MyDraftActivity"/>
+        <activity android:name=".MyLoginActivity"/>
+        <activity android:name=".MyMessageActivity"/>
+        <activity android:name=".MyOrderActivity"/>
+        <activity android:name=".MyTopicActivity"/>
+        <activity android:name=".MySettingActivity"/>
+        <activity android:name=".MyRecipeActivity"/>
+        <activity android:name=".MyPutRecipeActivity"/>
+
+
+
     </application>
 
 </manifest>
