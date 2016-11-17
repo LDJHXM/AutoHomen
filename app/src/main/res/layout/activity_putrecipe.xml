@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#eeeeee">
+    <LinearLayout
+    android:background="#f8f898"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <TextView
+        android:id="@+id/btn_putrecipe_return"
+        android:layout_margin="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text="取消"/>
+    <TextView
+        android:id="@+id/tv_putrecipe_title"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="20dp"
+        android:text="发布菜谱"/>
+</LinearLayout>
+<EditText
+
+    android:layout_marginTop="10dp"
+    android:id="@+id/et_putrecipe_name"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:padding="10dp"
+    android:textSize="18dp"
+    android:hint="请输入菜谱的名字"/>
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text="主料"/>
+    <EditText
+        android:id="@+id/et_putrecipe_mainingredient"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:padding="10dp"
+        android:textSize="18dp"
+        android:hint="请输入食材及用量\n"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text="辅料"/>
+    <EditText
+        android:id="@+id/et_putrecipe_accessory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:padding="10dp"
+        android:textSize="18dp"
+        android:hint="请输入食材及用量\n"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text="制作时间"/>
+    <EditText
+        android:id="@+id/et_putrecipe_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:padding="10dp"
+        android:textSize="18dp"
+        android:hint="请输入制作时间"/>
+
+    <EditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/et_putrecipe_introduce"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:hint="填写这道菜的简介\n\n\n"/>
+
+    <Button
+        android:layout_marginTop="8dp"
+        android:id="@+id/btn_putrecipe_put"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#f8f898"
+        android:layout_gravity="center"
+        android:text="发布"/>
+</LinearLayout>
