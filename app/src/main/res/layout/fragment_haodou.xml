@@ -59,146 +59,154 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/replace_id"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-     >
-
-    </android.support.v4.view.ViewPager>
-
-    <LinearLayout
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/popular_menu_id"
-            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@mipmap/ic_launcher" />
+            android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/see_video_id"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@mipmap/ic_launcher" />
 
-        <ImageView
-            android:id="@+id/kitchen_cheats_id"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@mipmap/ic_launcher" />
+            <android.support.v4.view.ViewPager
+                android:id="@+id/replace_id"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
 
-        <ImageView
-            android:id="@+id/hot_activity_id"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@mipmap/ic_launcher" />
+            </android.support.v4.view.ViewPager>
 
-        <ImageView
-            android:id="@+id/menu_classify_id"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@mipmap/ic_launcher" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:background="#C0C0C0"
-        android:orientation="horizontal"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:background="@color/chocolate"
-            android:scaleType="fitXY"
-            android:src="@mipmap/ic_launcher" />
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:background="@color/black_semi_transparent"
-            android:scaleType="fitXY"
-            android:src="@mipmap/ic_launcher" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:background="#C0C0C0"
-        android:orientation="horizontal"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:background="@color/darkgoldenrod"
-            android:scaleType="fitXY"
-            android:src="@mipmap/ic_launcher" />
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
                 android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:background="@color/oldlace"
-                android:scaleType="fitXY"
-                android:src="@mipmap/ic_launcher" />
+                android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
+                <TextView
+                    android:id="@+id/popular_menu_id"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawableTop="@mipmap/ic_launcher"
+                    android:gravity="center"
+                    android:text="你好" />
+
+                <TextView
+                    android:id="@+id/see_video_id"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawableTop="@mipmap/ic_launcher"
+                    android:gravity="center"
+                    android:text="漂亮" />
+
+                <TextView
+                    android:id="@+id/kitchen_cheats_id"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawableTop="@mipmap/ic_launcher"
+                    android:gravity="center"
+                    android:text="逗你" />
+
+                <TextView
+                    android:id="@+id/hot_activity_id"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawableTop="@mipmap/ic_launcher"
+                    android:gravity="center"
+                    android:text="开心" />
+
+                <TextView
+                    android:id="@+id/menu_classify_id"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawableTop="@mipmap/ic_launcher"
+                    android:gravity="center"
+                    android:text="傻鸟" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
                 android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:background="@color/aquamarine"
-                android:scaleType="fitXY"
-                android:src="@mipmap/ic_launcher" />
-        </LinearLayout>
+                android:background="#C0C0C0"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
 
-    </LinearLayout>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/chocolate"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/ic_launcher" />
 
-        <com.l000phone.view.HaoDouListView
-            android:id="@+id/listView_id"
-            android:scrollbars="none"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/black_semi_transparent"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/ic_launcher" />
 
-        </com.l000phone.view.HaoDouListView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:background="#C0C0C0"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/darkgoldenrod"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/ic_launcher" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:background="@color/oldlace"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:background="@color/aquamarine"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/ic_launcher" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <com.l000phone.view.HaoDouListView
+                android:id="@+id/listView_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none">
+
+            </com.l000phone.view.HaoDouListView>
 
 
         </LinearLayout>
