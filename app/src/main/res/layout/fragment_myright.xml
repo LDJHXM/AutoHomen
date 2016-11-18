@@ -14,7 +14,7 @@
             android:background="#ffffff"
             android:scaleType="fitEnd"
             android:padding="3dp"
-            android:src="@mipmap/ico_user_operate"/>
+           />
     <LinearLayout
         android:layout_marginTop="10dp"
     android:layout_width="match_parent"
