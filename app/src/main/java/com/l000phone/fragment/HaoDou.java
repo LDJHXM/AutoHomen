@@ -1,24 +1,34 @@
 package com.l000phone.fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.l000phone.adapter.ViewPagerAdapter;
 import com.l000phone.autohomen.R;
 import com.l000phone.entity.Cate;
+import com.l000phone.view.GetMap;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,7 +43,7 @@ import retrofit2.http.POST;
  * Created by DJ on 2016/11/16.
  */
 
-public class HaoDou extends Fragment  {
+public class HaoDou extends Fragment {
 
     private ListView mLv;
     private List<Objects> ds;
@@ -43,6 +53,29 @@ public class HaoDou extends Fragment  {
     private TextView mHot;
     private TextView mMenu;
     private Cate body;
+    private View view;
+    private ViewPager mVp;
+    private FrameLayout mFrame;
+    private LinearLayout llContainer;
+    private List<ViewPager_Fragment> pagers;
+    private int index = 1;
+    private Handler mHandler = new Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {
+
+            if (msg.what == 0) {
+
+                mVp.setCurrentItem(index++);
+
+            }
+            super.handleMessage(msg);
+        }
+    };
+    private boolean isTaskRun;
+    private Timer mTimer;
+    private TimerTask mTask;
+    private int index2;
 
 
     @Override
@@ -60,14 +93,9 @@ public class HaoDou extends Fragment  {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_haodou, container, false);
+        view = inflater.inflate(R.layout.fragment_haodou, container, false);
 
-        mLv = (ListView) view.findViewById(R.id.listView_id);
-        mPopular = (TextView) view.findViewById(R.id.popular_menu_id);
-        mSee = (TextView) view.findViewById(R.id.see_video_id);
-        mKitchen = (TextView) view.findViewById(R.id.kitchen_cheats_id);
-        mHot = (TextView) view.findViewById(R.id.hot_activity_id);
-        mMenu = (TextView) view.findViewById(R.id.menu_classify_id);
+        getViewCase();
 
         //关于ListView的操作
         //aboutListView();
@@ -79,8 +107,7 @@ public class HaoDou extends Fragment  {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 
-        //ViewPager
-
+        //关于ViewPager的操作
         //五个小ImageView
     /*    String title0 = cate.getData().getHeader().get(1).getList().get(0).getTitle();
         String title1 = cate.getData().getHeader().get(1).getList().get(1).getTitle();
@@ -94,7 +121,7 @@ public class HaoDou extends Fragment  {
         mHot.setText(title3);
         mMenu.setText(title4);*/
 
-       // mKitchen.setText(body==null?"kong":body.toString());
+        // mKitchen.setText(body==null?"kong":body.toString());
 
         //五个大ImageView
 
@@ -128,7 +155,7 @@ public class HaoDou extends Fragment  {
     }
 
 
-    private void fillEgg() {
+   /* private void fillEgg() {
 
         Retrofit retrofit = new Retrofit.Builder().
                 baseUrl("http://api.haodou.com/").
@@ -162,22 +189,206 @@ public class HaoDou extends Fragment  {
 
                 //Log.d("abc",response.toString());
                 Cate cate = response.body();
+                List<Cate.DataBean.HeaderBean.ListBean> list_pager
+                        = cate.getData().getHeader().get(0).getList();
 
                 String title2 = cate.getData().getHeader().get(1).getList().get(2).getTitle();
 
                 mMenu.setText(title2);
 
+                tuShi();
+
+                //关于ViewPager的操作
+
+                aboutViewPager(list_pager);
+
+                //关于小圆点的操作
+                aboutLittleDots();
+
 
                 //Log.i("data",cate.getData().getList().get(0).getTitle());
-                Toast.makeText(getActivity(), title2, Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), title2, Toast.LENGTH_LONG).show();
 
             }
+
+
+
 
             @Override
             public void onFailure(Call<Cate> call, Throwable t) {
                 Toast.makeText(getActivity(), "下载失败", Toast.LENGTH_LONG).show();
             }
         });
+
+    }
+
+    private void tuShi() {
+
+        Toast.makeText(getActivity(), "验证一下", Toast.LENGTH_SHORT).show();
+    }*/
+
+    /**
+     * 关于ViewPager的操作
+     *
+     * @param list_pager
+     */
+    private void aboutViewPager(List<Cate.DataBean.HeaderBean.ListBean> list_pager) {
+
+        //数据源
+
+        pagers = new LinkedList<>();
+
+        for (int i = 0; i < list_pager.size(); i++) {
+
+            ViewPager_Fragment vf = new ViewPager_Fragment();
+
+            Bundle arg = new Bundle();
+
+            arg.putString("title", list_pager.get(i).getTitle());
+
+            Log.i("title", list_pager.get(i).getTitle());
+
+            arg.putString("imgs", list_pager.get(i).getImgs().get(0));
+
+            arg.putString("url", list_pager.get(i).getUrl());
+
+            vf.setArguments(arg);
+
+            pagers.add(vf);
+
+        }
+
+        //适配器
+
+        ViewPagerAdapter adapter =
+                new ViewPagerAdapter(getFragmentManager(), pagers);
+
+        //绑定适配器
+        mVp.setAdapter(adapter);
+
+        // 给ViewPger添加监听器，决定小圆点的状态
+        mVp.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+
+            @Override
+            public void onPageSelected(int position) {
+
+                index = position;
+
+                position = position % pagers.size();
+
+
+                // ViewPager决定小圆点的状态
+                for (int i = 0; i < pagers.size(); i++) {// 状态复原
+                    llContainer.getChildAt(i).setEnabled(true);
+
+                }
+
+                // 将position位置处的小圆点enable属性值设置为false
+                llContainer.getChildAt(position).setEnabled(false);
+
+                super.onPageSelected(position);
+            }
+
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                /* state: 0空闲，1是滑行中，2加载完毕 */
+
+                if(state == 0 && !isTaskRun){
+
+                    Log.i("---","000");
+
+                    startTask();
+
+                }else if (state == 1 && isTaskRun){
+
+                    Log.i("---","111");
+
+                    stopTask();
+
+                }else if (state == 2){
+                    Log.i("---","222");
+
+                }
+
+                super.onPageScrollStateChanged(state);
+            }
+        });
+
+        //得先执行一次才会走，state==0的逻辑
+        //mHandler.sendEmptyMessageDelayed(0,2000);
+
+
+    }
+
+    /**
+     * 关于小圆点的操作
+     */
+    private void aboutLittleDots() {
+        // 分析：
+        // 1）小圆点的个数与ViewPager中数据源中Fragment的个数是一样的
+        // 2）在占位的容器控件中，动态添加ImageView。
+        // 3）联动效果的添加：
+        // a)小圆点决定ViewPager当前页面的状态
+        // b)ViewPager决定小圆点的状态
+
+        MyOnClickListener listener = new MyOnClickListener();
+
+        for (int i = 0; i < pagers.size(); i++) {// 每循环一次，构建一个ImageView的实例，添加到占位的容器控件中
+            ImageView iv = new ImageView(getActivity());
+
+            iv.setImageResource(R.drawable.dot_selector);
+
+            // 给ImageView添加标签
+            iv.setTag(i);
+            // 给小圆点添加监听器
+            iv.setOnClickListener(listener);
+
+            // ImageView控件上显示的图片，动态由Enabled属性值，根据选择器，来动态加载图片
+            iv.setEnabled(true);
+
+            llContainer.addView(iv);
+        }
+
+        // 默认第一个小圆点是选中的状态
+        llContainer.getChildAt(0).setEnabled(false);
+
+    }
+
+    // OnClickListener点击事件监听器
+    private final class MyOnClickListener implements View.OnClickListener {
+
+        /*
+         * (non-Javadoc)
+         *
+         * @see android.view.View.OnClickListener#onClick(android.view.View)
+         */
+        @Override
+        public void onClick(View v) {
+
+            // 小圆点决定ViewPager当前页面的状态
+            mVp.setCurrentItem((Integer) v.getTag());
+
+        }
+
+    }
+
+
+    /**
+     * 界面控件实例的获取
+     *
+     * @return
+     */
+    public void getViewCase() {
+
+        mLv = (ListView) view.findViewById(R.id.listView_id);
+        mPopular = (TextView) view.findViewById(R.id.popular_menu_id);
+        mSee = (TextView) view.findViewById(R.id.see_video_id);
+        mKitchen = (TextView) view.findViewById(R.id.kitchen_cheats_id);
+        mHot = (TextView) view.findViewById(R.id.hot_activity_id);
+        mMenu = (TextView) view.findViewById(R.id.menu_classify_id);
+        mVp = (ViewPager) view.findViewById(R.id.vp_id);
+        llContainer = (LinearLayout) view.findViewById(R.id.ll_container_id);
 
     }
 
@@ -208,49 +419,36 @@ public class HaoDou extends Fragment  {
     private void getCateDate() {
 
 
-
         Retrofit retrofit = new Retrofit.Builder().
                 baseUrl("http://hop.haodou.com/").
                 addConverterFactory(GsonConverterFactory.create()).build();
 
         HaoDouCate hdc = retrofit.create(HaoDouCate.class);
 
-        Map<String, String> ask = new HashMap<>();
 
-        ask.put("_HOP_", "{\"sign\":\"ba4767a053ddfe6f66c3a265cc23251f\"," +
-                "\"action\":\"front.get_index\",\"current_time\":1479269055," +
-                "\"secret_id\":\"5722f877e4b0d4512e3fd872\",\"version\":\"1.0\"}");
-        ask.put("appid", "2");
-        ask.put("appkey", "9ef269eec4f7a9d07c73952d06b5413f");
-        ask.put("channel", "anzhi_v6115");
-        ask.put("deviceid", "haodou864394010208983");
-        ask.put("from", "android");
-        ask.put("ip", "172.16.152.15");
-        ask.put("limit", "30");
-        ask.put("loguid", "0");
-        ask.put("network", "WIFI");
-        ask.put("offset", "0");
-        ask.put("sign", "");
-        ask.put("uid", "0");
-        ask.put("uuid", "9ea70fa9356586ff23fc31785f735cf1");
-        ask.put("vc", "105");
-        ask.put("virtual", "0");
-        ask.put("vn", "6.1.15");
-
-        Call<Cate> call = hdc.getData(ask);
+        Call<Cate> call = hdc.getData(GetMap.getMap());
 
         call.enqueue(new Callback<Cate>() {
             @Override
             public void onResponse(Call<Cate> call, Response<Cate> response) {
-
 
                 Cate cate = response.body();
 
                 String title2 = cate.getData().getHeader().get(1).getList().get(2).getTitle();
 
                 mMenu.setText(title2);
+
                 Toast.makeText(getActivity(), title2, Toast.LENGTH_SHORT).show();
 
+                //关于ViewPager的操作
+
+                List<Cate.DataBean.HeaderBean.ListBean> list_pager
+                        = cate.getData().getHeader().get(0).getList();
+
+                aboutViewPager(list_pager);
+
+                //关于小圆点的操作
+                aboutLittleDots();
 
             }
 
@@ -259,8 +457,6 @@ public class HaoDou extends Fragment  {
 
             }
         });
-
-
 
 
     }
@@ -272,6 +468,46 @@ public class HaoDou extends Fragment  {
         Call<Cate> getData(@FieldMap Map<String, String> ask);
 
     }
+
+    private void startTask() {
+        isTaskRun = true;
+        mTimer = new Timer();
+        mTask = new TimerTask() {
+            @Override
+            public void run() {
+
+                mHandler.sendEmptyMessage(0);
+            }
+        };
+        mTimer.schedule(mTask, 2 * 1000, 2 * 1000);// 这里设置自动切换的时间，单位是毫秒，2*1000表示2秒，
+    }
+
+    /**
+     * 停止定时任务
+     */
+    private void stopTask() {
+        isTaskRun = false;
+        mTimer.cancel();
+    }
+
+
+    /**
+     * 重新获得焦点
+     */
+    public void onResume() {
+        super.onResume();
+        startTask();
+    }
+
+    /**
+     * 失去焦点
+     */
+    @Override
+    public void onPause() {
+        super.onPause();
+        stopTask();
+    }
+
 
 
 }

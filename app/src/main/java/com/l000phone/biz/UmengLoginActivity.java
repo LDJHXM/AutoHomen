@@ -1,3 +1,4 @@
+/*
 package com.l000phone.biz;
 
 import android.content.Intent;
@@ -28,9 +29,11 @@ import java.util.Map;
 //import com.umeng.socialize.sso.SinaSsoHandler;
 //import com.umeng.socialize.sso.UMQQSsoHandler;
 
+*/
 /**
  * @description 实现友盟第三方登录注销、获取用户信息、多平台分享
- */
+ *//*
+
 public class UmengLoginActivity extends AppCompatActivity implements OnClickListener {
 	// 整个平台的Controller,负责管理整个SDK的配置、操作等处理
 	private UMSocialService mController = UMServiceFactory
@@ -73,11 +76,13 @@ public class UmengLoginActivity extends AppCompatActivity implements OnClickList
 		}
 	}
 
-	/**
+	*/
+/**
 	 * 授权。如果授权成功，则获取用户信息
 	 * 
 	 * @param platform
-	 */
+	 *//*
+
 	private void login(final SHARE_MEDIA platform) {
 
 		mController.doOauthVerify(UmengLoginActivity.this, platform,
@@ -117,11 +122,13 @@ public class UmengLoginActivity extends AppCompatActivity implements OnClickList
 				});
 	}
 
-	/**
+	*/
+/**
 	 * 获取用户信息
 	 * 
 	 * @param platform
-	 */
+	 *//*
+
 	private void getUserInfo(SHARE_MEDIA platform) {
 		mController.getPlatformInfo(UmengLoginActivity.this, platform,
 				new UMDataListener() {
@@ -150,10 +157,12 @@ public class UmengLoginActivity extends AppCompatActivity implements OnClickList
 				});
 	}
 	
-	/**
+	*/
+/**
 	 * 注销本次登陆
 	 * @param platform
-	 */
+	 *//*
+
 	private void logout(final SHARE_MEDIA platform) {
 		mController.deleteOauth(UmengLoginActivity.this, platform, new SocializeClientListener() {
 			
@@ -186,3 +195,4 @@ public class UmengLoginActivity extends AppCompatActivity implements OnClickList
 		}
 	}
 }
+*/

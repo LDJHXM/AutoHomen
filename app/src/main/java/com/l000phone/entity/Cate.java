@@ -1,12 +1,13 @@
 package com.l000phone.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by DJ on 2016/11/17.
  */
 
-public class Cate {
+public class Cate implements Serializable{
 
 
     /**
@@ -179,7 +180,7 @@ public class Cate {
                 this.list = list;
             }
 
-            public static class ListBean {
+            public static class ListBean implements Serializable {
                 private String title;
                 private String url;
                 private List<String> imgs;

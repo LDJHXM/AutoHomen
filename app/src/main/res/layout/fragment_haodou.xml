@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/first_line"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#ffffff"
@@ -63,13 +64,27 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-
-            <android.support.v4.view.ViewPager
-                android:id="@+id/replace_id"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp">
 
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_id"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
             </android.support.v4.view.ViewPager>
+
+                <LinearLayout
+                    android:layout_marginEnd="30dp"
+                    android:id="@+id/ll_container_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal" />
+
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
