@@ -14,9 +14,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
-            android:drawableLeft="@drawable/ico_new_product"
+            android:drawableLeft="@drawable/ico_mybrowse"
             android:gravity="center_vertical"
-            android:text="新品"
+            android:text="逛逛"
             android:textColor="@color/black"
             android:textSize="20dp"/>
 
@@ -42,21 +42,38 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/item3_person_id"
+                android:id="@+id/item3_StoreTitle"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="好豆到家"
+                android:text="靓家货"
+                android:gravity="center_vertical"
                 android:textColor="@color/black"
                 android:textSize="20sp"/>
-
-            <TextView
-                android:id="@+id/item3_content_id"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="冷面，，，，，，"
-                android:textSize="20sp"/>
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/item3_UserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="靓靓,,"
+                    android:gravity="center_vertical"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/Stock"
+                    android:text="剩余100份"
+                    android:gravity="center_vertical"
+                    android:layout_alignParentRight="true"
+                    android:textColor="#E3170D"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
+
+            </RelativeLayout>
+
 
 
         </LinearLayout>
@@ -109,6 +126,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
                 android:orientation="horizontal">
 
@@ -123,24 +141,37 @@
 
                 <TextView
                     android:id="@+id/item3_price"
-                    android:layout_width="50dp"
+                    android:layout_width="65dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="186"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="25dp"
                     android:layout_toRightOf="@+id/item6_dearprice"
                     android:background="@drawable/ico_auxiliary_deleteline"
-                    android:textSize="20sp"/>
+                    android:textSize="15sp"/>
 
-                <TextView
+                <android.support.v7.widget.CardView
                     android:layout_alignParentRight="true"
-                    android:id="@+id/item3_price_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:cardBackgroundColor="#FFF080"
+                    app:cardCornerRadius="5dp"
                     android:layout_marginRight="30dp"
-                    android:text="$14.90"
-                    android:textColor="#E3170D"
-                    android:textSize="20sp"/>
+                   >
+
+                    <TextView
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:id="@+id/item3_price_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="立即购买"
+                        android:gravity="center_horizontal"
+                        android:textColor="#E3170D"
+                        android:textSize="20sp"/>
+
+                </android.support.v7.widget.CardView>
+
 
             </RelativeLayout>
 
