@@ -15,13 +15,14 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.l000phone.adapter.ViewPagerAdapter;
 import com.l000phone.autohomen.R;
 import com.l000phone.entity.Cate;
-import com.l000phone.view.GetMap;
+import com.l000phone.util.GetMap;
+import com.l000phone.view.Five_Iv_Tv;
+import com.l000phone.view.Five_big_Iv_Tv;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -47,11 +48,7 @@ public class HaoDou extends Fragment {
 
     private ListView mLv;
     private List<Objects> ds;
-    private TextView mPopular;
-    private TextView mSee;
-    private TextView mKitchen;
-    private TextView mHot;
-    private TextView mMenu;
+
     private Cate body;
     private View view;
     private ViewPager mVp;
@@ -75,7 +72,16 @@ public class HaoDou extends Fragment {
     private boolean isTaskRun;
     private Timer mTimer;
     private TimerTask mTask;
-    private int index2;
+    private Five_Iv_Tv mPopular;
+    private Five_Iv_Tv mSee;
+    private Five_Iv_Tv mKitchen;
+    private Five_Iv_Tv mHot;
+    private Five_Iv_Tv mMenu;
+    private Five_big_Iv_Tv mF1;
+    private Five_big_Iv_Tv mF2;
+    private Five_big_Iv_Tv mF3;
+    private Five_big_Iv_Tv mF4;
+    private Five_big_Iv_Tv mF5;
 
 
     @Override
@@ -83,8 +89,6 @@ public class HaoDou extends Fragment {
 
         super.onCreate(savedInstanceState);
 
-
-        //new DownloadFirstData(this).execute();
         getCateDate();
     }
 
@@ -294,20 +298,20 @@ public class HaoDou extends Fragment {
             public void onPageScrollStateChanged(int state) {
                 /* state: 0空闲，1是滑行中，2加载完毕 */
 
-                if(state == 0 && !isTaskRun){
+                if (state == 0 && !isTaskRun) {
 
-                    Log.i("---","000");
+                    Log.i("---", "000");
 
                     startTask();
 
-                }else if (state == 1 && isTaskRun){
+                } else if (state == 1 && isTaskRun) {
 
-                    Log.i("---","111");
+                    Log.i("---", "111");
 
                     stopTask();
 
-                }else if (state == 2){
-                    Log.i("---","222");
+                } else if (state == 2) {
+                    Log.i("---", "222");
 
                 }
 
@@ -381,14 +385,22 @@ public class HaoDou extends Fragment {
      */
     public void getViewCase() {
 
+        //// TODO: 2016/11/18
+
         mLv = (ListView) view.findViewById(R.id.listView_id);
-        mPopular = (TextView) view.findViewById(R.id.popular_menu_id);
-        mSee = (TextView) view.findViewById(R.id.see_video_id);
-        mKitchen = (TextView) view.findViewById(R.id.kitchen_cheats_id);
-        mHot = (TextView) view.findViewById(R.id.hot_activity_id);
-        mMenu = (TextView) view.findViewById(R.id.menu_classify_id);
+        mPopular = (Five_Iv_Tv) view.findViewById(R.id.popular_menu_id);
+        mSee = (Five_Iv_Tv) view.findViewById(R.id.see_video_id);
+        mKitchen = (Five_Iv_Tv) view.findViewById(R.id.kitchen_cheats_id);
+        mHot = (Five_Iv_Tv) view.findViewById(R.id.hot_activity_id);
+        mMenu = (Five_Iv_Tv) view.findViewById(R.id.menu_classify_id);
         mVp = (ViewPager) view.findViewById(R.id.vp_id);
         llContainer = (LinearLayout) view.findViewById(R.id.ll_container_id);
+        mF1 = (Five_big_Iv_Tv) view.findViewById(R.id.Five_big_Iv_Tv_1);
+        mF2 = (Five_big_Iv_Tv) view.findViewById(R.id.Five_big_Iv_Tv_2);
+        mF3 = (Five_big_Iv_Tv) view.findViewById(R.id.Five_big_Iv_Tv_3);
+        mF4 = (Five_big_Iv_Tv) view.findViewById(R.id.Five_big_Iv_Tv_4);
+        mF5 = (Five_big_Iv_Tv) view.findViewById(R.id.Five_big_Iv_Tv_5);
+
 
     }
 
@@ -434,12 +446,6 @@ public class HaoDou extends Fragment {
 
                 Cate cate = response.body();
 
-                String title2 = cate.getData().getHeader().get(1).getList().get(2).getTitle();
-
-                mMenu.setText(title2);
-
-                Toast.makeText(getActivity(), title2, Toast.LENGTH_SHORT).show();
-
                 //关于ViewPager的操作
 
                 List<Cate.DataBean.HeaderBean.ListBean> list_pager
@@ -450,6 +456,20 @@ public class HaoDou extends Fragment {
                 //关于小圆点的操作
                 aboutLittleDots();
 
+
+                //关于五个自定义Five_iv_Tv的操作
+
+                List<Cate.DataBean.HeaderBean.ListBean> list_five
+                        = cate.getData().getHeader().get(1).getList();
+
+                aboutFive_iv_Tv(list_five);
+
+
+                //关于五个自定义Five_big_Iv_Tv的操作
+                List<Cate.DataBean.HeaderBean.ListBean> big_list_five
+                        = cate.getData().getHeader().get(2).getList();
+                aboutFive_big_iv_Tv(big_list_five);
+
             }
 
             @Override
@@ -458,6 +478,81 @@ public class HaoDou extends Fragment {
             }
         });
 
+
+    }
+
+    /**
+     * 关于五个自定义Five_big_iv_Tv的操作
+     * @param big_list_five
+     */
+    private void aboutFive_big_iv_Tv(List<Cate.DataBean.HeaderBean.ListBean> big_list_five) {
+
+
+        mF1.abc_SetText(big_list_five.get(0).getTitle());
+        mF1.abc_SetImg(big_list_five.get(0).getImgs().get(0));
+        mF1.abc_SetText_below(big_list_five.get(0).getDesc());
+
+        mF1.abc_setClick(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Toast.makeText(getActivity(), "点击", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        mF2.abc_SetText(big_list_five.get(1).getTitle());
+        mF2.abc_SetImg(big_list_five.get(1).getImgs().get(0));
+        mF2.abc_SetText_below(big_list_five.get(1).getDesc());
+
+
+        mF3.abc_SetText(big_list_five.get(2).getTitle());
+        mF3.abc_SetImg(big_list_five.get(2).getImgs().get(0));
+        mF3.abc_SetText_below(big_list_five.get(2).getDesc());
+
+
+        mF4.abc_SetText(big_list_five.get(3).getTitle());
+        mF4.abc_SetImg(big_list_five.get(3).getImgs().get(0));
+        mF4.abc_SetText_below(big_list_five.get(3).getDesc());
+
+
+        mF5.abc_SetText(big_list_five.get(4).getTitle());
+        mF5.abc_SetImg(big_list_five.get(4).getImgs().get(0));
+        mF5.abc_SetText_below(big_list_five.get(4).getDesc());
+
+
+    }
+
+    /**
+     * 关于五个自定义Five_iv_Tv的操作
+     *
+     * @param list_five
+     */
+    private void aboutFive_iv_Tv(List<Cate.DataBean.HeaderBean.ListBean> list_five) {
+
+        mPopular.abc_SetText(list_five.get(0).getTitle());
+        mPopular.abc_SetImg(list_five.get(0).getImgs().get(0));
+
+        mPopular.abc_setClick(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Toast.makeText(getActivity(), "点击", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        mSee.abc_SetText(list_five.get(1).getTitle());
+        mSee.abc_SetImg(list_five.get(1).getImgs().get(0));
+
+        mKitchen.abc_SetText(list_five.get(2).getTitle());
+        mKitchen.abc_SetImg(list_five.get(2).getImgs().get(0));
+
+        mHot.abc_SetText(list_five.get(3).getTitle());
+        mHot.abc_SetImg(list_five.get(3).getImgs().get(0));
+
+        mMenu.abc_SetText(list_five.get(4).getTitle());
+        mMenu.abc_SetImg(list_five.get(4).getImgs().get(0));
 
     }
 
@@ -507,7 +602,6 @@ public class HaoDou extends Fragment {
         super.onPause();
         stopTask();
     }
-
 
 
 }

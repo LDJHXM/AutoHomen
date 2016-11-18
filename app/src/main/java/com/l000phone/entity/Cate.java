@@ -181,6 +181,7 @@ public class Cate implements Serializable{
             }
 
             public static class ListBean implements Serializable {
+                private String desc;
                 private String title;
                 private String url;
                 private List<String> imgs;
@@ -191,6 +192,14 @@ public class Cate implements Serializable{
 
                 public void setTitle(String title) {
                     this.title = title;
+                }
+
+                public String getDesc() {
+                    return desc;
+                }
+
+                public void setDesc(String desc) {
+                    this.desc = desc;
                 }
 
                 public String getUrl() {
