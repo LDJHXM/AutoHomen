@@ -3,57 +3,63 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="300dp">
-
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="10dp">
-
-        <TextView
-            android:id="@+id/icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ico_brand_story"
-            android:gravity="center_vertical"
-            android:text="品牌故事"
-            android:textColor="@color/black"
-            android:textSize="25dp"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/ico_auxiliary_more"/>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3">
-
-        <ImageView
-            android:id="@+id/item2_image1"
+        android:layout_height="280dp">
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/brand_story_default"
-            />
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="10dp">
 
-        <TextView
-            android:id="@+id/item2_image1_info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="25dp"
-            android:text="夏日美食"
-            android:background="@drawable/btn_bg_green_select"
-            android:layout_centerHorizontal="true"
-            android:textColor="@color/white"
-            android:textSize="15sp"/>
+            <TextView
+                android:id="@+id/icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ico_brand_story"
+                android:gravity="center_vertical"
+                android:text="品牌故事"
+                android:textColor="@color/black"
+                android:textSize="25dp"/>
+
+            <ImageView
+                android:id="@+id/item4_image_inke"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ico_auxiliary_more"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4">
+
+            <ImageView
+                android:id="@+id/item4_image1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/brand_story_default"
+                />
+
+            <TextView
+                android:id="@+id/item4_image1_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="25dp"
+                android:text="夏日美食"
+                android:background="@drawable/btn_bg_green_select"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/white"
+                android:textSize="15sp"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
 
-
-    </RelativeLayout>
 
 </LinearLayout>

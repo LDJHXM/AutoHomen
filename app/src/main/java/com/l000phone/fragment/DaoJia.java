@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +15,17 @@ import android.widget.Toast;
 
 import com.l000phone.autohomen.R;
 import com.l000phone.daojia.adpter.MyListViewAdapter;
+import com.l000phone.daojia.datatoview.TabToView;
 import com.l000phone.daojia.jsonparsor.JSONParsor;
+import com.l000phone.daojia.myentitis.Entity;
+import com.l000phone.daojia.myentitis.Entity.ResultBean.CateListBean;
 import com.l000phone.daojia.myurl.DaoJiaURL;
 
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -36,6 +41,8 @@ public class DaoJia extends Fragment {
     private TextView mLocation;
     private Context context;
     private List<Object> dataS;
+    private List<Object> tempData;
+    private List<Object> tabData;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,7 +54,8 @@ public class DaoJia extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
 
 
         View view = inflater.inflate(R.layout.daojia_fragment, null);
@@ -66,19 +74,20 @@ public class DaoJia extends Fragment {
         aboutSpinner();
         //2,关于location的操做
         aboutLocetion();
-        //3,关于标签的操做
-        abouttab();
-        //4,得到listview数据源
+        //3,得到listview数据源
         getTheData();
+
 
     }
 
     /**
-     * 4,关于listview的操做
+     * 3,关于listview数据源
      */
     private void getTheData() {
         //数据源
         dataS = new LinkedList<>();
+        tempData = new LinkedList<>();
+        tabData = new LinkedList<>();
 
         //网络请求获得数据
         getTheDataFromInternet();
@@ -95,7 +104,7 @@ public class DaoJia extends Fragment {
             @Override
             public void onSuccess(String result) {
                 List<Object> theData = JSONParsor.parsorString(result);
-                dataS.addAll(theData);
+                tempData.addAll(theData);
                 //关于listview的操做
                 aboutListView();
 
@@ -125,10 +134,41 @@ public class DaoJia extends Fragment {
      * 关于listview的操做
      */
     private void aboutListView() {
+        //1,操做数据源的到真正的数据源
+        operateData();
+        //2,关于标签的操做
+        abouttab();
+
         //适配器
-        MyListViewAdapter adapter = new MyListViewAdapter(dataS);
+        MyListViewAdapter adapter = new MyListViewAdapter(dataS,context);
         //绑定适配器
         mListView.setAdapter(adapter);
+
+    }
+
+    /**
+     * 操做数据源的到真正的数据源
+     */
+    private void operateData() {
+        for (int i = 0; i < tempData.size(); i++) {
+            //集合
+            if (tempData.get(i) instanceof List) {   //标题部分的集合
+                if (((List) tempData.get(i)).get(0) instanceof Entity.ResultBean
+                        .CateListBean) {
+                    tabData.addAll((List) tempData.get(i));
+                    Log.i("data", tabData.toString());
+                } else {
+                    dataS.add(tempData.get(i));
+                }
+
+            //对象
+            } else {
+                dataS.add(tempData.get(i));
+            }
+
+
+        }
+        Log.i("data1", dataS.toString());
 
     }
 
@@ -137,26 +177,9 @@ public class DaoJia extends Fragment {
      */
     private void abouttab() {
         //1,向容器中添加子标签,和给每一个子标签添加监视器
+        TabToView tabToView = new TabToView();
+        tabToView.aboutTabview(tabData, mContainTab, context);
 
-        for(int i=0;i<6;i++){
-            TextView mText= (TextView) View.inflate(context, R.layout.daojia_tab, null);
-            mText.setText("This is "+i);
-            mContainTab.addView(mText);
-        }
-
-    }
-
-    /**
-     * 各个标签的监视器
-     */
-    private class TabLinstener implements View.OnClickListener{
-
-        @Override
-        public void onClick(View view) {
-            int tag = (int) view.getTag();
-            Toast.makeText(context,"点击了"+tag,Toast.LENGTH_LONG).show();
-
-        }
     }
 
     /**

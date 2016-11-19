@@ -3,35 +3,129 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="horizontal">
-
-    <ImageView
-        android:id="@+id/image_left"
+    <RelativeLayout
         android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="4"
-        android:src="@drawable/brand_story_default"/>
+        android:layout_height="150dp"
+        android:layout_weight="4">
+
+        <ImageView
+            android:id="@+id/item1_left_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/brand_story_default"/>
+
+        <TextView
+            android:id="@+id/item1_left_title"
+            android:text="今日特价"
+            android:textSize="15dp"
+            android:textColor="@color/white"
+            android:background="@color/olivedrab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/item1_left_price"
+            android:textColor="@color/white"
+            android:text="$9.90"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="15dp"
+            android:textSize="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="150dp"
         android:layout_weight="3"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/image_right_up"
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:src="@drawable/brand_story_default"/>
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:paddingLeft="10dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/image_right_down"
+                <TextView
+                    android:id="@+id/item1_up_store"
+                    android:text="美食研究所"
+                    android:textSize="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/item1_up_tuijian"
+                    android:text="新品推荐"
+                    android:textSize="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/item1_image_right_up"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="match_parent"
+                android:src="@drawable/brand_story_default"/>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:src="@drawable/brand_story_default"/>
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/item1_image_star"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="match_parent"
+                android:src="@drawable/brand_story_default"/>
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:paddingLeft="10dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/item1_down_stat"
+                    android:text="明星店铺"
+                    android:textSize="15dp"
+                    android:gravity="right"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/item1_down_store"
+                    android:text="俊哥的小店儿"
+                    android:textSize="12dp"
+                    android:gravity="right"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+</LinearLayout>
 
 </LinearLayout>
