@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.l000phone.view.CustomLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/custom"
+    android:layout_width="250dp"
+    android:background="@drawable/splish_logo"
+    android:layout_height="200dp"
+    android:orientation="vertical">
+
+  <!--  <ImageView
+        android:scaleType="fitXY"
+        android:id="@+id/big_five_img"
+        android:layout_width="250dp"
+        android:layout_height="200dp"
+         />-->
+
+
+    <TextView
+        android:id="@+id/big_five_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingTop="20dp"
+        android:textColor="#ffffff"
+        android:textSize="30sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/big_five_text_below"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/big_five_text"
+        android:layout_below="@+id/big_five_text"
+        android:paddingLeft="10dp"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
+
+
+
+
+
+</com.l000phone.view.CustomLayout>

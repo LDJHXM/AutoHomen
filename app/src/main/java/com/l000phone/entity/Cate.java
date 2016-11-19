@@ -84,8 +84,10 @@ public class Cate implements Serializable{
             private String title;
             private String userName;
             private String uiType;
+            private String total;
             private List<String> imgs;
-            private List<?> tips;
+
+
 
             public String getDesc() {
                 return desc;
@@ -151,12 +153,12 @@ public class Cate implements Serializable{
                 this.imgs = imgs;
             }
 
-            public List<?> getTips() {
-                return tips;
+            public String getTotal() {
+                return total;
             }
 
-            public void setTips(List<?> tips) {
-                this.tips = tips;
+            public void setTotal(String total) {
+                this.total = total;
             }
         }
 
@@ -186,6 +188,7 @@ public class Cate implements Serializable{
                 private String url;
                 private List<String> imgs;
 
+
                 public String getTitle() {
                     return title;
                 }
@@ -193,6 +196,7 @@ public class Cate implements Serializable{
                 public void setTitle(String title) {
                     this.title = title;
                 }
+
 
                 public String getDesc() {
                     return desc;

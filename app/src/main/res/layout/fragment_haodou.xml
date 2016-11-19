@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dj="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,24 +9,26 @@
     <LinearLayout
         android:id="@+id/first_line"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="70dp"
         android:background="#ffffff"
         android:orientation="horizontal">
 
         <Button
+            android:layout_marginTop="20dp"
             android:id="@+id/release_menu"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
             android:background="@drawable/jiahao" />
 
         <LinearLayout
+            android:layout_marginTop="20dp"
+            android:background="#C0C0C0"
+            android:layout_marginLeft="10dp"
             android:id="@+id/search_id"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="30dp"
             android:layout_weight="6"
-            android:background="#C0C0C0"
             android:orientation="horizontal">
 
             <ImageView
@@ -39,14 +42,17 @@
                 android:layout_marginLeft="10dp"
                 android:gravity="center_vertical"
                 android:text="菜谱、专辑、食友"
-                android:textSize="18dp" />
+                android:textSize="25dp" />
 
         </LinearLayout>
 
         <Button
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:id="@+id/message_id"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="30dp"
             android:layout_weight="1"
             android:background="@drawable/message" />
 
@@ -69,20 +75,22 @@
                 android:layout_height="200dp">
 
 
-            <android.support.v4.view.ViewPager
-                android:id="@+id/vp_id"
-                android:layout_width="match_parent"
-                android:layout_height="200dp">
-            </android.support.v4.view.ViewPager>
-
-                <LinearLayout
-                    android:layout_marginEnd="30dp"
-                    android:id="@+id/ll_container_id"
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/vp_id"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal" />
+                    android:layout_height="280dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true">
+
+                    <LinearLayout
+                        android:layout_marginEnd="30dp"
+                        android:id="@+id/ll_container_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal" />
+                </android.support.v4.view.ViewPager>
 
             </RelativeLayout>
 
@@ -216,6 +224,7 @@
 
 
             <com.l000phone.view.HaoDouListView
+                android:layout_marginTop="10dp"
                 android:id="@+id/listView_id"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

@@ -1,8 +1,6 @@
 package com.l000phone.fragment;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -10,13 +8,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.l000phone.adapter.ListViewAdapter;
 import com.l000phone.adapter.ViewPagerAdapter;
 import com.l000phone.autohomen.R;
 import com.l000phone.entity.Cate;
@@ -27,7 +24,6 @@ import com.l000phone.view.Five_big_Iv_Tv;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -47,16 +43,13 @@ import retrofit2.http.POST;
 public class HaoDou extends Fragment {
 
     private ListView mLv;
-    private List<Objects> ds;
-
-    private Cate body;
     private View view;
     private ViewPager mVp;
-    private FrameLayout mFrame;
     private LinearLayout llContainer;
     private List<ViewPager_Fragment> pagers;
     private int index = 1;
-    private Handler mHandler = new Handler() {
+    //轮播
+ /*   private Handler mHandler = new Handler() {
 
         @Override
         public void handleMessage(Message msg) {
@@ -68,7 +61,7 @@ public class HaoDou extends Fragment {
             }
             super.handleMessage(msg);
         }
-    };
+    };*/
     private boolean isTaskRun;
     private Timer mTimer;
     private TimerTask mTask;
@@ -106,58 +99,6 @@ public class HaoDou extends Fragment {
 
         return view;
     }
-
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-
-        //关于ViewPager的操作
-        //五个小ImageView
-    /*    String title0 = cate.getData().getHeader().get(1).getList().get(0).getTitle();
-        String title1 = cate.getData().getHeader().get(1).getList().get(1).getTitle();
-        String title2 = cate.getData().getHeader().get(1).getList().get(2).getTitle();
-        String title3 = cate.getData().getHeader().get(1).getList().get(3).getTitle();
-        String title4 = cate.getData().getHeader().get(1).getList().get(4).getTitle();
-
-        mPopular.setText(title0);
-        mSee.setText(title1);
-        mKitchen.setText(title2);
-        mHot.setText(title3);
-        mMenu.setText(title4);*/
-
-        // mKitchen.setText(body==null?"kong":body.toString());
-
-        //五个大ImageView
-
-        super.onActivityCreated(savedInstanceState);
-    }
-
-    /**
-     * 关于ListView的操作
-     */
-
-    private void aboutListView() {
-
-        //不获取焦点，否则默认不显示最顶层
-        mLv.setFocusable(false);
-
-        //数据源
-        ds = new LinkedList<>();
-
-        //填充数据源
-
-        //fillEgg();
-
-
-        //适配器
-        ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, ds);
-
-        //绑定适配器
-
-        mLv.setAdapter(adapter);
-
-    }
-
 
    /* private void fillEgg() {
 
@@ -302,13 +243,13 @@ public class HaoDou extends Fragment {
 
                     Log.i("---", "000");
 
-                    startTask();
+                   // startTask();
 
                 } else if (state == 1 && isTaskRun) {
 
                     Log.i("---", "111");
 
-                    stopTask();
+                    //stopTask();
 
                 } else if (state == 2) {
                     Log.i("---", "222");
@@ -338,7 +279,9 @@ public class HaoDou extends Fragment {
 
         MyOnClickListener listener = new MyOnClickListener();
 
-        for (int i = 0; i < pagers.size(); i++) {// 每循环一次，构建一个ImageView的实例，添加到占位的容器控件中
+        for (int i = 0; i < pagers.size(); i++) {
+            // 每循环一次，构建一个ImageView的实例，添加到占位的容器控件中
+
             ImageView iv = new ImageView(getActivity());
 
             iv.setImageResource(R.drawable.dot_selector);
@@ -470,6 +413,14 @@ public class HaoDou extends Fragment {
                         = cate.getData().getHeader().get(2).getList();
                 aboutFive_big_iv_Tv(big_list_five);
 
+
+                //关于HaoDouListView的操作
+                List<Cate.DataBean.ListBean> list = cate.getData().getList();
+
+
+                aboutHaoDouListView(list);
+
+
             }
 
             @Override
@@ -482,6 +433,26 @@ public class HaoDou extends Fragment {
     }
 
     /**
+     * 关于HaoDouListView的操作
+     * @param list
+     */
+    private void aboutHaoDouListView(List<Cate.DataBean.ListBean> list) {
+
+        //默认失去焦点，不然会不显示顶层的ScrollView
+        mLv.setFocusable(false);
+
+        //适配器
+
+        ListViewAdapter adapter = new ListViewAdapter(list, getActivity());
+
+        //绑定适配器
+
+        mLv.setAdapter(adapter);
+
+
+    }
+
+    /**
      * 关于五个自定义Five_big_iv_Tv的操作
      * @param big_list_five
      */
@@ -489,7 +460,7 @@ public class HaoDou extends Fragment {
 
 
         mF1.abc_SetText(big_list_five.get(0).getTitle());
-        mF1.abc_SetImg(big_list_five.get(0).getImgs().get(0));
+        mF1.abc_setBackground(big_list_five.get(0).getImgs().get(0));
         mF1.abc_SetText_below(big_list_five.get(0).getDesc());
 
         mF1.abc_setClick(new View.OnClickListener() {
@@ -502,22 +473,22 @@ public class HaoDou extends Fragment {
         });
 
         mF2.abc_SetText(big_list_five.get(1).getTitle());
-        mF2.abc_SetImg(big_list_five.get(1).getImgs().get(0));
+        mF2.abc_setBackground(big_list_five.get(1).getImgs().get(0));
         mF2.abc_SetText_below(big_list_five.get(1).getDesc());
 
 
         mF3.abc_SetText(big_list_five.get(2).getTitle());
-        mF3.abc_SetImg(big_list_five.get(2).getImgs().get(0));
+        mF3.abc_setBackground(big_list_five.get(2).getImgs().get(0));
         mF3.abc_SetText_below(big_list_five.get(2).getDesc());
 
 
         mF4.abc_SetText(big_list_five.get(3).getTitle());
-        mF4.abc_SetImg(big_list_five.get(3).getImgs().get(0));
+        mF4.abc_setBackground(big_list_five.get(3).getImgs().get(0));
         mF4.abc_SetText_below(big_list_five.get(3).getDesc());
 
 
         mF5.abc_SetText(big_list_five.get(4).getTitle());
-        mF5.abc_SetImg(big_list_five.get(4).getImgs().get(0));
+        mF5.abc_setBackground(big_list_five.get(4).getImgs().get(0));
         mF5.abc_SetText_below(big_list_five.get(4).getDesc());
 
 
@@ -564,7 +535,7 @@ public class HaoDou extends Fragment {
 
     }
 
-    private void startTask() {
+   /* private void startTask() {
         isTaskRun = true;
         mTimer = new Timer();
         mTask = new TimerTask() {
@@ -574,34 +545,34 @@ public class HaoDou extends Fragment {
                 mHandler.sendEmptyMessage(0);
             }
         };
-        mTimer.schedule(mTask, 2 * 1000, 2 * 1000);// 这里设置自动切换的时间，单位是毫秒，2*1000表示2秒，
+        mTimer.schedule(mTask, 5 * 1000, 2 * 1000);// 这里设置自动切换的时间，单位是毫秒，2*1000表示2秒，
     }
 
-    /**
+    *//**
      * 停止定时任务
-     */
+     *//*
     private void stopTask() {
         isTaskRun = false;
         mTimer.cancel();
     }
 
 
-    /**
+    *//**
      * 重新获得焦点
-     */
+     *//*
     public void onResume() {
         super.onResume();
-        startTask();
+        //startTask();
     }
 
-    /**
+    *//**
      * 失去焦点
-     */
+     *//*
     @Override
     public void onPause() {
         super.onPause();
-        stopTask();
-    }
+       // stopTask();
+    }*/
 
 
 }

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/big_five_father"
+    android:layout_marginTop="10dp"
+    android:background="#DEB887"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="350dp">
+
+
+
+    <LinearLayout
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:id="@+id/round_img"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="fitXY"
+            />
+
+        <TextView
+
+            android:id="@+id/round_text"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical"
+
+            android:textColor="#000000"
+            android:textSize="25sp"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:id="@+id/round_text_2"
+            android:layout_width="330dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical"
+
+            android:textColor="#000000"
+            android:textSize="19sp" />
+    </LinearLayout>
+
+    <com.l000phone.view.Cir_Botton
+        android:id="@+id/round_circle"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="220dp"
+        />
+
+
+</RelativeLayout>

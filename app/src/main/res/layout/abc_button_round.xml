@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/abc_botton"
+    android:layout_width="80dp"
+    android:layout_height="100dp"
+    >
+
+    <com.l000phone.view.CircleImageView
+        android:id="@+id/abc_cir"
+        android:src="@mipmap/ic_launcher"
+        android:layout_width="80dp"
+        android:layout_height="80dp" />
+
+    <TextView
+        android:layout_below="@+id/abc_cir"
+        android:id="@+id/abc_botton_text"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:gravity="center"
+        />
+
+
+</RelativeLayout>

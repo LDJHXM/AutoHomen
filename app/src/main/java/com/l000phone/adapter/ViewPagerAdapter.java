@@ -33,7 +33,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         //设置成最大，使用户看不到边界
-        return Integer.MAX_VALUE;
+        return 100;
     }
 
 
