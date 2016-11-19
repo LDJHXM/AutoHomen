@@ -1,22 +1,25 @@
 package com.l000phone.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.l000phone.autohomen.R;
+import com.l000phone.daojia.adpter.MyListViewAdapter;
+import com.l000phone.daojia.jsonparsor.JSONParsor;
+import com.l000phone.daojia.myurl.DaoJiaURL;
 
-import org.xutils.db.annotation.Table;
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -31,7 +34,8 @@ public class DaoJia extends Fragment {
     private ListView mListView;
     private LinearLayout mContainTab;
     private TextView mLocation;
-    private FragmentActivity context;
+    private Context context;
+    private List<Object> dataS;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,25 +68,67 @@ public class DaoJia extends Fragment {
         aboutLocetion();
         //3,关于标签的操做
         abouttab();
-        //4,关于listview的操做
-        aboutListView();
+        //4,得到listview数据源
+        getTheData();
 
     }
 
     /**
      * 4,关于listview的操做
      */
-    private void aboutListView() {
-        List<String> listData = new LinkedList<>();
-        for(int i=0;i<6;i++) {
-            String tabText = i+ "";
-            listData.add(tabText);
-            listData.add(tabText);
-        }
-        ArrayAdapter<String> spAdapter = new ArrayAdapter<String>(context,
-                android.R.layout.simple_list_item_1, listData);
-        mListView.setAdapter(spAdapter);
+    private void getTheData() {
+        //数据源
+        dataS = new LinkedList<>();
 
+        //网络请求获得数据
+        getTheDataFromInternet();
+
+    }
+
+    /**
+     * 网络请求获得数据
+     */
+    private void getTheDataFromInternet() {
+        RequestParams params = new RequestParams(DaoJiaURL.totalURL);
+        Callback.Cancelable cancelable = x.http().get(params, new Callback
+                .CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                List<Object> theData = JSONParsor.parsorString(result);
+                dataS.addAll(theData);
+                //关于listview的操做
+                aboutListView();
+
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                Toast.makeText(context, "数据加载错误", Toast.LENGTH_LONG).show();
+
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+                Toast.makeText(context, "取消加载", Toast.LENGTH_LONG).show();
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
+
+    }
+
+    /**
+     * 关于listview的操做
+     */
+    private void aboutListView() {
+        //适配器
+        MyListViewAdapter adapter = new MyListViewAdapter(dataS);
+        //绑定适配器
+        mListView.setAdapter(adapter);
 
     }
 

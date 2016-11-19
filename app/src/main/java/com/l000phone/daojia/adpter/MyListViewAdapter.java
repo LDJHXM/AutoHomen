@@ -4,11 +4,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2016/11/17/017.
  */
 
 public class MyListViewAdapter extends BaseAdapter {
+
+    private List<Object> data;
+
+    public MyListViewAdapter(List<Object> data) {
+        this.data = data;
+    }
+
     /**
      * 多布局的种类
      * @return
@@ -25,6 +34,7 @@ public class MyListViewAdapter extends BaseAdapter {
      */
     @Override
     public int getItemViewType(int position) {
+
         return super.getItemViewType(position);
     }
 
