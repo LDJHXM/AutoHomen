@@ -3,93 +3,100 @@
               android:layout_width="match_parent"
               android:layout_height="380dp"
               android:orientation="vertical">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:padding="10dp">
-
-        <TextView
-            android:id="@+id/icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ico_favorite_version"
-            android:gravity="center_vertical"
-            android:text="吃货最爱"
-            android:textColor="@color/black"
-            android:textSize="25dp"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/ico_auxiliary_more"/>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3">
-
-        <ImageView
-            android:id="@+id/item2_image1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/brand_story_default"
-            />
-
-        <TextView
-            android:id="@+id/item2_image1_info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="15dp"
-            android:layout_marginLeft="25dp"
-            android:text="日式汤料"
-            android:textColor="@color/black"
-            android:textSize="15sp"/>
-
-        <TextView
-            android:id="@+id/item2_image1_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="15dp"
-            android:layout_marginRight="25dp"
-            android:text="$9.90"
-            android:textColor="@color/black"
-            android:textSize="15sp"/>
-
-    </RelativeLayout>
-
-
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="6"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:id="@+id/item2_contain_up"
+        android:layout_height="380dp">
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:layout_weight="2"
+            android:padding="10dp">
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ico_favorite_version"
+                android:gravity="center_vertical"
+                android:text="吃货最爱"
+                android:textColor="@color/black"
+                android:textSize="25dp"/>
 
-        <LinearLayout
-            android:id="@+id/item2_contain_down"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ico_auxiliary_more"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:layout_weight="3">
+
+            <ImageView
+                android:id="@+id/item2_image1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/brand_story_default"
+                />
+
+            <TextView
+                android:id="@+id/item2_text_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="25dp"
+                android:text="日式汤料"
+                android:textColor="@color/black"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/item2_text_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="15dp"
+                android:layout_marginRight="25dp"
+                android:text="$9.90"
+                android:textColor="@color/black"
+                android:textSize="15sp"/>
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/item2_contain_up"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/item2_contain_down"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+            </LinearLayout>
 
         </LinearLayout>
 
     </LinearLayout>
+
+
 
 </LinearLayout>

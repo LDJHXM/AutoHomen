@@ -28,6 +28,10 @@ public class JSONParsor {
 
         //定义一个集合用来存放三个条目的集合
         addThreeDataToList(result,data);
+        //吃货最爱
+        List<Entity.ResultBean.FoodieFavoriteGoodsBean> foodieFavoriteGoods = result
+                .getFoodieFavoriteGoods();
+        data.add(foodieFavoriteGoods);
 
         //向集合中添加两个对象的数据
         addObjectToData(result,data);
@@ -40,14 +44,13 @@ public class JSONParsor {
 
     private static void addListToData(Entity.ResultBean result, List<Object> data) {
         List<Entity.ResultBean.CateListBean> cateList = result.getCateList();//tag部分的标题
-        List<Entity.ResultBean.FoodieFavoriteGoodsBean> foodieFavoriteGoods = result
-                .getFoodieFavoriteGoods();//吃货最爱
+
         List<Entity.ResultBean.TagsBean> tags = result.getTags();//viewpager部分的集合
         List<Entity.ResultBean.ListBean> list = result.getList();//list集合
         //将list集合拆开一个一个数据的放进去
+        Collections.addAll(data, cateList, tags);
         data.addAll(list);
-        
-        Collections.addAll(data, cateList, foodieFavoriteGoods, tags);
+
 
     }
 

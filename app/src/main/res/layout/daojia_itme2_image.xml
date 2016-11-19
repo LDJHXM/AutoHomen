@@ -1,34 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+              android:orientation="horizontal"
+              android:weightSum="4"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-    <ImageView
-        android:id="@+id/image"
-        android:src="@drawable/brand_story_default"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"/>
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2">
-        <TextView
-            android:id="@+id/product_name"
-            android:text="阿胶糕"
-            android:gravity="center"
+        android:layout_width="0dp"
+        android:weightSum="5"
+        android:layout_height="100dp"
+        android:layout_weight="1">
+        <ImageView
+            android:id="@+id/image"
+            android:src="@drawable/brand_story_default"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
-        <TextView
-            android:id="@+id/product_price"
-            android:text="$89.9"
-            android:textColor="#E3170D"
-            android:gravity="center"
+            android:layout_weight="3"
+            />
+
+
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="2"
+            android:layout_height="0dp">
+            <TextView
+                android:id="@+id/product_name"
+                android:text="阿胶糕"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/product_price"
+                android:text="$89.9"
+                android:textColor="#E3170D"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
 
     </LinearLayout>
 
