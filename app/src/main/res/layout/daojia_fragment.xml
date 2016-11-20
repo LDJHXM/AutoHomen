@@ -52,13 +52,13 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="4"
-                app:cardCornerRadius="20dp">
+                app:cardCornerRadius="10dp">
 
                 <EditText
                     android:id="@+id/edit_id"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/gray_cc"
+                    android:background="@color/whitesmoke"
                     android:drawableLeft="@drawable/action_search_gray"
                     android:gravity="center_vertical"
                     android:hint="搜索商品"
@@ -81,6 +81,7 @@
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:scrollbars="none"
+            android:background="@color/whitesmoke"
             android:layout_height="40dp">
 
             <LinearLayout
@@ -96,6 +97,8 @@
     <ListView
         android:id="@+id/listView_id"
         android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:paddingTop="10dp"
         android:layout_height="match_parent"/>
 
 </LinearLayout>
