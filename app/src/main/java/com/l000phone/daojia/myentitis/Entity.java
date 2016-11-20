@@ -277,8 +277,17 @@ public class Entity {
      * "Weight":"370克","Price":"￥38.00"}],"CartTotalNum":0}
      */
 
+    private int id;
     private int status;
     private ResultBean result;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getStatus() {
         return status;
@@ -1140,6 +1149,16 @@ public class Entity {
                 public void setOpenUrl(String OpenUrl) {
                     this.OpenUrl = OpenUrl;
                 }
+            }
+
+            @Override
+            public String toString() {
+                return "TagsBean{" +
+                        "Id='" + Id + '\'' +
+                        ", Title='" + Title + '\'' +
+                        ", Url='" + Url + '\'' +
+                        ", Goods=" + Goods +
+                        '}';
             }
         }
 

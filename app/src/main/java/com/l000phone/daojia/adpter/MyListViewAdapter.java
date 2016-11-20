@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +12,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.l000phone.autohomen.R;
 import com.l000phone.daojia.myentitis.Entity;
+import com.squareup.picasso.Picasso;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -35,7 +38,7 @@ public class MyListViewAdapter extends BaseAdapter {
     private List<Object> data;
     private Context context;
     private List<ImageView> imageData;
-    private String[] tabNames;
+    private List<String> tabNames;
 
     public MyListViewAdapter(List<Object> data, Context context) {
         this.data = data;
@@ -154,6 +157,7 @@ public class MyListViewAdapter extends BaseAdapter {
 
                 vh2 = new ViewHolder2();
                 view = View.inflate(context, R.layout.daojia_item2, null);
+                vh2.item2_image_arrows = (ImageView) view.findViewById(R.id.item2_image_arrows);
                 vh2.item2_contain_down = (LinearLayout) view.findViewById(R.id
                         .item2_contain_down);
                 vh2.item2_contain_up = (LinearLayout) view.findViewById(R.id
@@ -163,6 +167,8 @@ public class MyListViewAdapter extends BaseAdapter {
                         .item2_text_info);
                 vh2.item2_text_price = (TextView) view.findViewById(R.id
                         .item2_text_price);
+
+
                 view.setTag(vh2);
                 //品牌故事
             } else if (type == TYPE_STORY) {
@@ -186,6 +192,7 @@ public class MyListViewAdapter extends BaseAdapter {
                         .item3_content_id);
                 vh3.item3_food_advantage = (TextView) view.findViewById(R.id
                         .item3_food_advantage);
+                vh3.item3_image_icon = (ImageView) view.findViewById(R.id.item3_image_icon);
                 vh3.item3_person_id = (TextView) view.findViewById(R.id.item3_person_id);
                 vh3.item3_price_id = (TextView) view.findViewById(R.id.item3_price_id);
                 vh3.item3_store_name = (TextView) view.findViewById(R.id
@@ -203,12 +210,14 @@ public class MyListViewAdapter extends BaseAdapter {
             } else if (type == TYPE_PERITEM) {
                 vh7 = new ViewHolder7();
                 view = View.inflate(context, R.layout.daojia_item7_per, null);
-                vh7.item7_food_image = (ImageView) view.findViewById(R.id.item7_food_image);
+                vh7.item7_food_image = (ImageView) view.findViewById(R.id
+                        .item7_food_image);
                 vh7.item7_per_image = (ImageView) view.findViewById(R.id.item7_per_image);
                 vh7.item7_buy_id = (TextView) view.findViewById(R.id.item7_buy_id);
                 vh7.item7_price = (TextView) view.findViewById(R.id.item7_price);
                 vh7.item7_Stock = (TextView) view.findViewById(R.id.item7_Stock);
-                vh7.item7_StoreTitle = (TextView) view.findViewById(R.id.item7_StoreTitle);
+                vh7.item7_StoreTitle = (TextView) view.findViewById(R.id
+                        .item7_StoreTitle);
                 vh7.item7_subTitle = (TextView) view.findViewById(R.id.item7_subTitle);
                 vh7.item7_UserName = (TextView) view.findViewById(R.id.item7_UserName);
                 vh7.item7_Title = (TextView) view.findViewById(R.id.item7_Title);
@@ -258,7 +267,7 @@ public class MyListViewAdapter extends BaseAdapter {
             addDatoToView5(perdata, vh5);
 
         } else if (type == TYPE_PERITEM) {
-            addDatoToView7(perdata,vh7);
+            addDatoToView7(perdata, vh7);
 
         }
         return view;
@@ -266,6 +275,7 @@ public class MyListViewAdapter extends BaseAdapter {
 
     /**
      * 各个条目
+     *
      * @param perdata
      * @param vh7
      */
@@ -273,7 +283,7 @@ public class MyListViewAdapter extends BaseAdapter {
         Entity.ResultBean.ListBean listbeam = (Entity.ResultBean.ListBean) perdata;
         vh7.item7_StoreTitle.setText(listbeam.getStoreTitle());
         vh7.item7_UserName.setText(listbeam.getUserName());
-     //   vh7.item7_Stock.setText(listbeam.getStock());
+        vh7.item7_Stock.setText("剩余"+listbeam.getStock()+"份");
         vh7.item7_subTitle.setText(listbeam.getSubTitle());
         vh7.item7_Title.setText(listbeam.getTitle());
         vh7.item7_price.setText(listbeam.getPrice());
@@ -281,9 +291,15 @@ public class MyListViewAdapter extends BaseAdapter {
 
 
         // TODO: 2016/11/19/019 图片和监视器
-        //vh7.item7_buy_id.setOnClickListener();
-        //vh7.item7_per_image.setImageBitmap();
-        //vh7.item7_food_image.setImageBitmap();
+        Picasso.with(context).load(listbeam.getCoverUrl()).into(vh7.item7_food_image);
+        Picasso.with(context).load(listbeam.getStoreLogoUrl()).into(vh7.item7_per_image);
+        vh7.item7_buy_id.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "点击跳转了哦", Toast.LENGTH_LONG).show();
+
+            }
+        });
 
     }
 
@@ -298,19 +314,22 @@ public class MyListViewAdapter extends BaseAdapter {
                 perdata;
         //数据源
         imageData = new LinkedList<>();
-        tabNames = new String[list.size()];
+        tabNames = new LinkedList<>();
         for (int j = 0; j < list.size(); j++) {
             // TODO: 2016/11/19/019 图片
-            String url = list.get(j).getUrl();
-            ImageView image = new ImageView(context);
-            image.setImageResource(R.drawable.brand_story_default);
+            String url = list.get(j).getGoods().getCoverUrl();
+            View inflate = View.inflate(context, R.layout.daojia_myimage, null);
+            ImageView image= (ImageView) inflate.findViewById(R.id.item5_image_item);
+            Picasso.with(context).load(url).error(R.drawable.brand_story_default).into(image);
             imageData.add(image);
-            tabNames[j] = list.get(j).getTitle();
-
+            tabNames.add(list.get(j).getTitle());
         }
         MyViewPager adapter = new MyViewPager();
-        vh5.item5_viewpager.setAdapter(adapter);
+        Log.i("data3", tabNames.toString());
         vh5.item5_tablayout.setupWithViewPager(vh5.item5_viewpager);
+
+        vh5.item5_viewpager.setAdapter(adapter);
+
 
 
     }
@@ -344,7 +363,7 @@ public class MyListViewAdapter extends BaseAdapter {
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return super.getPageTitle(position);
+            return tabNames.get(position);
         }
     }
 
@@ -365,9 +384,15 @@ public class MyListViewAdapter extends BaseAdapter {
         vh3.item3_food_advantage.setText(news.getGoods().getTitle());
         vh3.item3_person_id.setText(news.getUserName());
         // TODO: 2016/11/19/019   图片和监视器
-        //vh3.item3_food_image.setImageBitmap();
-        //vh3.item3_image_photo.setImageBitmap();
-        // vh3.item3_image_icon.setOnClickListener();
+        Picasso.with(context).load(news.getImgUrl()).into(vh3.item3_image_photo);
+        Picasso.with(context).load(news.getGoods().getCoverUrl()).into(vh3.item3_food_image);
+        vh3.item3_image_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "点击跳转了哦", Toast.LENGTH_LONG).show();
+
+            }
+        });
 
     }
 
@@ -381,17 +406,27 @@ public class MyListViewAdapter extends BaseAdapter {
         Entity.ResultBean.BrandStoreBean stoty = (Entity.ResultBean.BrandStoreBean)
                 perdata;
         //TODO 图片
-        // vh4.item4_image1.setImageBitmap();
         vh4.item4_image1_info.setText(stoty.getTitle());
+        Picasso.with(context).load(stoty.getImgUrl()).into(vh4.item4_image1);
         //TODO: 2016/11/19/019  监视器
-        // vh4.item4_image_inke.setOnClickListener();
+         vh4.item4_image_inke.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 Toast.makeText(context, "进入目的界面", Toast.LENGTH_LONG).show();
+             }
+         });
 
     }
 
+    /**
+     * 吃货最爱
+     * @param perdata
+     * @param vh2
+     */
     private void addDatoToView2(Object perdata, ViewHolder2 vh2) {
         List<Object> list2 = (List<Object>) perdata;
-        Log.i("data", " list2.size()"+ list2.size());
-        LinearLayout item2_contain_up=vh2.item2_contain_up;
+        Log.i("data", " list2.size()" + list2.size());
+        LinearLayout item2_contain_up = vh2.item2_contain_up;
         LinearLayout item2_contain_down = vh2.item2_contain_down;
 
         for (int j = 0; j < list2.size(); j++) {
@@ -404,26 +439,38 @@ public class MyListViewAdapter extends BaseAdapter {
                 vh2.item2_text_price.setText(price);
                 vh2.item2_text_info.setText(title);
                 //TODO 加载图片
+                vh2.item2_image_arrows.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(context, "点击跳转", Toast.LENGTH_LONG).show();
+                    }
+                });
+                Picasso.with(context).load(coverUrl).error(R.drawable.brand_story_default).into(vh2.item2_image1);
 
             } else if (0 < j && j < 5) {
+
                 View contain1 = View.inflate(context, R.layout.daojia_itme2_image, null);
-                TextView title = (TextView) contain1.findViewById(R.id.product_name);//阿胶糕
-                TextView price = (TextView) contain1.findViewById(R.id.product_price);
-                ImageView image = (ImageView) contain1.findViewById(R.id.image);
+                LinearLayout contain = (LinearLayout) contain1.findViewById(R.id.contain_id);
+
+                TextView title = (TextView) contain.findViewById(R.id.product_name);//阿胶糕
+                TextView price = (TextView) contain.findViewById(R.id.product_price);
+                ImageView image = (ImageView) contain.findViewById(R.id.image);
                 title.setText(favarite.getTitle());
                 price.setText(favarite.getPrice());
-                //TODO 图片
-                item2_contain_up.addView(contain1);
+                Picasso.with(context).load(favarite.getCoverUrl()).error(R.drawable.brand_story_default).into(image);
 
+                vh2.item2_contain_up.addView(contain1);
 
             } else {
                 View contain1 = View.inflate(context, R.layout.daojia_itme2_image, null);
-                TextView title = (TextView) contain1.findViewById(R.id.product_name);//阿胶糕
-                TextView price = (TextView) contain1.findViewById(R.id.product_price);
-                ImageView image = (ImageView) contain1.findViewById(R.id.image);
+                LinearLayout contain = (LinearLayout) contain1.findViewById(R.id.contain_id);
+                TextView title = (TextView) contain.findViewById(R.id.product_name);//阿胶糕
+                TextView price = (TextView) contain.findViewById(R.id.product_price);
+                ImageView image = (ImageView) contain.findViewById(R.id.image);
                 title.setText(favarite.getTitle());
                 price.setText(favarite.getPrice());
                 //TODO 图片
+                Picasso.with(context).load(favarite.getCoverUrl()).error(R.drawable.brand_story_default).into(image);
                 item2_contain_down.addView(contain1);
 
             }
@@ -456,9 +503,11 @@ public class MyListViewAdapter extends BaseAdapter {
                 //新品推荐
                 String title1 = ((Entity.ResultBean.DailyFirstGoodsBean) per)
                         .getTitle();
+                Log.i("data2", "coverUrl" + coverUrl);
                 vh1.item1_up_store.setText(label);
                 vh1.item1_up_tuijian.setText(title);
                 //TODO 图片
+                Picasso.with(context).load(coverUrl).into(vh1.item1_image_right_up);
 
 
             } else if (per instanceof Entity.ResultBean.DailySpecialGoodsBean) {
@@ -471,6 +520,7 @@ public class MyListViewAdapter extends BaseAdapter {
                 String price = ((Entity.ResultBean.DailySpecialGoodsBean) per).getPrice();
                 vh1.item1_left_price.setText(price);
                 vh1.item1_left_title.setText(title);
+                Picasso.with(context).load(coverUrl).into(vh1.item1_left_image);
 
             } else if (per instanceof Entity.ResultBean.OneHourGoodsBean) {
                 //小店儿
@@ -482,6 +532,7 @@ public class MyListViewAdapter extends BaseAdapter {
                 vh1.item1_down_stat.setText(label);
                 vh1.item1_down_store.setText(title);
                 //TODO 图片
+                Picasso.with(context).load(coverUrl).into(vh1.item1_image_star);
 
             }
         }
@@ -505,6 +556,8 @@ public class MyListViewAdapter extends BaseAdapter {
     //吃货最爱
     private final class ViewHolder2 {
         private ImageView item2_image1;
+        private ImageView item2_image_arrows;
+
         private TextView item2_text_info;
         private TextView item2_text_price;
         private LinearLayout item2_contain_up;
