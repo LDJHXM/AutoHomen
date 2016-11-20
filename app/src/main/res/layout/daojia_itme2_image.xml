@@ -5,11 +5,12 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
     <LinearLayout
+        android:id="@+id/contain_id"
         android:orientation="vertical"
-        android:layout_width="0dp"
+        android:layout_width="91dp"
         android:weightSum="5"
         android:layout_height="100dp"
-        android:layout_weight="1">
+        >
         <ImageView
             android:id="@+id/image"
             android:src="@drawable/brand_story_default"
