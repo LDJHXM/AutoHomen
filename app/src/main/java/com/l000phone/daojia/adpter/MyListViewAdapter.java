@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.l000phone.autohomen.R;
 import com.l000phone.daojia.myentitis.Entity;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.RequestCreator;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -322,6 +323,7 @@ public class MyListViewAdapter extends BaseAdapter {
             ImageView image= (ImageView) inflate.findViewById(R.id.item5_image_item);
             Picasso.with(context).load(url).error(R.drawable.brand_story_default).into(image);
             imageData.add(image);
+            RequestCreator load = Picasso.with(context).load(url);
             tabNames.add(list.get(j).getTitle());
         }
         MyViewPager adapter = new MyViewPager();
