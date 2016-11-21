@@ -1,11 +1,14 @@
 package com.l000phone.daojia.myentitis;
 
+import org.xutils.db.annotation.Column;
+import org.xutils.db.annotation.Table;
+
 import java.util.List;
 
 /**
  * Created by Administrator on 2016/11/18/018.
  */
-
+@Table(name ="Entity")
 public class Entity {
 
 
@@ -276,9 +279,19 @@ public class Entity {
      * "Stock":300,"IsShippingFree":2,"IsLike":0,"CartNum":0,"Labels":["包邮"],
      * "Weight":"370克","Price":"￥38.00"}],"CartTotalNum":0}
      */
-
+    @Column(name = "id", isId = true)
+    private int id;
+    @Column(name ="result" )
     private int status;
     private ResultBean result;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getStatus() {
         return status;
@@ -1140,6 +1153,16 @@ public class Entity {
                 public void setOpenUrl(String OpenUrl) {
                     this.OpenUrl = OpenUrl;
                 }
+            }
+
+            @Override
+            public String toString() {
+                return "TagsBean{" +
+                        "Id='" + Id + '\'' +
+                        ", Title='" + Title + '\'' +
+                        ", Url='" + Url + '\'' +
+                        ", Goods=" + Goods +
+                        '}';
             }
         }
 

@@ -130,6 +130,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
+                    android:scaleType="fitXY"
                     android:src="@drawable/brand_story_default"/>
 
                 <LinearLayout
@@ -137,13 +138,13 @@
                     android:layout_height="wrap_content"
                     android:background="@color/violet"
                     android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="10dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="新品"
+                        android:layout_marginLeft="10dp"
                         android:textSize="20dp"/>
 
                     <TextView

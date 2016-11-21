@@ -98,6 +98,8 @@ public class DaoJia extends Fragment {
      * 网络请求获得数据
      */
     private void getTheDataFromInternet() {
+        //判断是否有网，没有网的话读取数据库，有网从网上读取数据
+
         RequestParams params = new RequestParams(DaoJiaURL.totalURL);
         Callback.Cancelable cancelable = x.http().get(params, new Callback
                 .CommonCallback<String>() {
@@ -105,6 +107,8 @@ public class DaoJia extends Fragment {
             public void onSuccess(String result) {
                 List<Object> theData = JSONParsor.parsorString(result);
                 tempData.addAll(theData);
+                //数据库要自己搞一个实体类吗
+
                 //关于listview的操做
                 aboutListView();
 

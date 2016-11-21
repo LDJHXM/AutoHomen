@@ -9,6 +9,8 @@
         android:orientation="vertical"
         android:layout_width="91dp"
         android:weightSum="5"
+        android:layout_marginRight="1dp"
+        android:layout_marginLeft="1dp"
         android:layout_height="100dp"
         >
         <ImageView
@@ -22,6 +24,7 @@
 
         <LinearLayout
             android:orientation="vertical"
+            android:background="@color/whitesmoke"
             android:layout_width="match_parent"
             android:layout_weight="2"
             android:layout_height="0dp">
