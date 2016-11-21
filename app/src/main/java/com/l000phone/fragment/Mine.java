@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.l000phone.autohomen.MainActivity;
 import com.l000phone.autohomen.MyActionActivity;
 import com.l000phone.autohomen.MyCollectionActivity;
 import com.l000phone.autohomen.MyDownLoadActivity;
@@ -45,8 +46,9 @@ public class Mine extends Fragment implements View.OnClickListener {
     private TextView myName;
     private ImageView mySetting;
 
-    //判断是否登录的标记值
-    private boolean flag = false;
+    private Button quit;
+    private boolean flags;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,7 +60,8 @@ public class Mine extends Fragment implements View.OnClickListener {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-       if(flag) {
+
+        if (!MyLoginActivity.flags) {
           views = inflater.inflate(R.layout.fragment_my, null);
            //界面控件实例初始化
            intiWidge();
@@ -117,6 +120,18 @@ public class Mine extends Fragment implements View.OnClickListener {
 
         myOrder = (TextView) views.findViewById(R.id.tv_myright_order);
         myOrder.setOnClickListener(this);
+
+        //退出登录
+        quit = (Button) views.findViewById(R.id.btn_myright_quit);
+        quit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MyLoginActivity.flags = false;
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     /**

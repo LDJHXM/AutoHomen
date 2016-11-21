@@ -1,12 +1,12 @@
 package com.l000phone.autohomen;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.KeyEvent;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -21,11 +21,11 @@ import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static boolean isExit = false;//true表示退出，false表示不退出
     private RadioGroup mRadioGroup;
     private FragmentManager manager;
     private LinkedList<Fragment> list;
     private Fragment currentFragment;// 目前的Fragment
-    private static boolean isExit = false;//true表示退出，false表示不退出
     private Handler handler = new Handler() {
 
         @Override
@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
             isExit = false;
         }
     };
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
         //默认先展示首页
         currentFragment = list.get(0);
         startFragment(0);
+
+
     }
 
 
