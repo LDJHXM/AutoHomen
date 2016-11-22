@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/five_father"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:onClick="back"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/btn_header_back_gray" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="left|center_vertical"
+            android:layout_marginLeft="10dp"
+            android:text="热门活动"
+            android:textSize="22sp" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:background="#808080"
+        android:text="诚招广告"
+        android:textSize="50dp"
+        android:textColor="@color/gold"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
+
+    <TextView
+        android:background="#808080"
+        android:text="林先生：13181635133  "
+        android:textSize="30dp"
+        android:gravity="center_vertical|right"
+        android:textStyle="bold|italic"
+        android:textColor="@color/greenyellow"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
+
+
+
+    <ListView
+        android:id="@+id/event_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
+
+
+
+</LinearLayout>

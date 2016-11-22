@@ -96,12 +96,10 @@ public class WeekActivity extends AppCompatActivity {
      */
     private void aboutRecyclerView(List<Cate.DataBean.ListBean> list) {
 
-        // 设置固定大小
-        mRv.setHasFixedSize(true);
 
         //初始化布局
         mRv.setLayoutManager(new StaggeredGridLayoutManager
-                (3,StaggeredGridLayoutManager.VERTICAL));
+                (2,StaggeredGridLayoutManager.VERTICAL));
 
         //初始化适配器
         RvAdapter adapter = new RvAdapter(list,this);

@@ -59,7 +59,7 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         VH vh = (VH) holder;
 
         Picasso.with(context).load(list.get(position).getImgs().get(0))
-                .fit().placeholder(R.drawable.splish_logo).into(vh.mImg);
+               .placeholder(R.drawable.splish_logo).into(vh.mImg);
 
         vh.mText.setText(list.get(position).getTitle());
 

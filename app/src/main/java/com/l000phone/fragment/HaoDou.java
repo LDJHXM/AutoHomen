@@ -14,8 +14,10 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import com.l000phone.adapter.ListViewAdapter;
 import com.l000phone.adapter.ViewPagerAdapter;
+import com.l000phone.autohomen.HotEventActivity;
 import com.l000phone.autohomen.HotMenuActivity;
 import com.l000phone.autohomen.KitchenActivity;
+import com.l000phone.autohomen.MenuClassification;
 import com.l000phone.autohomen.R;
 import com.l000phone.autohomen.WeekActivity;
 import com.l000phone.entity.Cate;
@@ -482,9 +484,25 @@ public class HaoDou extends Fragment {
 
         mHot.abc_SetText(list_five.get(3).getTitle());
         mHot.abc_SetImg(list_five.get(3).getImgs().get(0));
+        mHot.abc_setClick(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(getActivity(),HotEventActivity.class));
+
+            }
+        });
 
         mMenu.abc_SetText(list_five.get(4).getTitle());
         mMenu.abc_SetImg(list_five.get(4).getImgs().get(0));
+        mMenu.abc_setClick(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(getActivity(),MenuClassification.class));
+
+            }
+        });
 
     }
 

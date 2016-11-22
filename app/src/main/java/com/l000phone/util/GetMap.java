@@ -91,4 +91,34 @@ public class GetMap {
 
         return agg;
     }
+
+
+    public static Map<String, String> getMap_HotEvent() {
+
+        Map<String, String> agg = new HashMap<>();
+
+        agg.put("limit", "20");
+        agg.put("offset", "0");
+        agg.put("appqs", "haodourecipe://haodou.com/latestactive/official/");
+
+        return agg;
+
+    }
+
+
+    public static Map<String, String> getMap_Ifi() {
+
+        Map<String, String> agg = new HashMap<>();
+
+        agg.put("", "GET /index.php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid=1479805159680&vc=105&vn=6.1.15&loguid=10283273&deviceid=haodou864394010248476&uuid=bdf542fa8eb3bcbc457a5383dc48fc0c&channel=anzhi_v6115&method=Search.getCateList&virtual=&signmethod=md5&v=3&timestamp=1479806420&nonce=0.32336944435166803&appsign=f790b189e3c09b9478a0d4ece1f42856 HTTP/1.1");
+        agg.put("Charset", "UTF-8");
+        agg.put("Accept-Encoding", "gzip, deflate");
+        agg.put("User-Agent", "HAODOU_RECIPE_CLIENT;(vivo-X510t;anzhi_v6115;Android-4.4.2-19;1280x720;105;bdf542fa8eb3bcbc457a5383dc48fc0c;WIFI-)");
+        agg.put("Host", "api.haodou.com");
+        agg.put("Connection","close");
+
+        return agg;
+
+    }
+
 }

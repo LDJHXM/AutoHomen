@@ -73,6 +73,8 @@
         <activity android:name=".WeekActivity"/>
         <activity android:name=".HotMenuActivity"/>
         <activity android:name=".KitchenActivity"/>
+        <activity android:name=".HotEventActivity"/>
+        <activity android:name=".MenuClassification"/>
 
 
     </application>

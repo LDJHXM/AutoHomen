@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/abc_botton"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="match_parent"
+    >
+
+    <ListView
+        android:id="@+id/ifi_lv"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"/>
+
+        <GridView
+            android:id="@+id/ifi_gv"
+            android:numColumns="auto_fit"
+            android:scrollbars="none"
+            android:columnWidth="80dp"
+            android:stretchMode="columnWidth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+</LinearLayout>
