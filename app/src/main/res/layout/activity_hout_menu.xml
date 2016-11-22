@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+>
+
+    <LinearLayout
+        android:id="@+id/ll_id"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:onClick="back"
+            android:id="@+id/hot_week_btn_id"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/btn_header_back_gray" />
+
+        <TextView
+            android:id="@+id/hop_week_text_id"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="left|center_vertical"
+            android:layout_marginLeft="10dp"
+            android:text="周末吃啥"
+            android:textSize="22sp" />
+
+    </LinearLayout>
+
+    
+    <android.support.design.widget.TabLayout
+        android:id="@+id/hop_tabLayout_id"
+        android:layout_below="@+id/ll_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/hot_vp_id"
+        android:layout_below="@+id/hop_tabLayout_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+
+    
+    
+
+
+</RelativeLayout>

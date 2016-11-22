@@ -18,14 +18,12 @@ import com.l000phone.daojia.adpter.MyListViewAdapter;
 import com.l000phone.daojia.datatoview.TabToView;
 import com.l000phone.daojia.jsonparsor.JSONParsor;
 import com.l000phone.daojia.myentitis.Entity;
-import com.l000phone.daojia.myentitis.Entity.ResultBean.CateListBean;
 import com.l000phone.daojia.myurl.DaoJiaURL;
 
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -43,6 +41,8 @@ public class DaoJia extends Fragment {
     private List<Object> dataS;
     private List<Object> tempData;
     private List<Object> tabData;
+
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

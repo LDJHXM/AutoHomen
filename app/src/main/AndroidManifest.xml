@@ -69,6 +69,10 @@
         <activity android:name=".MyPutRecipeActivity" />
         <activity android:name=".MyRegistActivity" />
         <activity android:name=".Welcome" />
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".WeekActivity"/>
+        <activity android:name=".HotMenuActivity"/>
+        <activity android:name=".KitchenActivity"/>
 
 
     </application>

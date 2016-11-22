@@ -6,4 +6,15 @@
         <item>kapai</item>
         <item>nanqiang</item>
     </string-array>
+
+
+    <string-array name="tabName">
+        <item>全部</item>
+        <item>私人</item>
+        <item>时令</item>
+        <item>达人</item>
+        <item>最新</item>
+        <item>烘焙</item>
+    </string-array>
+
 </resources>

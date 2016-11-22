@@ -11,6 +11,6 @@ public class Constant {
             "search&virtual=&signmethod=md5&v=3&timestamp=1479302319&nonce=0.15004881074568566&appsign=4c9391b88f844aa241ed7a2073e8c2e4";
 
 
-
+    public static String Eat_What = "http://hop.haodou.com/hop/router/rest.json?action=cms.feed.page";
 
 }

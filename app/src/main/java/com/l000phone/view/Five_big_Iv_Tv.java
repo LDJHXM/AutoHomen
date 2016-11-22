@@ -1,6 +1,7 @@
 package com.l000phone.view;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
@@ -18,9 +19,8 @@ public class Five_big_Iv_Tv extends LinearLayout {
 
     private ImageView mImg;
     private TextView mText;
-    private CustomLayout view;
     private TextView mTextBelow;
-    private CustomLayout mCl;
+    private CardView mCl;
 
     public Five_big_Iv_Tv(Context context) {
         super(context);
@@ -32,8 +32,8 @@ public class Five_big_Iv_Tv extends LinearLayout {
         LayoutInflater.from(context).inflate(R.layout.abc_big_print_writing, this);
 
 
-        mCl = (CustomLayout) findViewById(R.id.custom);
-        //mImg = (ImageView) inflate.findViewById(R.id.big_five_img);
+        mCl = (CardView) findViewById(R.id.custom);
+        mImg = (ImageView) findViewById(R.id.big_five_img);
         mText = (TextView) findViewById(R.id.big_five_text);
         mTextBelow = (TextView)findViewById(R.id.big_five_text_below);
     }
@@ -59,18 +59,18 @@ public class Five_big_Iv_Tv extends LinearLayout {
      * 设置图片
      * @param
      */
-  /*  public void abc_SetImg(String info){
+    public void abc_SetImg(String info){
 
       Picasso.with(getContext()).load(info).fit().placeholder(R.drawable.splish_logo)
               .into(mImg);
 
-    }*/
+    }
 
 
-    public void abc_setBackground(String info){
+  /*  public void abc_setBackground(String info){
 
         Picasso.with(getContext()).load(info).into(mCl);
-    }
+    }*/
 
     public void abc_setClick(OnClickListener listener){
 

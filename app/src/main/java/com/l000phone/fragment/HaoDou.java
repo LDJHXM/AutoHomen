@@ -1,5 +1,6 @@
 package com.l000phone.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,22 +12,22 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
-
 import com.l000phone.adapter.ListViewAdapter;
 import com.l000phone.adapter.ViewPagerAdapter;
+import com.l000phone.autohomen.HotMenuActivity;
+import com.l000phone.autohomen.KitchenActivity;
 import com.l000phone.autohomen.R;
+import com.l000phone.autohomen.WeekActivity;
 import com.l000phone.entity.Cate;
+import com.l000phone.face.HaoDouCate;
 import com.l000phone.util.GetMap;
 import com.l000phone.view.Five_Iv_Tv;
 import com.l000phone.view.Five_big_Iv_Tv;
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -94,83 +95,9 @@ public class HaoDou extends Fragment {
 
         getViewCase();
 
-        //关于ListView的操作
-        //aboutListView();
-
         return view;
     }
 
-   /* private void fillEgg() {
-
-        Retrofit retrofit = new Retrofit.Builder().
-                baseUrl("http://api.haodou.com/").
-                addConverterFactory(GsonConverterFactory.create()).build();
-
-
-        Mate_Egg me = retrofit.create(Mate_Egg.class);
-
-        Map<String, String> agg = new HashMap<>();
-        agg.put("limit", "10");
-        agg.put("sign", "");
-        agg.put("uid", "0");
-        agg.put("uuid", "b3b08f17bca548949af2ddc9c88e65f5");
-        agg.put("offset", "0");
-        agg.put("appqs", "haodourecipe://haodou" +
-                ".com/recommend/recipe/?keyword=%E7%83%AD%E9%97%A8%E8%8F%9C%E8%B0%B1&title=%E7%83" +
-                "%AD%E9%97%A8%E8%8F%9C%E8%B0%B1&tab=%E5%85%A8%E9%83%A8%3A%E7%83%AD%E9%97%A8%E8%8F" +
-                "%9C%E8%B0%B1%7C%E7%A7%81%E4%BA%BA%3A%E7%A7%81%E4%BA%BA%E5%AE%9A%E5%88%B6%7C%E6" +
-                "%97%B6%E4%BB%A4%3A%E6%97%B6%E4%BB%A4%E4%BD%B3%E8%82%B4%7C%E8%BE%BE%E4%BA%BA%3A" +
-                "%E8%BE%BE%E4%BA%BA%E8%8F%9C%E8%B0%B1%7C%E6%9C%80%E6%96%B0%3A%E6%9C%80%E6%96%B0" +
-                "%E8%8F%9C%E8%B0%B1%7C%E7%83%98%E7%84%99%3A%E5%BF%AB%E4%B9%90%E7%9A%84%E7%83%98" +
-                "%E7%84%99");
-        agg.put("type", "热门菜谱");
-
-
-        Call<Cate> call = me.getEgg(agg);
-
-        call.enqueue(new Callback<Cate>() {
-            @Override
-            public void onResponse(Call<Cate> call, Response<Cate> response) {
-
-                //Log.d("abc",response.toString());
-                Cate cate = response.body();
-                List<Cate.DataBean.HeaderBean.ListBean> list_pager
-                        = cate.getData().getHeader().get(0).getList();
-
-                String title2 = cate.getData().getHeader().get(1).getList().get(2).getTitle();
-
-                mMenu.setText(title2);
-
-                tuShi();
-
-                //关于ViewPager的操作
-
-                aboutViewPager(list_pager);
-
-                //关于小圆点的操作
-                aboutLittleDots();
-
-
-                //Log.i("data",cate.getData().getList().get(0).getTitle());
-                //Toast.makeText(getActivity(), title2, Toast.LENGTH_LONG).show();
-
-            }
-
-
-
-
-            @Override
-            public void onFailure(Call<Cate> call, Throwable t) {
-                Toast.makeText(getActivity(), "下载失败", Toast.LENGTH_LONG).show();
-            }
-        });
-
-    }
-
-    private void tuShi() {
-
-        Toast.makeText(getActivity(), "验证一下", Toast.LENGTH_SHORT).show();
-    }*/
 
     /**
      * 关于ViewPager的操作
@@ -374,7 +301,7 @@ public class HaoDou extends Fragment {
     private void getCateDate() {
 
 
-        Retrofit retrofit = new Retrofit.Builder().
+               Retrofit retrofit = new Retrofit.Builder().
                 baseUrl("http://hop.haodou.com/").
                 addConverterFactory(GsonConverterFactory.create()).build();
 
@@ -427,6 +354,8 @@ public class HaoDou extends Fragment {
             public void onFailure(Call<Cate> call, Throwable t) {
 
             }
+
+
         });
 
 
@@ -456,42 +385,58 @@ public class HaoDou extends Fragment {
      * 关于五个自定义Five_big_iv_Tv的操作
      * @param big_list_five
      */
-    private void aboutFive_big_iv_Tv(List<Cate.DataBean.HeaderBean.ListBean> big_list_five) {
+    private void aboutFive_big_iv_Tv(final List<Cate.DataBean.HeaderBean.ListBean> big_list_five) {
 
 
         mF1.abc_SetText(big_list_five.get(0).getTitle());
-        mF1.abc_setBackground(big_list_five.get(0).getImgs().get(0));
+        mF1.abc_SetImg(big_list_five.get(0).getImgs().get(0));
         mF1.abc_SetText_below(big_list_five.get(0).getDesc());
 
-        mF1.abc_setClick(new View.OnClickListener() {
+        ClickToWeek(big_list_five,mF1,0);
+
+        mF2.abc_SetText(big_list_five.get(1).getTitle());
+        mF2.abc_SetImg(big_list_five.get(1).getImgs().get(0));
+        mF2.abc_SetText_below(big_list_five.get(1).getDesc());
+
+        ClickToWeek(big_list_five,mF2,1);
+
+        mF3.abc_SetText(big_list_five.get(2).getTitle());
+        mF3.abc_SetImg(big_list_five.get(2).getImgs().get(0));
+        mF3.abc_SetText_below(big_list_five.get(2).getDesc());
+
+        ClickToWeek(big_list_five,mF3,2);
+
+        mF4.abc_SetText(big_list_five.get(3).getTitle());
+        mF4.abc_SetImg(big_list_five.get(3).getImgs().get(0));
+        mF4.abc_SetText_below(big_list_five.get(3).getDesc());
+
+        ClickToWeek(big_list_five,mF4,3);
+
+        mF5.abc_SetText(big_list_five.get(4).getTitle());
+        mF5.abc_SetImg(big_list_five.get(4).getImgs().get(0));
+        mF5.abc_SetText_below(big_list_five.get(4).getDesc());
+
+        ClickToWeek(big_list_five,mF5,4);
+
+    }
+
+    private void ClickToWeek(final List<Cate.DataBean.HeaderBean.ListBean> big_list_five,Five_big_Iv_Tv mF, final int i) {
+        mF.abc_setClick(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(getActivity(), "点击", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), WeekActivity.class);
+
+                Bundle bundle = new Bundle();
+
+                bundle.putString("title",big_list_five.get(i).getTitle());
+
+                intent.putExtras(bundle);
+
+                startActivity(intent);
 
             }
         });
-
-        mF2.abc_SetText(big_list_five.get(1).getTitle());
-        mF2.abc_setBackground(big_list_five.get(1).getImgs().get(0));
-        mF2.abc_SetText_below(big_list_five.get(1).getDesc());
-
-
-        mF3.abc_SetText(big_list_five.get(2).getTitle());
-        mF3.abc_setBackground(big_list_five.get(2).getImgs().get(0));
-        mF3.abc_SetText_below(big_list_five.get(2).getDesc());
-
-
-        mF4.abc_SetText(big_list_five.get(3).getTitle());
-        mF4.abc_setBackground(big_list_five.get(3).getImgs().get(0));
-        mF4.abc_SetText_below(big_list_five.get(3).getDesc());
-
-
-        mF5.abc_SetText(big_list_five.get(4).getTitle());
-        mF5.abc_setBackground(big_list_five.get(4).getImgs().get(0));
-        mF5.abc_SetText_below(big_list_five.get(4).getDesc());
-
-
     }
 
     /**
@@ -499,7 +444,7 @@ public class HaoDou extends Fragment {
      *
      * @param list_five
      */
-    private void aboutFive_iv_Tv(List<Cate.DataBean.HeaderBean.ListBean> list_five) {
+    private void aboutFive_iv_Tv(final List<Cate.DataBean.HeaderBean.ListBean> list_five) {
 
         mPopular.abc_SetText(list_five.get(0).getTitle());
         mPopular.abc_SetImg(list_five.get(0).getImgs().get(0));
@@ -508,7 +453,15 @@ public class HaoDou extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(getActivity(), "点击", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), HotMenuActivity.class);
+
+                Bundle bundle = new Bundle();
+
+                bundle.putString("title",list_five.get(0).getTitle());
+
+                intent.putExtras(bundle);
+
+                startActivity(intent);
 
             }
         });
@@ -518,6 +471,14 @@ public class HaoDou extends Fragment {
 
         mKitchen.abc_SetText(list_five.get(2).getTitle());
         mKitchen.abc_SetImg(list_five.get(2).getImgs().get(0));
+        mKitchen.abc_setClick(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(getActivity(),KitchenActivity.class));
+
+            }
+        });
 
         mHot.abc_SetText(list_five.get(3).getTitle());
         mHot.abc_SetImg(list_five.get(3).getImgs().get(0));
@@ -527,13 +488,10 @@ public class HaoDou extends Fragment {
 
     }
 
-    public interface HaoDouCate {
 
-        @FormUrlEncoded
-        @POST("hop/router/rest.json?action=front.get_index")
-        Call<Cate> getData(@FieldMap Map<String, String> ask);
 
-    }
+
+
 
    /* private void startTask() {
         isTaskRun = true;
