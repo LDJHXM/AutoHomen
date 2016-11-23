@@ -1,5 +1,6 @@
 package com.l000phone.autohomen;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -64,8 +65,7 @@ public class MenuClassification extends AppCompatActivity {
 
                 aboutList(list);
 
-                mLv.setSelection(0);
-
+                aboutGridView(list.get(0).getTags());
 
             }
 
@@ -108,7 +108,7 @@ public class MenuClassification extends AppCompatActivity {
      * 关于GridView的操作
      * @param tags
      */
-    private void aboutGridView(List<Cate_Ifi.ResultBean.ListBean.TagsBean> tags) {
+    private void aboutGridView(final List<Cate_Ifi.ResultBean.ListBean.TagsBean> tags) {
 
 
         IfigridAdapter ifigridAdapter = new IfigridAdapter(tags, this);
@@ -119,7 +119,17 @@ public class MenuClassification extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Toast.makeText(MenuClassification.this, "你点击了"+i, Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(MenuClassification.this, IfiFoodActivity.class);
+
+                Bundle bundle = new Bundle();
+
+                bundle.putString("title",tags.get(i).getName());
+
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+
 
             }
         });

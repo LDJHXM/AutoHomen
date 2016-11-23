@@ -19,6 +19,7 @@ import com.l000phone.autohomen.HotMenuActivity;
 import com.l000phone.autohomen.KitchenActivity;
 import com.l000phone.autohomen.MenuClassification;
 import com.l000phone.autohomen.R;
+import com.l000phone.autohomen.VideoActivity;
 import com.l000phone.autohomen.WeekActivity;
 import com.l000phone.entity.Cate;
 import com.l000phone.face.HaoDouCate;
@@ -470,6 +471,12 @@ public class HaoDou extends Fragment {
 
         mSee.abc_SetText(list_five.get(1).getTitle());
         mSee.abc_SetImg(list_five.get(1).getImgs().get(0));
+        mSee.abc_setClick(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), VideoActivity.class));
+            }
+        });
 
         mKitchen.abc_SetText(list_five.get(2).getTitle());
         mKitchen.abc_SetImg(list_five.get(2).getImgs().get(0));

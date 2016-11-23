@@ -17,4 +17,10 @@
         <item>烘焙</item>
     </string-array>
 
+    <string-array name="tabName2">
+        <item>详情</item>
+        <item>步骤</item>
+        <item>评论</item>
+    </string-array>
+
 </resources>

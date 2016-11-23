@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/five_father"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:onClick="back"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/btn_header_back_gray" />
+
+
+        <TextView
+            android:id="@+id/ifi_food_tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="left|center_vertical"
+            android:layout_marginLeft="10dp"
+            android:textSize="22sp" />
+
+    </LinearLayout>
+
+
+    <ListView
+        android:id="@+id/event_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
+
+
+
+</LinearLayout>

@@ -9,7 +9,7 @@ import retrofit2.http.GET;
 import retrofit2.http.QueryMap;
 
 /**
- * 第一页的接口
+ * 热门分裂接口
  */
 
 public interface HaoDouCate_Ifi {

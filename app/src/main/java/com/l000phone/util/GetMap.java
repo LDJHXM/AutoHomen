@@ -121,4 +121,34 @@ public class GetMap {
 
     }
 
+
+    public static Map<String, String> getMap_Ifi_Food() {
+
+        Map<String, String> agg = new HashMap<>();
+
+        agg.put("limit", "20");
+        agg.put("scene", "t1");
+        agg.put("tagid", "323");
+        agg.put("uuid", "bdf542fa8eb3bcbc457a5383dc48fc0c");
+        agg.put("offset", "0");
+
+        return agg;
+
+    }
+
+    public static Map<String, String> getMap_Video() {
+
+        Map<String, String> agg = new HashMap<>();
+
+        agg.put("sign", "99f1bcd28fa73dd09879155786b621ba");
+        agg.put("uid", "10283273");
+        agg.put("return_request_id", "");
+        agg.put("uuid", "bdf542fa8eb3bcbc457a5383dc48fc0c");
+        agg.put("appqs", "haodourecipe://haodou.com/recipe/info/?id=1006888&video=1");
+        agg.put("rid","1006888");
+
+        return agg;
+
+    }
+
 }
