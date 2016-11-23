@@ -20,30 +20,12 @@
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
 
-    <!--<activity-->
-    <!--android:name="com.l000phone.Activity.UmengLoginActivity"-->
-    <!--android:configChanges="orientation|keyboard"-->
-    <!--android:launchMode="singleTask"-->
-    <!--android:noHistory="true"-->
-    <!--android:theme="@style/Theme.UMDialog"-->
-    <!--android:windowSoftInputMode="stateVisible|adjustResize" />-->
 
 
-    <!-- 友盟AppKey， 需要替换成你自己的 -->
-    <meta-data
-        android:name="UMENG_APPKEY"
-        android:value="582d00afb27b0a02d80007b5"></meta-data>
 
-    <meta-data
-        android:name="UMENG_CHANNEL"
-        android:value="Umeng"></meta-data>
 
-    <uses-library
-        android:name="com.google.android.maps"
-        android:required="false" />
-    <uses-library android:name="android.test.runner" />
     <application
-        android:name=".App"
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -76,6 +58,34 @@
         <activity android:name=".HotEventActivity"/>
         <activity android:name=".MenuClassification"/>
 
+        <!-- 友盟AppKey， 需要替换成你自己的 -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="582d00afb27b0a02d80007b5"></meta-data>
+
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Umeng"></meta-data>
+
+
+        <activity
+            android:name="com.umeng.qq.tencent.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent100424468" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.umeng.qq.tencent.AssistActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
 
     </application>
 

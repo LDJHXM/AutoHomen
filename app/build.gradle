@@ -3,6 +3,14 @@ apply plugin: 'org.greenrobot.greendao'
 
 
 android {
+    signingConfigs {
+        debug {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('E:/debug.keystore')
+            storePassword 'android'
+        }
+    }
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
     defaultConfig {
@@ -19,7 +27,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    greendao{
+    greendao {
         schemaVersion 1
         daoPackage 'com.l000phone.autohomen'
         targetGenDir 'src/main/java'
@@ -41,4 +49,43 @@ dependencies {
     compile files('libs/picasso-2.5.2.jar')
     compile 'org.xutils:xutils:3.3.38'
     compile 'com.android.support:cardview-v7:25.0.0'
+    compile files('libs/android-support-v4.jar')
+    compile files('libs/libammsdk.jar')
+    compile files('libs/libapshare.jar')
+    compile files('libs/line-android-sdk-3.1.19.jar')
+    compile files('libs/mta-sdk-1.6.2.jar')
+    compile files('libs/open_sdk_r5756_lite.jar')
+    compile files('libs/SocialSDK_alipay.jar')
+    compile files('libs/SocialSDK_douban.jar')
+    compile files('libs/SocialSDK_email.jar')
+    compile files('libs/SocialSDK_evernote.jar')
+    compile files('libs/SocialSDK_facebook.jar')
+    compile files('libs/SocialSDK_flickr.jar')
+    compile files('libs/SocialSDK_foursquare.jar')
+    compile files('libs/SocialSDK_twitter.jar')
+    compile files('libs/SocialSDK_gplus.jar')
+    compile files('libs/SocialSDK_instagram.jar')
+    compile files('libs/SocialSDK_kakao.jar')
+    compile files('libs/SocialSDK_laiwang_1.jar')
+    compile files('libs/SocialSDK_laiwang_2.jar')
+    compile files('libs/SocialSDK_line.jar')
+    compile files('libs/SocialSDK_linkedin.jar')
+    compile files('libs/SocialSDK_pinterest.jar')
+    compile files('libs/SocialSDK_pocket.jar')
+    compile files('libs/SocialSDK_QQZone_3.jar')
+    compile files('libs/SocialSDK_renren.jar')
+    compile files('libs/SocialSDK_Sina.jar')
+    compile files('libs/SocialSDK_sms.jar')
+    compile files('libs/SocialSDK_tencentWB.jar')
+    compile files('libs/SocialSDK_tumblr.jar')
+    compile files('libs/SocialSDK_umengqq.jar')
+    compile files('libs/SocialSDK_umengsina.jar')
+    compile files('libs/SocialSDK_umengwx.jar')
+    compile files('libs/SocialSDK_WeiXin_2.jar')
+    compile files('libs/SocialSDK_whatsapp.jar')
+    compile files('libs/SocialSDK_yixin_1.jar')
+    compile files('libs/SocialSDK_yixin_2.jar')
+    compile files('libs/SocialSDK_ynote.jar')
+    compile files('libs/volley.jar')
+    compile files('libs/weiboSDKCore_3.1.4.jar')
 }
