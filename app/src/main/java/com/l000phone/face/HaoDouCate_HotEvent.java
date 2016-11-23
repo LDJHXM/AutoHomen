@@ -10,7 +10,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
 /**
- * 第一页的接口
+ * 热门活动接口
  */
 
 public interface HaoDouCate_HotEvent {

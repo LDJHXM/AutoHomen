@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/video_ll"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <Button
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/btn_header_back_gray"
+            android:onClick="back" />
+
+        <Button
+            android:id="@+id/video_collect"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="270dp"
+            android:background="@drawable/fav_gray"
+            android:onClick="back" />
+
+        <Button
+            android:id="@+id/video_share"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/btn_header_share_gray"
+            android:onClick="back" />
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/vido_rl"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_below="@+id/video_ll">
+
+        <VideoView
+            android:id="@+id/video_video"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/video_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+             />
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="30dp"
+            android:id="@+id/zan_id"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/btn_zan_small"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/video_tv_zan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="321"
+            android:textColor="#ffffff" />
+
+        <ImageView
+            android:id="@+id/video_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/video_start" />
+
+    </RelativeLayout>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/video_tab"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/vido_rl" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/video_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/video_tab" />
+
+
+
+</RelativeLayout>

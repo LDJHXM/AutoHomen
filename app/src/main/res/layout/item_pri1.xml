@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="40dp"
+    >
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv1_tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:text="sdasas"
+        android:textColor="#000000"
+        android:textSize="20dp" />
+
+    <ImageView
+        android:src="@drawable/ico_info_i"
+        android:layout_width="20dp"
+        android:layout_height="20dp" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv1_tv2"
+        android:layout_marginRight="150dp"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:text="你妹的"
+        android:textSize="20dp" />
+
+
+</RelativeLayout>

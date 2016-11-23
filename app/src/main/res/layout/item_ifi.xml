@@ -3,10 +3,13 @@
     android:id="@+id/activity_main"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
    >
 
     <Button
         android:id="@+id/ifi_btn"
+        android:focusable="false"
+        android:clickable="false"
         android:background="@drawable/dj_buttom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

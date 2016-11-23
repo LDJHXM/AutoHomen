@@ -57,6 +57,15 @@
         <activity android:name=".KitchenActivity"/>
         <activity android:name=".HotEventActivity"/>
         <activity android:name=".MenuClassification"/>
+        <activity android:name=".IfiFoodActivity"/>
+        <activity
+            android:name="io.vov.vitamio.activity.InitActivity"
+            android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <activity android:name=".VideoActivity"/>
 
         <!-- 友盟AppKey， 需要替换成你自己的 -->
         <meta-data
