@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="200dp"
+    android:orientation="horizontal">
+
+
+    <com.l000phone.view.CircleImageView
+        android:id="@+id/comment2_img"
+        android:layout_width="40dp"
+        android:layout_height="40dp" />
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/comment2_tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DJ真是帅"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/comment2_tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="4小时前"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/comment2_tv3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="吃屎去吧你"
+            android:textColor="#000000"
+            android:textSize="21sp" />
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:background="#DCDCDC"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:text="回复：asdasdasdas"
+                android:id="@+id/comment_huifu_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:text="你真的是个垃圾呀"
+                android:id="@+id/comment_huifu_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:id="@+id/comment_reply"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:text="回复" />
+
+</LinearLayout>

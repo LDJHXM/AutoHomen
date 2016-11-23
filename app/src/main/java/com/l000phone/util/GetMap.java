@@ -151,4 +151,21 @@ public class GetMap {
 
     }
 
+    public static Map<String, String> getMap_Comment() {
+
+        Map<String, String> agg = new HashMap<>();
+
+        agg.put("limit", "20");
+        agg.put("sign", "99f1bcd28fa73dd09879155786b621ba");
+        agg.put("uid", "10283273");
+        agg.put("appqs", "haodourecipe://haodou.com/recipe/info/?id=1006888&video=1");
+        agg.put("rid", "1006888");
+        agg.put("offset", "0");
+        agg.put("type", "0");
+        agg.put("cid","");
+
+        return agg;
+
+    }
+
 }

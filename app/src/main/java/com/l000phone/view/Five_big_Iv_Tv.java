@@ -61,7 +61,7 @@ public class Five_big_Iv_Tv extends LinearLayout {
      */
     public void abc_SetImg(String info){
 
-      Picasso.with(getContext()).load(info).fit().placeholder(R.drawable.splish_logo)
+      Picasso.with(getContext()).load(info).placeholder(R.drawable.splish_logo)
               .into(mImg);
 
     }

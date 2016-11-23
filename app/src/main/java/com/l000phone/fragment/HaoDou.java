@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+
 import com.l000phone.adapter.ListViewAdapter;
 import com.l000phone.adapter.ViewPagerAdapter;
 import com.l000phone.autohomen.HotEventActivity;
@@ -26,19 +27,17 @@ import com.l000phone.face.HaoDouCate;
 import com.l000phone.util.GetMap;
 import com.l000phone.view.Five_Iv_Tv;
 import com.l000phone.view.Five_big_Iv_Tv;
+
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.FieldMap;
-import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.POST;
 
 /**
  * Created by DJ on 2016/11/16.
@@ -275,29 +274,6 @@ public class HaoDou extends Fragment {
         mF5 = (Five_big_Iv_Tv) view.findViewById(R.id.Five_big_Iv_Tv_5);
 
 
-    }
-
-   /* @Override
-    public void setJSONData(Cate result) {
-
-        mKitchen.setText(result==null?"kong":result.toString());
-
-       *//* pager = result.getData().getHeader().get(0).getList().get(0);
-
-        five = result.getData().getHeader().get(0).getList().get(1);
-
-        bigFive = result.getData().getHeader().get(0).getList().get(2);*//*
-
-
-
-
-    }*/
-
-
-    public interface Mate_Egg {
-        @FormUrlEncoded
-        @POST("index.php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid=1479371493849&vc=105&vn=6.1.15&loguid=0&deviceid=haodou864394010208983&uuid=31ba575462df2682b6b0886eb2cd63ce&channel=anzhi_v6115&method=Recipe.getCollectRecomment&virtual=&signmethod=md5&v=3&timestamp=1479371511&nonce=0.775792008688394&appsign=6f6bd7fa37ea9e2a7b3b7c775f45aed1")
-        Call<Cate> getEgg(@FieldMap Map<String, String> egg);
     }
 
 

@@ -266,14 +266,13 @@
             android:layout_height="40dp">
 
             <ImageView
-                android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:src="@drawable/ico_content_shang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <TextView
-
+                android:layout_marginLeft="10dp"
                 android:id="@+id/par_shang_num"
                 android:gravity="center_vertical"
                 android:layout_width="wrap_content"

@@ -7,6 +7,7 @@
     >
 
     <LinearLayout
+        android:layout_marginTop="5dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -14,7 +15,7 @@
     <TextView
         android:id="@+id/tv1_tv1"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:text="sdasas"
         android:textColor="#000000"

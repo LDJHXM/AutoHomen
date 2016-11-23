@@ -98,7 +98,7 @@ public class Video_Particulars extends Fragment {
             circleImageView.setMaxHeight(30);
             circleImageView.setMaxWidth(30);
             Picasso.with(getActivity()).load(info.getLastDiggUsers()
-                    .get(i).getAvatar()).fit().into(circleImageView);
+                    .get(i).getAvatar()).into(circleImageView);
 
             mZan.addView(circleImageView);
 
