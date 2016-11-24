@@ -108,7 +108,7 @@ public class VideoActivity extends AppCompatActivity {
 
                 Log.i("duration",duration+"");
 
-
+//
                 mImg.setVisibility(View.INVISIBLE);
 
                 mZan.setVisibility(View.INVISIBLE);
