@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AutoHomen</string>
+    <string name="app_name">美食天下</string>
 
     <string-array name="picName">
         <item>xiazi</item>

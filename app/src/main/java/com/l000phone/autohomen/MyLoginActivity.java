@@ -1,5 +1,6 @@
 package com.l000phone.autohomen;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,12 +13,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.l000phone.db.UserDbHelper;
+import com.umeng.socialize.UMAuthListener;
+import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.utils.Log;
+
+import java.util.Map;
 
 /**
  * Created by Administrator on 2016/11/17.
  */
 
-public class MyLoginActivity extends AppCompatActivity {
+public class MyLoginActivity extends AppCompatActivity implements View.OnClickListener{
     public static boolean flags;
     private TextView myLoginReturn;
     private Button myLoginRegist;
@@ -29,6 +36,11 @@ public class MyLoginActivity extends AppCompatActivity {
     public boolean isFlags() {
         return flags;
     }
+
+    private TextView qqLogin;
+    private TextView sinaLogin;
+
+    private UMShareAPI mShareAPI = null;
 
     public void setFlags(boolean flags) {
         MyLoginActivity.flags = flags;
@@ -64,6 +76,13 @@ public class MyLoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        qqLogin = (TextView)this.findViewById(R.id.tv_mylogin_qq);
+        qqLogin.setOnClickListener(this);
+        sinaLogin = (TextView)this.findViewById(R.id.tv_mylogin_sina);
+        sinaLogin.setOnClickListener(this);
+
+        mShareAPI = UMShareAPI.get(this);
 
 
     }
@@ -110,6 +129,54 @@ public class MyLoginActivity extends AppCompatActivity {
         myLogin = (Button) findViewById(R.id.btn_mylogin_login);
 
     }
+
+    @Override
+    public void onClick(View view) {
+        SHARE_MEDIA platform = null;
+        switch (view.getId()){
+            case R.id.tv_mylogin_qq:
+                platform = SHARE_MEDIA.QQ;
+                break;
+            case R.id.tv_mylogin_sina:
+                platform = SHARE_MEDIA.SINA;
+                break;
+            default:
+                break;
+        }
+        mShareAPI.getPlatformInfo(MyLoginActivity.this, platform, umAuthListener);
+    }
+
+    private UMAuthListener umAuthListener = new UMAuthListener() {
+        @Override
+        public void onComplete(SHARE_MEDIA platform, int action, Map<String, String> data) {
+            for (String key : data.keySet()) {
+                Log.e("xxxxxx key = " + key + "    value= " + data.get(key));
+            }
+            if (data != null) {
+                Toast.makeText(getApplicationContext(), data.toString(), Toast.LENGTH_SHORT).show();
+                Log.i("xxx", data.toString());
+            }
+        }
+
+        @Override
+        public void onError(SHARE_MEDIA platform, int action, Throwable t) {
+            Toast.makeText(getApplicationContext(), "get fail" + t.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onCancel(SHARE_MEDIA platform, int action) {
+            Toast.makeText(getApplicationContext(), "get cancel", Toast.LENGTH_SHORT).show();
+        }
+    };
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
+
+    }
+
 
 
 }
