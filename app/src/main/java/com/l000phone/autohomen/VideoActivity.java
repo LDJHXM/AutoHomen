@@ -1,11 +1,13 @@
 package com.l000phone.autohomen;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -26,7 +28,6 @@ import com.squareup.picasso.Picasso;
 import java.util.LinkedList;
 import java.util.List;
 
-
 import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.Vitamio;
 import io.vov.vitamio.widget.MediaController;
@@ -42,8 +43,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class VideoActivity extends AppCompatActivity {
 
 
-
-    private Button mBack;
     private ImageView mImg;
     private Button mShare;
     private ImageView mStart;
@@ -53,32 +52,77 @@ public class VideoActivity extends AppCompatActivity {
     private Button mCollect;
     private VideoView mVv;
     private ImageView mZan;
-    private final int INFO = 0;
+    private int cnt;
+
     private Handler handler =new Handler(){
 
 
         @Override
         public void handleMessage(Message msg) {
 
-            if( msg.what == INFO && mVv.isPlaying() ){
+            if( msg.what == 0 ){
 
                 long currentPosition = mVv.getCurrentPosition();
 
+                if(currentPosition / 36 <= 1040){
+
+                    cnt = 1;
+
+                }else if(currentPosition / 36 >=1000 && currentPosition / 55 <= 1000){
+
+                    cnt = 2;
+
+                }else if(currentPosition / 55 >=1000 && currentPosition / 70 <= 1000){
+
+                    cnt = 3;
+
+                }else if(currentPosition / 70 >=1000 && currentPosition / 106 <= 1000){
+
+                    cnt = 4;
+
+                }else if(currentPosition / 106 >=1000 && currentPosition / 118 <= 1000){
+
+                    cnt = 5;
+
+                }else if(currentPosition / 118 >=1000 && currentPosition / 142 <= 1000){
+
+                    cnt = 6;
+
+                }else if(currentPosition / 142 >=1000 && currentPosition / 153 <= 1000){
+
+                    cnt = 7;
+
+                }else if(currentPosition / 153 >=1000 && currentPosition / 176 <= 1000){
+
+                    cnt = 8;
+
+                }else {
+
+                    cnt = 9;
+
+                }
+
+                Log.i("i",cnt+"");
+
                 Log.i("video",currentPosition+"");
 
-                handler.sendEmptyMessageDelayed(INFO,1);
+                //发送广播，实现视屏和文字互动
+                Intent intent = new Intent();
+
+                intent.setAction("pic");
+                intent.addCategory(Intent.CATEGORY_DEFAULT);
+                intent.putExtra("cnt",cnt);
+
+                instance.sendBroadcast(intent);
+
+                handler.sendEmptyMessageDelayed(0,1000);
 
             }
-
 
             super.handleMessage(msg);
         }
     };
-
-
-
-
-
+    private LocalBroadcastManager instance;
 
 
     @Override
@@ -90,26 +134,23 @@ public class VideoActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_video);
 
+        instance = LocalBroadcastManager.getInstance(this);
+
         initViews();
 
         DowmloadData();
 
-        aboutVideo();
-
         mTab.setupWithViewPager(mVp);
 
-        mImg.setOnClickListener(new View.OnClickListener() {
+        mStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                mVv.start();
+                aboutVideo();
 
-                long duration = mVv.getDuration();
+                int bufferPercentage = mVv.getBufferPercentage();
 
-                Log.i("duration",duration+"");
-
-//
-                mImg.setVisibility(View.INVISIBLE);
+                Log.i("bufferPercentage",bufferPercentage+"");
 
                 mZan.setVisibility(View.INVISIBLE);
 
@@ -119,8 +160,7 @@ public class VideoActivity extends AppCompatActivity {
 
                 mVp.setCurrentItem(1);
 
-                handler.sendEmptyMessage(INFO);
-
+                mStart.setVisibility(View.INVISIBLE);
 
             }
         });
@@ -140,13 +180,32 @@ public class VideoActivity extends AppCompatActivity {
 
         MediaController mediaController = new MediaController(this);
 
+        mediaController.setAnchorView(mVv);
+
+        mediaController.setFileName("厉害了我的哥");
+
         //控制器显示五秒后自动隐藏
-        mediaController.show(4000);
+        //mediaController.show(4000);
 
 
         mVv.setMediaController(mediaController);
 
         mVv.setVideoQuality(MediaPlayer.VIDEOQUALITY_HIGH);
+
+        mVv.start();
+
+        mVv.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+
+                handler.sendEmptyMessage(0);
+
+                long duration = mVv.getDuration();
+
+                Log.i("duration",duration+"");
+
+            }
+        });
 
     }
 
@@ -233,8 +292,8 @@ public class VideoActivity extends AppCompatActivity {
      * 初始化实例
      */
     private void initViews() {
-        mImg = (ImageView) findViewById(R.id.video_img);
         mShare = (Button) findViewById(R.id.video_share);
+        mImg = (ImageView) findViewById(R.id.video_img);
         mStart = (ImageView) findViewById(R.id.video_start);
         mTab = (TabLayout) findViewById(R.id.video_tab);
         mVv = (VideoView) findViewById(R.id.video_video);

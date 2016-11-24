@@ -1,6 +1,7 @@
 package com.l000phone.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -16,6 +17,11 @@ import java.util.List;
  */
 
 public class StepListAdapter extends BaseAdapter {
+
+    private  final  int FOUCS = 0;
+    private  final  int NO_FOUCS = 1;
+    private  final  int NUM=2;
+
 
     List<Cate_Video.ResultBean.InfoBean.StepsBean> list;
     private Context context;
@@ -36,6 +42,26 @@ public class StepListAdapter extends BaseAdapter {
     }
 
     @Override
+    public int getViewTypeCount() {
+        return NUM;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+
+        if(list.get(position).getFlg()==true){
+
+            return FOUCS;
+
+        }else {
+            return NO_FOUCS;
+
+        }
+
+
+    }
+
+    @Override
     public long getItemId(int i) {
         return i;
     }
@@ -45,15 +71,42 @@ public class StepListAdapter extends BaseAdapter {
 
         VH vh = null;
 
+        int type = getItemViewType(i);
+
         if(view==null){
-            view = View.inflate(context, R.layout.item_step, null);
 
-            vh  =new VH();
+            switch (type) {
 
-            vh.tv1 = (TextView) view.findViewById(R.id.step_tv1);
-            vh.tv2 = (TextView) view.findViewById(R.id.step_tv2);
+                case FOUCS:
 
-            view.setTag(vh);
+                    view = View.inflate(context, R.layout.item_step, null);
+
+                    vh = new VH();
+
+                    vh.tv1 = (TextView) view.findViewById(R.id.step_tv1);
+                    vh.tv2 = (TextView) view.findViewById(R.id.step_tv2);
+
+                    view.setBackgroundColor(Color.RED);
+
+                    view.setTag(vh);
+
+                    break;
+
+                case NO_FOUCS:
+
+                    view = View.inflate(context, R.layout.item_step, null);
+
+                    vh = new VH();
+
+                    vh.tv1 = (TextView) view.findViewById(R.id.step_tv1);
+                    vh.tv2 = (TextView) view.findViewById(R.id.step_tv2);
+
+                    view.setTag(vh);
+
+                    break;
+
+
+            }
 
         }else{
 
@@ -64,7 +117,7 @@ public class StepListAdapter extends BaseAdapter {
         Cate_Video.ResultBean.InfoBean.StepsBean listBean = list.get(i);
 
 
-        vh.tv1.setText(i+"");
+        vh.tv1.setText((i+1)+"");
 
         vh.tv2.setText(listBean.getIntro());
 

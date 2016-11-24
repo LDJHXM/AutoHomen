@@ -128,6 +128,9 @@ public class Video_comment extends Fragment {
 
                     Toast.makeText(getActivity(), "回复成功", Toast.LENGTH_SHORT).show();
 
+                    mLv.setSelection(0);
+
+                    mEt.setText("");
                 }
             }
         });

@@ -787,6 +787,7 @@ public class Cate_Video {
                  * Intro : 鹌鹑蛋煮熟去壳。
                  */
 
+                private Boolean flg = false;
                 private String StepPhoto;
                 private String Intro;
 
@@ -796,6 +797,15 @@ public class Cate_Video {
 
                 public void setStepPhoto(String StepPhoto) {
                     this.StepPhoto = StepPhoto;
+                }
+
+
+                public Boolean getFlg() {
+                    return flg;
+                }
+
+                public void setFlg(Boolean flg) {
+                    this.flg = flg;
                 }
 
                 public String getIntro() {
@@ -818,6 +828,7 @@ public class Cate_Video {
                  * food_flag : 1
                  */
 
+                private Boolean flg;
                 private String name;
                 private String weight;
                 private int id;
@@ -825,6 +836,14 @@ public class Cate_Video {
                 private int cateid;
                 private String cate;
                 private int food_flag;
+
+                public Boolean getFlg() {
+                    return flg;
+                }
+
+                public void setFlg(Boolean flg) {
+                    this.flg = flg;
+                }
 
                 public String getName() {
                     return name;

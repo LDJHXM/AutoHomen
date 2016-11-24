@@ -49,13 +49,15 @@ public class Commentdapter extends BaseAdapter {
     @Override
     public int getItemViewType(int position) {
 
-        if(list.get(position).getAtContent()==null){
+        if(list.get(position).getAtContent().equals("")){
 
             return NO_VIDEO;
+
 
         }else{
 
             return VIDEO;
+
 
         }
 

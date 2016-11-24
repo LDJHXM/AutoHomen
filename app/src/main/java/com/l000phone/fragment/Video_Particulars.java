@@ -49,6 +49,8 @@ public class Video_Particulars extends Fragment {
 
         Bundle bundle = getArguments();
 
+
+
         info = (Cate_Video.ResultBean.InfoBean) bundle.getSerializable("info");
 
         super.onCreate(savedInstanceState);
@@ -109,6 +111,7 @@ public class Video_Particulars extends Fragment {
 
         List<Cate_Video.ResultBean.InfoBean.StuffBean> stuff =
                 info.getStuff();
+
 
         PriAdapter adapter = new PriAdapter(stuff, getActivity());
 
