@@ -61,7 +61,7 @@
             android:button="@null"
             android:drawableTop="@drawable/select_square"
             android:gravity="center_horizontal"
-            android:text="世界"
+            android:text="广场"
             android:textSize="18sp" />
 
         <RadioButton

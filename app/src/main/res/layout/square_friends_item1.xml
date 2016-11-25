@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/iv_favicon_id"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="0.8"
+        android:src="@drawable/default_low" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.2"
+            android:orientation="horizontal"
+            android:paddingTop="7dp">
+
+            <TextView
+                android:id="@+id/tv_name_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="用户昵称"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:paddingTop="2dp"
+                android:src="@drawable/icon_vip_small" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:paddingTop="2dp"
+                android:src="@drawable/ico_auxiliary_female" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_signatures_id"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:paddingTop="4dp"
+            android:layout_weight="1"
+            android:text="个性签名"
+            android:textSize="15sp"
+            android:ems="24"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.7"
+            android:ems="24"/>
+        <TextView
+            android:id="@+id/tv_address_id"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:gravity="top"
+            android:text="家庭住址"
+            android:textSize="12sp"
+            android:ems="24"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_attention_id"
+        android:layout_width="0dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="1.5dp"
+        android:layout_weight="0.5"
+        android:paddingTop="10dp"
+        android:src="@drawable/myhome_follow_normal" />
+</LinearLayout>

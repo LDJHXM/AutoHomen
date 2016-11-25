@@ -13,19 +13,19 @@
         android:orientation="horizontal">
 
         <Button
-            android:onClick="back"
             android:id="@+id/hot_week_btn_id"
             android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:background="@drawable/btn_header_back_gray" />
+            android:background="@drawable/btn_header_back_gray"
+            android:onClick="back" />
 
 
         <Spinner
-            android:layout_marginLeft="10dp"
-            android:layout_gravity="center_vertical"
             android:id="@+id/spinner_id"
             android:layout_width="120dp"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp">
 
         </Spinner>
 
@@ -41,8 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </ListView>
-
+    </ListView>+
 
 
 </LinearLayout>

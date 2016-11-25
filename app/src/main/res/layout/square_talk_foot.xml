@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#dbd9da"/>
+    <LinearLayout
+        android:id="@+id/ll_talk_foot_id"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"
+            android:paddingLeft="5dp"
+            android:src="@drawable/ico_user_my_dynamic" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:gravity="center_vertical"
+            android:text="活跃豆亲"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:src="@drawable/ico_auxiliary_more" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_friends1_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/default_low"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxEms="5"
+            android:maxLines="1"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            android:text="暂无数据..."
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tv_friends2_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/default_low"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxEms="5"
+            android:maxLines="1"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            android:text="暂无数据..."
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tv_friends3_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/default_low"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxEms="5"
+            android:maxLines="1"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            android:text="暂无数据..."
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tv_friends4_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/default_low"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxEms="5"
+            android:maxLines="1"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            android:text="暂无数据..."
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tv_friends5_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/default_low"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxEms="5"
+            android:maxLines="1"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            android:text="暂无数据..."
+            android:textSize="10sp" />
+
+    </LinearLayout>
+</LinearLayout>

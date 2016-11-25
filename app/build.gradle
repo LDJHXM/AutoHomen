@@ -6,6 +6,8 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
     defaultConfig {
+        multiDexEnabled true
+
         applicationId "com.l000phone.autohomen"
         minSdkVersion 17
         targetSdkVersion 25
