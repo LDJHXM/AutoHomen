@@ -1,5 +1,6 @@
 package com.l000phone.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,9 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.l000phone.autohomen.R;
+import com.l000phone.autohomen.Web1Activity;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -54,8 +55,37 @@ public class ViewPager_Fragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(getActivity(), "可以", Toast.LENGTH_SHORT).show();
-                
+                String url2 = null;
+
+                String url3 =null;
+
+                if(url.contains("collect")){
+
+                    url2 = url.substring(url.lastIndexOf("id=")+3);
+
+                    url3 = "http://www.haodou.com/recipe/album/"+url2+"/";
+
+
+                }else if(url.contains("opentopic")){
+
+                    url2 = url.substring(url.lastIndexOf("topic"),url.lastIndexOf("&"));
+
+
+                    url3 = "http://group.haodou.com/"+url2;
+
+                }else{
+                    url2 = url.substring(url.lastIndexOf("id=")+3,url.lastIndexOf("&"));
+
+                    url3 = "http://www.haodou.com/recipe/"+url2+"/";
+                }
+
+                Intent intent = new Intent(getActivity(), Web1Activity.class);
+
+                intent.putExtra("url", url3);
+
+                startActivity(intent);
+
+
             }
         });
 

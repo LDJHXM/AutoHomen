@@ -1,17 +1,19 @@
 package com.l000phone.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.l000phone.adapter.HotMenuAdapter;
 import com.l000phone.autohomen.R;
+import com.l000phone.autohomen.Web1Activity;
 import com.l000phone.entity.Cate_Hot_Menu;
 import com.l000phone.face.HaoDouCate_Hot_Menu;
 import com.l000phone.face.HaoDouCate_Hot_Menu2;
@@ -99,25 +101,25 @@ public class Hot_Menu_Fragment extends Fragment {
             case "时令":
                 HaoDouCate_Hot_Menu3 hhm3 = retrofit.create(HaoDouCate_Hot_Menu3.class);
 
-                call = hhm3.getData(GetMap.getMap_HoutMeun("私人定制"));
+                call = hhm3.getData(GetMap.getMap_HoutMeun("时令佳肴"));
 
                 break;
             case "达人":
                 HaoDouCate_Hot_Menu4 hhm4 = retrofit.create(HaoDouCate_Hot_Menu4.class);
 
-                call = hhm4.getData(GetMap.getMap_HoutMeun("私人定制"));
+                call = hhm4.getData(GetMap.getMap_HoutMeun("达人菜谱"));
 
                 break;
             case "最新":
                 HaoDouCate_Hot_Menu5 hhm5 = retrofit.create(HaoDouCate_Hot_Menu5.class);
 
-                call = hhm5.getData(GetMap.getMap_HoutMeun("私人定制"));
+                call = hhm5.getData(GetMap.getMap_HoutMeun("最新菜谱"));
 
                 break;
             case "烘焙":
                 HaoDouCate_Hot_Menu6 hhm6 = retrofit.create(HaoDouCate_Hot_Menu6.class);
 
-                call = hhm6.getData(GetMap.getMap_HoutMeun("私人定制"));
+                call = hhm6.getData(GetMap.getMap_HoutMeun("快乐的烘焙"));
 
                 break;
 
@@ -152,7 +154,7 @@ public class Hot_Menu_Fragment extends Fragment {
      * 关于ListView的操作
      * @param list
      */
-    private void aboutListView(List<Cate_Hot_Menu.ResultBean.ListBean> list) {
+    private void aboutListView(final List<Cate_Hot_Menu.ResultBean.ListBean> list) {
 
         //适配器
         HotMenuAdapter adapter = new HotMenuAdapter(list, getActivity());
@@ -165,7 +167,16 @@ public class Hot_Menu_Fragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Toast.makeText(getActivity(), "你点击了"+i, Toast.LENGTH_SHORT).show();
+                String url = "http://www.haodou.com/recipe/"+list.get(i).getRecipeId()+"/";
+
+                Log.i("url",url);
+
+                Intent intent = new Intent(getActivity(), Web1Activity.class);
+
+                intent.putExtra("url",url);
+
+                startActivity(intent);
+
             }
         });
 

@@ -77,8 +77,18 @@ public class Cate_Ifi {
                  * Name : 瘦身
                  */
 
+
+                private String Id;
                 private String Name;
 
+
+                public String getId() {
+                    return Id;
+                }
+
+                public void setId(String Id) {
+                    this.Id = Id;
+                }
                 public String getName() {
                     return Name;
                 }

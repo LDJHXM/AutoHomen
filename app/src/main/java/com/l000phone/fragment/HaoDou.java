@@ -2,6 +2,8 @@ package com.l000phone.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -9,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -21,6 +24,7 @@ import com.l000phone.autohomen.KitchenActivity;
 import com.l000phone.autohomen.MenuClassification;
 import com.l000phone.autohomen.R;
 import com.l000phone.autohomen.VideoActivity;
+import com.l000phone.autohomen.Web1Activity;
 import com.l000phone.autohomen.WeekActivity;
 import com.l000phone.entity.Cate;
 import com.l000phone.face.HaoDouCate;
@@ -52,7 +56,7 @@ public class HaoDou extends Fragment {
     private List<ViewPager_Fragment> pagers;
     private int index = 1;
     //轮播
- /*   private Handler mHandler = new Handler() {
+    private Handler mHandler = new Handler() {
 
         @Override
         public void handleMessage(Message msg) {
@@ -64,7 +68,7 @@ public class HaoDou extends Fragment {
             }
             super.handleMessage(msg);
         }
-    };*/
+    };
     private boolean isTaskRun;
     private Timer mTimer;
     private TimerTask mTask;
@@ -140,6 +144,7 @@ public class HaoDou extends Fragment {
         //绑定适配器
         mVp.setAdapter(adapter);
 
+
         // 给ViewPger添加监听器，决定小圆点的状态
         mVp.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 
@@ -172,13 +177,13 @@ public class HaoDou extends Fragment {
 
                     Log.i("---", "000");
 
-                   // startTask();
+                    startTask();
 
                 } else if (state == 1 && isTaskRun) {
 
                     Log.i("---", "111");
 
-                    //stopTask();
+                    stopTask();
 
                 } else if (state == 2) {
                     Log.i("---", "222");
@@ -344,7 +349,7 @@ public class HaoDou extends Fragment {
      * 关于HaoDouListView的操作
      * @param list
      */
-    private void aboutHaoDouListView(List<Cate.DataBean.ListBean> list) {
+    private void aboutHaoDouListView(final List<Cate.DataBean.ListBean> list) {
 
         //默认失去焦点，不然会不显示顶层的ScrollView
         mLv.setFocusable(false);
@@ -356,6 +361,27 @@ public class HaoDou extends Fragment {
         //绑定适配器
 
         mLv.setAdapter(adapter);
+
+        mLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+
+                String url1 = list.get(i).getUrl();
+                Intent intent = new Intent(getActivity(), Web1Activity.class);
+
+
+                String url = "http://mp.haodou.com/h5/message/"+url1.substring(url1.lastIndexOf("=")+1);
+
+
+                Log.i("url",url);
+
+                intent.putExtra("url",url);
+
+                startActivity(intent);
+
+            }
+        });
 
 
     }
@@ -494,7 +520,7 @@ public class HaoDou extends Fragment {
 
 
 
-   /* private void startTask() {
+    private void startTask() {
         isTaskRun = true;
         mTimer = new Timer();
         mTask = new TimerTask() {
@@ -507,31 +533,31 @@ public class HaoDou extends Fragment {
         mTimer.schedule(mTask, 5 * 1000, 2 * 1000);// 这里设置自动切换的时间，单位是毫秒，2*1000表示2秒，
     }
 
-    *//**
+    /**
      * 停止定时任务
-     *//*
+     */
     private void stopTask() {
         isTaskRun = false;
         mTimer.cancel();
     }
 
 
-    *//**
+    /**
      * 重新获得焦点
-     *//*
+     */
     public void onResume() {
         super.onResume();
-        //startTask();
+        startTask();
     }
 
-    *//**
+    /**
      * 失去焦点
-     *//*
+     */
     @Override
     public void onPause() {
         super.onPause();
-       // stopTask();
-    }*/
+        stopTask();
+    }
 
 
 }

@@ -66,6 +66,7 @@
             android:windowSoftInputMode="stateAlwaysHidden" />
 
         <activity android:name=".VideoActivity"/>
+        <activity android:name=".Web1Activity"/>
 
         <!-- 友盟AppKey， 需要替换成你自己的 -->
         <meta-data

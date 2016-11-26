@@ -2,15 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/big_five_father"
     android:layout_marginTop="10dp"
-    android:background="#DEB887"
+    android:background="#cccccc"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:minHeight="350dp">
+    android:minHeight="310dp">
 
 
 
     <LinearLayout
-        android:background="#ffffff"
+        android:background="#FAF0E6"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
@@ -24,28 +25,32 @@
             android:layout_height="250dp"
             android:scaleType="fitXY"
             />
-
-        <TextView
-
-            android:id="@+id/round_text"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
-            android:gravity="center_vertical"
-
-            android:textColor="#000000"
-            android:textSize="25sp"
-            android:textStyle="bold|italic" />
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
         <TextView
-            android:id="@+id/round_text_2"
-            android:layout_width="330dp"
-            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/round_text"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:gravity="center_vertical"
-
             android:textColor="#000000"
-            android:textSize="19sp" />
+            android:textSize="20sp"
+             />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/round_text_2"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical"
+            android:textSize="18sp" />
+    </LinearLayout>
     </LinearLayout>
 
     <com.l000phone.view.Cir_Botton

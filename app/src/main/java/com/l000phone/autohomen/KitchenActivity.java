@@ -1,15 +1,15 @@
 package com.l000phone.autohomen;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.l000phone.adapter.KitchenAdapter;
 import com.l000phone.entity.Cate_Kitchen;
@@ -36,9 +36,7 @@ public class KitchenActivity extends AppCompatActivity {
     private Spinner mSp;
     private ImageView mImg;
     private ListView mLv;
-    private TextView mTv1;
-    private TextView mTv2;
-    private TextView mTv3;
+
     private Retrofit retrofit;
 
     @Override
@@ -60,7 +58,6 @@ public class KitchenActivity extends AppCompatActivity {
         //关于Spinner的操作
 
         aboutSpinner();
-
 
 
 
@@ -133,7 +130,7 @@ public class KitchenActivity extends AppCompatActivity {
      * 关于ListView的操作
      * @param i
      */
-    private void aboutListView(List<Cate_Kitchen.ResultBean.ListBean> list,int i) {
+    private void aboutListView(final List<Cate_Kitchen.ResultBean.ListBean> list, int i) {
 
         //适配器
 
@@ -147,7 +144,16 @@ public class KitchenActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Toast.makeText(KitchenActivity.this, "你点击了"+i, Toast.LENGTH_SHORT).show();
+                String url = list.get(i).getUrl();
+
+                Log.i("url",url);
+
+                Intent intent = new Intent(KitchenActivity.this, Web1Activity.class);
+
+                intent.putExtra("url",url);
+
+                startActivity(intent);
+
             }
         });
 

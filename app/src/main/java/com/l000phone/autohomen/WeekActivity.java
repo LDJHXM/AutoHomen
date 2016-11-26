@@ -1,10 +1,12 @@
 package com.l000phone.autohomen;
 
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -99,21 +101,38 @@ public class WeekActivity extends AppCompatActivity {
 
         //初始化布局
         mRv.setLayoutManager(new StaggeredGridLayoutManager
-                (2,StaggeredGridLayoutManager.VERTICAL));
+                (2, StaggeredGridLayoutManager.VERTICAL));
 
         //初始化适配器
-        RvAdapter adapter = new RvAdapter(list,this);
+        RvAdapter adapter = new RvAdapter(list, this);
 
         mRv.setAdapter(adapter);
 
-        SpacesItemDecoration decoration=new SpacesItemDecoration(16);
+        SpacesItemDecoration decoration = new SpacesItemDecoration(16);
 
         mRv.addItemDecoration(decoration);
+
+        adapter.setOnItemClickListener(new RvAdapter.MyItemClickListener() {
+            @Override
+            public void onItemClick(View view, String url3) {
+
+
+                Log.i("lianjie", url3);
+
+                Intent intent = new Intent(WeekActivity.this, Web1Activity.class);
+
+                intent.putExtra("url", url3);
+
+                startActivity(intent);
+
+            }
+        });
 
 
     }
 
-    public class SpacesItemDecoration extends RecyclerView.ItemDecoration{
+
+    public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
 
         private int space;
 
@@ -124,11 +143,11 @@ public class WeekActivity extends AppCompatActivity {
         @Override
         public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
 
-            outRect.left=space;
-            outRect.right=space;
-            outRect.bottom=space;
-            if(parent.getChildAdapterPosition(view)==0){
-                outRect.top=space;
+            outRect.left = space;
+            outRect.right = space;
+            outRect.bottom = space;
+            if (parent.getChildAdapterPosition(view) == 0) {
+                outRect.top = space;
             }
         }
     }
