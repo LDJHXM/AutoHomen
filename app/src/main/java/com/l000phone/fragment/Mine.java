@@ -47,7 +47,7 @@ public class Mine extends Fragment implements View.OnClickListener {
     private ImageView mySetting;
 
     private Button quit;
-    private boolean flags;
+
 
 
     @Override
@@ -89,7 +89,7 @@ public class Mine extends Fragment implements View.OnClickListener {
      */
     private void initRightWdger() {
         myName =(TextView)views.findViewById(R.id.tv_myright_user) ;
-        myName.setOnClickListener(this);
+        myName.setText(MyLoginActivity.name);
 
         mySetting = (ImageView)views.findViewById(R.id.img_myright_setting) ;
         mySetting.setOnClickListener(this);
