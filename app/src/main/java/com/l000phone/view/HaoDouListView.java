@@ -9,6 +9,8 @@ import android.widget.ListView;
  */
 
 public class HaoDouListView extends ListView {
+
+
     public HaoDouListView(Context context) {
         super(context);
     }
@@ -17,9 +19,7 @@ public class HaoDouListView extends ListView {
         super(context, attrs);
     }
 
-    public HaoDouListView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
+
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {

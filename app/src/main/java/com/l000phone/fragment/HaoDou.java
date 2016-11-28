@@ -7,23 +7,26 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.l000phone.adapter.ListViewAdapter;
 import com.l000phone.adapter.ViewPagerAdapter;
 import com.l000phone.autohomen.HotEventActivity;
 import com.l000phone.autohomen.HotMenuActivity;
+import com.l000phone.autohomen.HotVideoActivity;
 import com.l000phone.autohomen.KitchenActivity;
 import com.l000phone.autohomen.MenuClassification;
 import com.l000phone.autohomen.R;
-import com.l000phone.autohomen.VideoActivity;
 import com.l000phone.autohomen.Web1Activity;
 import com.l000phone.autohomen.WeekActivity;
 import com.l000phone.entity.Cate;
@@ -82,6 +85,9 @@ public class HaoDou extends Fragment {
     private Five_big_Iv_Tv mF3;
     private Five_big_Iv_Tv mF4;
     private Five_big_Iv_Tv mF5;
+    private SwipeRefreshLayout mSr;
+    private List<Cate.DataBean.ListBean> list;
+    private boolean flg;
 
 
     @Override
@@ -98,6 +104,8 @@ public class HaoDou extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_haodou, container, false);
+
+
 
         getViewCase();
 
@@ -265,6 +273,7 @@ public class HaoDou extends Fragment {
         //// TODO: 2016/11/18
 
         mLv = (ListView) view.findViewById(R.id.listView_id);
+       // mSr = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefre_id);
         mPopular = (Five_Iv_Tv) view.findViewById(R.id.popular_menu_id);
         mSee = (Five_Iv_Tv) view.findViewById(R.id.see_video_id);
         mKitchen = (Five_Iv_Tv) view.findViewById(R.id.kitchen_cheats_id);
@@ -326,7 +335,7 @@ public class HaoDou extends Fragment {
 
 
                 //关于HaoDouListView的操作
-                List<Cate.DataBean.ListBean> list = cate.getData().getList();
+                list = cate.getData().getList();
 
 
                 aboutHaoDouListView(list);
@@ -379,6 +388,26 @@ public class HaoDou extends Fragment {
                 intent.putExtra("url",url);
 
                 startActivity(intent);
+
+            }
+        });
+
+        mLv.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView absListView, int i) {
+
+                if(i==SCROLL_STATE_IDLE && flg){
+
+                    Toast.makeText(getActivity(), "当前数据已加载完毕，别刷了OK？", Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+
+            @Override
+            public void onScroll(AbsListView absListView, int i, int i1, int i2) {
+
+                flg = i + i1 == i2;
 
             }
         });
@@ -476,7 +505,9 @@ public class HaoDou extends Fragment {
         mSee.abc_setClick(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), VideoActivity.class));
+                startActivity(new Intent(getActivity(), HotVideoActivity.class));
+
+                //startActivity(new Intent(getActivity(), VideoActivity.class));
             }
         });
 

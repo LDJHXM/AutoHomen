@@ -197,6 +197,8 @@
 
             </LinearLayout>
 
+
+
             <com.l000phone.view.HaoDouListView
                 android:id="@+id/listView_id"
                 android:layout_width="match_parent"
@@ -205,6 +207,7 @@
                 android:scrollbars="none">
 
             </com.l000phone.view.HaoDouListView>
+
 
         </LinearLayout>
 

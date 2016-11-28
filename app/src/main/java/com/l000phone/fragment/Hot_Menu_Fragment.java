@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.handmark.pulltorefresh.library.ILoadingLayout;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.l000phone.adapter.HotMenuAdapter;
 import com.l000phone.autohomen.R;
 import com.l000phone.autohomen.Web1Activity;
@@ -39,7 +42,10 @@ public class Hot_Menu_Fragment extends Fragment {
 
 
     private String url;
-    private ListView mLv;
+    private PullToRefreshListView mLv;
+    private List<Cate_Hot_Menu.ResultBean.ListBean> list;
+    private Retrofit retrofit;
+    private HotMenuAdapter adapter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,9 +64,10 @@ public class Hot_Menu_Fragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_hot_menu, container, false);
 
-        mLv = (ListView) view.findViewById(R.id.hot_menu_lv);
+        mLv = (PullToRefreshListView) view.findViewById(R.id.hot_menu_lv);
 
         //下载数据，并设置
+
         getDate();
 
 
@@ -74,7 +81,7 @@ public class Hot_Menu_Fragment extends Fragment {
 
     public void getDate() {
 
-        Retrofit retrofit = new Retrofit.Builder().
+        retrofit = new Retrofit.Builder().
                 baseUrl("http://api.haodou.com/").
                 addConverterFactory(GsonConverterFactory.create()).build();
 
@@ -134,7 +141,7 @@ public class Hot_Menu_Fragment extends Fragment {
             public void onResponse(Call<Cate_Hot_Menu> call, Response<Cate_Hot_Menu> response) {
 
 
-                List<Cate_Hot_Menu.ResultBean.ListBean> list = response.body().getResult().getList();
+                list = response.body().getResult().getList();
 
                 aboutListView(list);
 
@@ -157,10 +164,85 @@ public class Hot_Menu_Fragment extends Fragment {
     private void aboutListView(final List<Cate_Hot_Menu.ResultBean.ListBean> list) {
 
         //适配器
-        HotMenuAdapter adapter = new HotMenuAdapter(list, getActivity());
+        adapter = new HotMenuAdapter(list, getActivity());
 
         //绑定适配器
         mLv.setAdapter(adapter);
+
+        //下拉加载
+        mLv.setMode(PullToRefreshBase.Mode.BOTH);
+
+        init();
+
+        mLv.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+            @Override
+            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+
+
+                HaoDouCate_Hot_Menu hhm = retrofit.create(HaoDouCate_Hot_Menu.class);
+
+                Call<Cate_Hot_Menu> call = hhm.getData(GetMap.getMap_HoutMeun("热门菜谱"));
+
+                call.enqueue(new Callback<Cate_Hot_Menu>() {
+                    @Override
+                    public void onResponse(Call<Cate_Hot_Menu> call, Response<Cate_Hot_Menu> response) {
+                        Cate_Hot_Menu body = response.body();
+
+                        List<Cate_Hot_Menu.ResultBean.ListBean> list1 = body.getResult().getList();
+
+                        list.addAll(0,list1);
+
+                        adapter.notifyDataSetChanged();
+
+                        mLv.onRefreshComplete();
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Cate_Hot_Menu> call, Throwable t) {
+                        HaoDouCate_Hot_Menu hhm = retrofit.create(HaoDouCate_Hot_Menu.class);
+
+                        Call<Cate_Hot_Menu> call1 = hhm.getData(GetMap.getMap_HoutMeun("热门菜谱"));
+
+
+                        call1.enqueue(new Callback<Cate_Hot_Menu>() {
+                            @Override
+                            public void onResponse(Call<Cate_Hot_Menu> call, Response<Cate_Hot_Menu> response) {
+
+
+                                Cate_Hot_Menu body = response.body();
+
+                                List<Cate_Hot_Menu.ResultBean.ListBean> list1 = body.getResult().getList();
+
+                                list.addAll(list1);
+
+                                adapter.notifyDataSetChanged();
+
+                                mLv.onRefreshComplete();
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<Cate_Hot_Menu> call, Throwable t) {
+
+                            }
+                        });
+
+                    }
+                });
+
+
+            }
+
+            @Override
+            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+
+
+
+
+
+            }
+        });
 
         //监听器
         mLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -179,6 +261,26 @@ public class Hot_Menu_Fragment extends Fragment {
 
             }
         });
+
+    }
+
+    /**
+     * 初始化
+     */
+    private void init() {
+
+        ILoadingLayout startLabels = mLv
+                .getLoadingLayoutProxy(true, false);
+        startLabels.setPullLabel("下拉刷新...");// 刚下拉时，显示的提示
+        startLabels.setRefreshingLabel("正在载入...");// 刷新时
+        startLabels.setReleaseLabel("放开刷新...");// 下来达到一定距离时，显示的提示
+
+        ILoadingLayout endLabels = mLv.getLoadingLayoutProxy(
+                false, true);
+        endLabels.setPullLabel("上拉刷新...");// 刚下拉时，显示的提示
+        endLabels.setRefreshingLabel("正在载入...");// 刷新时
+        endLabels.setReleaseLabel("放开刷新...");// 下来达到一定距离时，显示的提示
+
 
     }
 }

@@ -58,6 +58,7 @@
         <activity android:name=".HotEventActivity"/>
         <activity android:name=".MenuClassification"/>
         <activity android:name=".IfiFoodActivity"/>
+        <activity android:name=".HotVideoActivity"/>
         <activity
             android:name="io.vov.vitamio.activity.InitActivity"
             android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"

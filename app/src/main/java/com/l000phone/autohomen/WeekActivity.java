@@ -3,6 +3,7 @@ package com.l000phone.autohomen;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -30,6 +31,10 @@ public class WeekActivity extends AppCompatActivity {
     private Button mBtn;
     private TextView mText;
     private RecyclerView mRv;
+    private SwipeRefreshLayout mSr;
+    private RvAdapter adapter;
+    private StaggeredGridLayoutManager manager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,49 @@ public class WeekActivity extends AppCompatActivity {
         mBtn = (Button) findViewById(R.id.week_btn_id);
         mText = (TextView) findViewById(R.id.week_text_id);
         mRv = (RecyclerView) findViewById(R.id.week_rv_id);
+        mSr = (SwipeRefreshLayout) findViewById(R.id.swipe_id);
+
+
+        mSr.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                getData();
+
+            mSr.setRefreshing(false);
+
+            }
+        });
+
+       /* mSr.setProgressViewOffset(false, 0, (int) TypedValue
+                .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, getResources()
+                        .getDisplayMetrics()));*/
+
+      /*  mRv.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+
+                super.onScrollStateChanged(recyclerView, newState);
+
+                if(newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItem.length + 1 == adapter.getItemCount()){
+
+
+                    getData();
+
+                }
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+
+                int[] arg = {dx,dy};
+
+                lastVisibleItem = manager.findLastVisibleItemPositions(arg);
+
+            }
+        });*/
 
         //获得传过来的标题
 
@@ -99,12 +147,14 @@ public class WeekActivity extends AppCompatActivity {
     private void aboutRecyclerView(List<Cate.DataBean.ListBean> list) {
 
 
+        manager = new StaggeredGridLayoutManager
+                (2, StaggeredGridLayoutManager.VERTICAL);
+
         //初始化布局
-        mRv.setLayoutManager(new StaggeredGridLayoutManager
-                (2, StaggeredGridLayoutManager.VERTICAL));
+        mRv.setLayoutManager(manager);
 
         //初始化适配器
-        RvAdapter adapter = new RvAdapter(list, this);
+        adapter = new RvAdapter(list, this);
 
         mRv.setAdapter(adapter);
 

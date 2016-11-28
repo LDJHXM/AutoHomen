@@ -168,4 +168,17 @@ public class GetMap {
 
     }
 
+
+    public static Map<String, String> getMap_Hot_Video() {
+
+        Map<String, String> agg = new HashMap<>();
+
+        agg.put("sign", "");
+        agg.put("uid", "0");
+        agg.put("appqs", "haodourecipe://haodou.com/Video/index/");
+
+        return agg;
+
+    }
+
 }
