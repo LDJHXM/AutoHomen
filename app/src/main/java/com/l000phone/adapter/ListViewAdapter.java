@@ -109,6 +109,7 @@ public class ListViewAdapter extends BaseAdapter {
 
                     nrh.no_round_img = (ImageView) view.findViewById(R.id.no_round_img);
                     nrh.no_round_text = (TextView) view.findViewById(R.id.no_round_text);
+                    nrh.no_round_text2 = (TextView) view.findViewById(R.id.no_round_text2);
 
                     view.setTag(nrh);
 
@@ -179,6 +180,7 @@ public class ListViewAdapter extends BaseAdapter {
             case NO_ROUND:
 
                 nrh.no_round_text.setText(bean.getTitle());
+                nrh.no_round_text2.setText(bean.getDesc());
 
                 Picasso.with(context).load(bean.getImgs().get(0)).
                         fit().placeholder(R.drawable.splish_logo).into(nrh.no_round_img);
@@ -214,6 +216,7 @@ public class ListViewAdapter extends BaseAdapter {
 
         private ImageView no_round_img;
         private TextView no_round_text;
+        private TextView no_round_text2;
 
     }
 

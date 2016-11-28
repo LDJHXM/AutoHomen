@@ -181,4 +181,29 @@ public class GetMap {
 
     }
 
+
+
+    public static Map<String, String> getMap_HotIfi() {
+
+        Map<String, String> agg = new HashMap<>();
+
+        agg.put("limit", "20");
+        agg.put("offset", "0");
+        return agg;
+
+    }
+
+    public static Map<String, String> getMap_VideoInfo(String info) {
+
+        Map<String, String> agg = new HashMap<>();
+
+        agg.put("limit", "20");
+        agg.put("offset", "0");
+        agg.put("type", "1");
+        agg.put("cate_id", info);
+
+        return agg;
+
+    }
+
 }

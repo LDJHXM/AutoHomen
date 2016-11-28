@@ -52,7 +52,6 @@
 
             <Button
                 android:onClick="findVideo"
-                android:id="@+id/message_id"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
@@ -63,10 +62,26 @@
 
         </LinearLayout>
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/hotvideo_vp"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp" />
+            android:layout_height="150dp">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true" />
+
+            <LinearLayout
+                android:id="@+id/ll_container_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="130dp"
+                android:gravity="center"
+                android:orientation="horizontal" />
+
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -101,9 +116,10 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp">
+                android:layout_height="200dp">
 
                 <ImageView
+                    android:scaleType="fitXY"
                     android:id="@+id/hot_img1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
@@ -160,24 +176,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="清炒好吃的"
+                android:textColor="#000000"
+
                 android:textSize="20dp" />
 
             <TextView
+                android:textColor="#000000"
+
                 android:id="@+id/context1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:maxLines="2"
-                android:text="清炒好吃的"
+                android:maxEms="20"
                 android:textSize="18dp" />
 
             <LinearLayout
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:orientation="horizontal">
 
                 <TextView
+                    android:textColor="#000000"
                     android:id="@+id/time"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -187,6 +208,7 @@
                     android:textSize="18dp" />
 
                 <TextView
+
                     android:id="@+id/zan1"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -210,8 +232,9 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="200dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -222,12 +245,13 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="150dp">
+                        android:layout_height="140dp">
 
                         <ImageView
+                            android:scaleType="fitXY"
                             android:id="@+id/hot_img2"
                             android:layout_width="match_parent"
-                            android:layout_height="110dp" />
+                            android:layout_height="120dp" />
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -270,6 +294,8 @@
                         android:layout_height="150dp">
 
                         <ImageView
+                            android:scaleType="fitXY"
+
                             android:id="@+id/hot_img3"
                             android:layout_width="match_parent"
                             android:layout_height="110dp" />
@@ -277,7 +303,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/vip_2" />
+                            android:src="@drawable/vip_3" />
 
 
                         <TextView
@@ -333,9 +359,11 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp">
+                android:layout_height="200dp">
 
                 <ImageView
+                    android:scaleType="fitXY"
+
                     android:id="@+id/biginner"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
@@ -371,7 +399,7 @@
                     android:id="@+id/biginner_namePic"
                     android:layout_width="35dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ico_vedio_list" />
+                     />
 
                 <TextView
                     android:id="@+id/biginner_name"
@@ -384,20 +412,24 @@
             </LinearLayout>
 
             <TextView
+                android:textColor="#000000"
+
                 android:id="@+id/biginner_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="清炒好吃的"
                 android:textSize="20dp" />
 
             <TextView
+                android:textColor="#000000"
+
                 android:id="@+id/biginner_context"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:maxLines="2"
-                android:text="清炒好吃的"
+                android:maxEms="20"
+
                 android:textSize="18dp" />
 
             <LinearLayout
@@ -454,7 +486,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:text="热门排行总榜" />
+                    android:text="视频菜谱" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -465,9 +497,11 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp">
+                android:layout_height="200dp">
 
                 <ImageView
+                    android:scaleType="fitXY"
+
                     android:id="@+id/videomenu"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
@@ -503,9 +537,10 @@
                     android:id="@+id/videomenu_namePic"
                     android:layout_width="35dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ico_vedio_list" />
+                    />
 
                 <TextView
+
                     android:id="@+id/videomenu_name"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -516,20 +551,24 @@
             </LinearLayout>
 
             <TextView
+                android:textColor="#000000"
+
                 android:id="@+id/videomenu_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="清炒好吃的"
                 android:textSize="20dp" />
 
             <TextView
+                android:textColor="#000000"
+
                 android:id="@+id/videomenu_context"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:maxLines="2"
-                android:text="清炒好吃的"
+                android:maxEms="20"
+
                 android:textSize="18dp" />
 
             <LinearLayout
@@ -600,6 +639,8 @@
                 android:layout_height="150dp">
 
                 <ImageView
+                    android:scaleType="fitXY"
+
                     android:id="@+id/spice"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
@@ -649,20 +690,24 @@
             </LinearLayout>
 
             <TextView
+                android:textColor="#000000"
+
                 android:id="@+id/spice_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="清炒好吃的"
                 android:textSize="20dp" />
 
             <TextView
+                android:textColor="#000000"
+
                 android:id="@+id/spice_context"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:maxLines="2"
-                android:text="清炒好吃的"
+                android:maxEms="20"
+
                 android:textSize="18dp" />
 
             <LinearLayout

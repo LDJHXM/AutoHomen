@@ -4,6 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="30dp"
+    android:paddingLeft="10dp"
+    android:paddingBottom="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="10dp"
     android:minHeight="280dp">
 
     <ImageView
@@ -14,25 +18,24 @@
         android:src="@mipmap/ic_launcher" />
 
     <LinearLayout
-
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@+id/item_hot_img"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_marginTop="4dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@drawable/ico_tag" />
 
 
         <LinearLayout
-            android:layout_gravity="center_vertical"
+            android:layout_marginTop="3dp"
             android:id="@+id/ll_container_id"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
             android:gravity="center_horizontal"
             android:orientation="horizontal" />
 
@@ -43,8 +46,7 @@
         android:id="@+id/zan_id"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="280dp"
         android:layout_marginTop="180dp"
         android:background="@drawable/btn_zan_small"
         android:scaleType="fitXY" />
@@ -56,8 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/zan_id"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginRight="33dp"
         android:textColor="#000000"
         android:text="13" />
 

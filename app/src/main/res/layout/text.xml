@@ -3,15 +3,13 @@
     android:id="@+id/big_five_father"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="10dp"
     android:background="#cccccc"
-
     android:minHeight="300dp">
 
     <LinearLayout
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
         android:background="#FAF0E6"
         android:orientation="vertical">
 
@@ -36,7 +34,6 @@
 
         <TextView
             android:id="@+id/text_text_2"
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"

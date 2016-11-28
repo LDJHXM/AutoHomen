@@ -55,6 +55,7 @@ public class HotEventAdapter extends BaseAdapter {
             vh.img = (ImageView) view.findViewById(R.id.kit_img);
             vh.tv1 = (TextView) view.findViewById(R.id.kit_tv1);
             vh.tv2 = (TextView) view.findViewById(R.id.kit_tv2);
+            vh.tv3 = (TextView) view.findViewById(R.id.kit_tv3);
 
             view.setTag(vh);
 
@@ -72,6 +73,7 @@ public class HotEventAdapter extends BaseAdapter {
         Picasso.with(context).load(listBean.getImg()).fit().placeholder(R.drawable.splish_logo).into(vh.img);
 
         vh.tv2.setText(listBean.getIntro());
+        vh.tv3.setText("");
 
         return view;
     }
@@ -80,6 +82,7 @@ public class HotEventAdapter extends BaseAdapter {
         private ImageView  img;
         private TextView   tv1;
         private TextView   tv2;
+        private TextView   tv3;
 
     }
 }

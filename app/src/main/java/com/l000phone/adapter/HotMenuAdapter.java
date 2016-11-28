@@ -71,7 +71,7 @@ public class HotMenuAdapter extends BaseAdapter {
 
         Cate_Hot_Menu.ResultBean.ListBean listBean = list.get(i);
 
-        for(int j=1;j<listBean.getTags().size();j++){
+        for(int j=0;j<listBean.getTags().size();j++){
 
             if(j<=4){
 
@@ -79,7 +79,7 @@ public class HotMenuAdapter extends BaseAdapter {
 
                 textView.setText(listBean.getTags().get(j).getName());
 
-                textView.setTextSize(20);
+                textView.setTextSize(16);
 
                 textView.setLeft(20);
 
@@ -90,7 +90,6 @@ public class HotMenuAdapter extends BaseAdapter {
                 vh.ll_text.addView(textView);
 
             }else {
-
 
                 break;
             }

@@ -23,11 +23,11 @@
         android:paddingLeft="15dp"
         android:paddingTop="8dp"
         android:textColor="#ffffff"
-        android:textSize="25sp"
+        android:textSize="20sp"
          />
 
     <TextView
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="45dp"
         android:id="@+id/big_five_text_below"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
         android:layout_below="@+id/big_five_text"
         android:paddingLeft="10dp"
         android:textColor="#ffffff"
-        android:textSize="16sp"
+        android:textSize="13sp"
          />
 
 

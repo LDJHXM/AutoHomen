@@ -3,13 +3,13 @@
     android:id="@+id/big_five_father"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="10dp"
     android:background="#cccccc"
     android:minHeight="300dp">
 
     <LinearLayout
-        android:background="#FAF0E6"
+
         android:layout_marginTop="10dp"
+        android:background="#FAF0E6"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -34,7 +34,14 @@
             android:textSize="18sp"
             />
 
-
+        <TextView
+            android:id="@+id/no_round_text2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center_vertical"
+            android:textSize="16sp" />
 
 
     </LinearLayout>

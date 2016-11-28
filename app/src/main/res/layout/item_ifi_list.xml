@@ -4,6 +4,7 @@
     android:orientation="horizontal"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
+    android:minHeight="60dp"
    >
 
 
@@ -12,7 +13,9 @@
         android:src="@mipmap/ic_launcher"
         android:layout_width="0dp"
         android:layout_weight="1"
-        android:layout_height="60dp" />
+        android:layout_gravity="center_vertical"
+        android:scaleType="fitXY"
+        android:layout_height="30dp" />
 
     <TextView
         android:id="@+id/ifi_text_list"

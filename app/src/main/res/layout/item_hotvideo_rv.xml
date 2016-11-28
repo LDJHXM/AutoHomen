@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/abc_botton"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:paddingLeft="10dp"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp"
+    android:paddingRight="10dp"
+    android:orientation="vertical"
+
+    >
+
+
+
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+
+        <ImageView
+            android:id="@+id/video_img"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_launcher"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/video_tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/bg_vedio_small"
+            android:drawableLeft="@drawable/ico_video_small"
+            android:gravity="center_vertical"
+            android:text="324122"
+            android:textColor="#ffffff" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv1"
+        android:text="吃屎吧"
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+
+            android:id="@+id/zan1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/ico_weaken_good"
+            android:gravity="center_vertical"
+            android:text="36"
+            android:textColor="@color/gold"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/comment1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:drawableLeft="@drawable/ico_weaken_comment"
+            android:gravity="center_vertical"
+            android:text="36"
+            android:textColor="@color/gold"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    
+</LinearLayout>
+
+
+
+
+
+
+
+

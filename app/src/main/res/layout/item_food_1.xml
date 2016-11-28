@@ -4,16 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:minHeight="120dp">
+    android:minHeight="100dp">
 
 
     <ImageView
         android:layout_marginTop="10dp"
+        android:scaleType="fitXY"
         android:id="@+id/kit_img"
-        android:layout_gravity="center"
         android:src="@mipmap/ic_launcher"
-        android:layout_width="120dp"
-        android:layout_height="100dp" />
+        android:layout_width="130dp"
+        android:layout_height="80dp" />
 
 
     <LinearLayout
@@ -26,9 +26,8 @@
 
         <TextView
             android:id="@+id/kit_tv1"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textColor="#000000"
-            android:textStyle="bold"
             android:text="短线高手带你吃屎"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -39,7 +38,6 @@
             android:id="@+id/kit_tv2"
             android:layout_marginTop="10dp"
             android:textSize="15sp"
-            android:textStyle="bold"
             android:text="短线高手带你吃屎"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -50,7 +48,6 @@
             android:id="@+id/kit_tv3"
             android:layout_marginTop="10dp"
             android:textSize="15sp"
-            android:textStyle="bold"
             android:maxLines="1"
             android:text="短线高手带你吃屎"
             android:layout_width="wrap_content"
@@ -59,8 +56,8 @@
     </LinearLayout>
 
     <ImageView
-        android:layout_marginLeft="70dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="8dp"
         android:src="@drawable/ico_video_small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

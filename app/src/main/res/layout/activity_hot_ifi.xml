@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/five_father"
+    android:id="@+id/activity_main"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
 
-
+>
 
     <LinearLayout
         android:background="#DAA520"
@@ -22,44 +22,30 @@
             android:layout_height="40dp"
             android:background="@drawable/btn_header_back_gray" />
 
-
         <TextView
+            android:id="@+id/hop_week_text_id"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="left|center_vertical"
             android:layout_marginLeft="10dp"
-            android:text="热门活动"
+            android:text="热门分类"
             android:textSize="22sp" />
 
     </LinearLayout>
 
 
-    <TextView
-        android:background="#808080"
-        android:text="诚招广告"
-        android:textSize="50dp"
-        android:textColor="@color/gold"
+
+    <GridView
+        android:id="@+id/hotifi_gv"
         android:layout_width="match_parent"
-        android:layout_height="60dp" />
-
-    <TextView
-        android:background="#808080"
-        android:text="林先生：13181635133  "
-        android:textSize="30dp"
-        android:gravity="center_vertical|right"
-        android:textStyle="bold|italic"
-        android:textColor="@color/greenyellow"
-        android:layout_width="match_parent"
-        android:layout_height="60dp" />
-
-
-
-    <ListView
-        android:id="@+id/event_lv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </ListView>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="30dp"
+        android:background="#999999"
+        android:horizontalSpacing="2dp"
+        android:verticalSpacing="2dp"
+        android:padding="2dp"
+        android:numColumns="4" />
 
 
 
