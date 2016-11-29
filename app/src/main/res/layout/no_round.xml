@@ -4,14 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="10dp"
-    android:background="#DEB887"
+    android:background="#cccccc"
     android:minHeight="300dp">
 
     <LinearLayout
-        android:background="#ffffff"
+        android:background="#FAF0E6"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
         android:orientation="vertical">
 
 
@@ -23,14 +23,18 @@
              />
 
         <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:id="@+id/no_round_text"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:gravity="center_vertical"
             android:textColor="#000000"
-            android:textSize="25sp"
-            android:textStyle="bold|italic" />
+            android:textSize="18sp"
+            />
+
+
 
 
     </LinearLayout>

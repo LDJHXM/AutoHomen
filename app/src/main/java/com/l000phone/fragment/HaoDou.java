@@ -2,25 +2,32 @@ package com.l000phone.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.l000phone.adapter.ListViewAdapter;
 import com.l000phone.adapter.ViewPagerAdapter;
 import com.l000phone.autohomen.HotEventActivity;
 import com.l000phone.autohomen.HotMenuActivity;
+import com.l000phone.autohomen.HotVideoActivity;
 import com.l000phone.autohomen.KitchenActivity;
 import com.l000phone.autohomen.MenuClassification;
 import com.l000phone.autohomen.R;
-import com.l000phone.autohomen.VideoActivity;
+import com.l000phone.autohomen.Web1Activity;
 import com.l000phone.autohomen.WeekActivity;
 import com.l000phone.entity.Cate;
 import com.l000phone.face.HaoDouCate;
@@ -52,7 +59,7 @@ public class HaoDou extends Fragment {
     private List<ViewPager_Fragment> pagers;
     private int index = 1;
     //轮播
- /*   private Handler mHandler = new Handler() {
+    private Handler mHandler = new Handler() {
 
         @Override
         public void handleMessage(Message msg) {
@@ -64,7 +71,7 @@ public class HaoDou extends Fragment {
             }
             super.handleMessage(msg);
         }
-    };*/
+    };
     private boolean isTaskRun;
     private Timer mTimer;
     private TimerTask mTask;
@@ -78,6 +85,9 @@ public class HaoDou extends Fragment {
     private Five_big_Iv_Tv mF3;
     private Five_big_Iv_Tv mF4;
     private Five_big_Iv_Tv mF5;
+    private SwipeRefreshLayout mSr;
+    private List<Cate.DataBean.ListBean> list;
+    private boolean flg;
 
 
     @Override
@@ -94,6 +104,8 @@ public class HaoDou extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_haodou, container, false);
+
+
 
         getViewCase();
 
@@ -140,6 +152,7 @@ public class HaoDou extends Fragment {
         //绑定适配器
         mVp.setAdapter(adapter);
 
+
         // 给ViewPger添加监听器，决定小圆点的状态
         mVp.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 
@@ -172,13 +185,13 @@ public class HaoDou extends Fragment {
 
                     Log.i("---", "000");
 
-                   // startTask();
+                    startTask();
 
                 } else if (state == 1 && isTaskRun) {
 
                     Log.i("---", "111");
 
-                    //stopTask();
+                    stopTask();
 
                 } else if (state == 2) {
                     Log.i("---", "222");
@@ -260,6 +273,7 @@ public class HaoDou extends Fragment {
         //// TODO: 2016/11/18
 
         mLv = (ListView) view.findViewById(R.id.listView_id);
+       // mSr = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefre_id);
         mPopular = (Five_Iv_Tv) view.findViewById(R.id.popular_menu_id);
         mSee = (Five_Iv_Tv) view.findViewById(R.id.see_video_id);
         mKitchen = (Five_Iv_Tv) view.findViewById(R.id.kitchen_cheats_id);
@@ -321,7 +335,7 @@ public class HaoDou extends Fragment {
 
 
                 //关于HaoDouListView的操作
-                List<Cate.DataBean.ListBean> list = cate.getData().getList();
+                list = cate.getData().getList();
 
 
                 aboutHaoDouListView(list);
@@ -344,7 +358,7 @@ public class HaoDou extends Fragment {
      * 关于HaoDouListView的操作
      * @param list
      */
-    private void aboutHaoDouListView(List<Cate.DataBean.ListBean> list) {
+    private void aboutHaoDouListView(final List<Cate.DataBean.ListBean> list) {
 
         //默认失去焦点，不然会不显示顶层的ScrollView
         mLv.setFocusable(false);
@@ -356,6 +370,47 @@ public class HaoDou extends Fragment {
         //绑定适配器
 
         mLv.setAdapter(adapter);
+
+        mLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+
+                String url1 = list.get(i).getUrl();
+                Intent intent = new Intent(getActivity(), Web1Activity.class);
+
+
+                String url = "http://mp.haodou.com/h5/message/"+url1.substring(url1.lastIndexOf("=")+1);
+
+
+                Log.i("url",url);
+
+                intent.putExtra("url",url);
+
+                startActivity(intent);
+
+            }
+        });
+
+        mLv.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView absListView, int i) {
+
+                if(i==SCROLL_STATE_IDLE && flg){
+
+                    Toast.makeText(getActivity(), "当前数据已加载完毕，别刷了OK？", Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+
+            @Override
+            public void onScroll(AbsListView absListView, int i, int i1, int i2) {
+
+                flg = i + i1 == i2;
+
+            }
+        });
 
 
     }
@@ -450,7 +505,9 @@ public class HaoDou extends Fragment {
         mSee.abc_setClick(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), VideoActivity.class));
+                startActivity(new Intent(getActivity(), HotVideoActivity.class));
+
+                //startActivity(new Intent(getActivity(), VideoActivity.class));
             }
         });
 
@@ -494,7 +551,7 @@ public class HaoDou extends Fragment {
 
 
 
-   /* private void startTask() {
+    private void startTask() {
         isTaskRun = true;
         mTimer = new Timer();
         mTask = new TimerTask() {
@@ -507,31 +564,31 @@ public class HaoDou extends Fragment {
         mTimer.schedule(mTask, 5 * 1000, 2 * 1000);// 这里设置自动切换的时间，单位是毫秒，2*1000表示2秒，
     }
 
-    *//**
+    /**
      * 停止定时任务
-     *//*
+     */
     private void stopTask() {
         isTaskRun = false;
         mTimer.cancel();
     }
 
 
-    *//**
+    /**
      * 重新获得焦点
-     *//*
+     */
     public void onResume() {
         super.onResume();
-        //startTask();
+        startTask();
     }
 
-    *//**
+    /**
      * 失去焦点
-     *//*
+     */
     @Override
     public void onPause() {
         super.onPause();
-       // stopTask();
-    }*/
+        stopTask();
+    }
 
 
 }

@@ -25,6 +25,11 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private MyItemClickListener listenr;
 
 
+    public void setOnItemClickListener(MyItemClickListener listenr){
+
+        this.listenr = listenr;
+    }
+
     public RvAdapter(List<Cate.DataBean.ListBean> list, Context context) {
         this.list = list;
         this.context = context;
@@ -39,7 +44,7 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
 
         //判断是否设置了监听器
 
@@ -49,9 +54,30 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int postion = holder.getLayoutPosition();
+                    int postion2 = holder.getLayoutPosition();
 
-                    listenr.onItemClick(holder.itemView, postion);
+                    String url = list.get(position).getUrl();
+
+                    String url2 = null;
+
+                    String url3 =null;
+
+                    if(url.contains("collect")){
+
+                        url2 = url.substring(url.lastIndexOf("id=")+3);
+
+                        url3 = "http://www.haodou.com/recipe/album/"+url2+"/";
+
+
+                    }else{
+                        url2 = url.substring(url.lastIndexOf("id=")+3,url.lastIndexOf("&"));
+
+                        url3 = "http://www.haodou.com/recipe/"+url2+"/";
+                    }
+
+
+
+                    listenr.onItemClick(holder.itemView, url3);
                 }
             });
         }
@@ -96,6 +122,6 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
      */
     public interface MyItemClickListener{
 
-        void onItemClick(View view,int postion);
+        void onItemClick(View view,String url3);
     }
 }

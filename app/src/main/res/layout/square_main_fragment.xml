@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="10dp">
+
+        <ImageView
+            android:id="@+id/square_id"
+            android:layout_width="56dp"
+            android:layout_height="46dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/font_header_theme" />
+
+        <LinearLayout
+            android:id="@+id/ll_header_search_id"
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_height="36dp"
+            android:layout_toLeftOf="@+id/iv_share_talk_id"
+            android:layout_toRightOf="@+id/square_id"
+            android:background="@drawable/view_shape"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/action_search_gray" />
+
+            <TextView
+                android:id="@+id/search_talk_id"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:gravity="center_vertical"
+                android:text="搜索话题"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_share_talk_id"
+            android:layout_alignBaseline="@+id/square_id"
+            android:layout_marginTop="3dp"
+            android:layout_width="45dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/btn_header_edit"
+            android:visibility="visible"/>
+
+
+        <LinearLayout
+            android:id="@+id/ll_header_search2_id"
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_height="36dp"
+            android:layout_toLeftOf="@+id/iv_add_friends_id"
+            android:layout_toRightOf="@+id/square_id"
+            android:background="@drawable/view_shape"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/action_search_gray" />
+            <TextView
+                android:id="@+id/search_friends_id"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:gravity="center_vertical"
+                android:text="搜索豆友"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_add_friends_id"
+            android:layout_width="45dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_toLeftOf="@+id/iv_manage_friends_id"
+            android:src="@drawable/btn_auxiliary_add"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/iv_manage_friends_id"
+            android:layout_marginTop="5dp"
+            android:layout_width="45dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/btn_auxiliary_filter"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/iv_share_works_id"
+            android:layout_alignBaseline="@+id/square_id"
+            android:layout_width="45dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/btn_header_photo"
+            android:visibility="gone" />
+
+        <RadioGroup
+            android:id="@+id/rg_square_id"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_below="@+id/square_id"
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
+
+            <RadioButton
+                android:id="@+id/rb_talk_id"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="true"
+                android:drawableLeft="@drawable/select_square_talk"
+                android:scaleX="0.6"
+                android:scaleY="0.6"
+                android:text="话题"
+                android:textSize="30sp" />
+
+            <RadioButton
+                android:id="@+id/rb_friends_id"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableLeft="@drawable/select_square_friends"
+                android:scaleX="0.6"
+                android:scaleY="0.6"
+                android:text="豆友"
+                android:textSize="30sp" />
+
+            <RadioButton
+                android:id="@+id/rb_dynamic_id"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableLeft="@drawable/select_square_dynamic"
+                android:scaleX="0.6"
+                android:scaleY="0.6"
+                android:text="动态"
+                android:textSize="30sp" />
+        </RadioGroup>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_square_id"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/rg_square_id"></android.support.v4.view.ViewPager>
+
+    </RelativeLayout>
+</FrameLayout>

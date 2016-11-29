@@ -33,6 +33,7 @@ public class Five_Iv_Tv extends LinearLayout {
         view = findViewById(R.id.five_father);
         mImg = (ImageView) findViewById(R.id.five_img);
         mText = (TextView) findViewById(R.id.five_text);
+
     }
 
     /**

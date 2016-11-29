@@ -125,6 +125,7 @@ public class MenuClassification extends AppCompatActivity {
                 Bundle bundle = new Bundle();
 
                 bundle.putString("title",tags.get(i).getName());
+                bundle.putString("id",tags.get(i).getId());
 
                 intent.putExtras(bundle);
 

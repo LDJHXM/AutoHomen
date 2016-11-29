@@ -4,9 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/custom"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    app:cardCornerRadius="10dp">
+    app:cardCornerRadius="5dp">
 
 
     <ImageView
@@ -17,19 +17,17 @@
         />
 
     <TextView
-        android:text="周末*聚餐"
         android:id="@+id/big_five_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="15dp"
-        android:paddingTop="18dp"
+        android:paddingTop="8dp"
         android:textColor="#ffffff"
-        android:textSize="30sp"
-        android:textStyle="bold|italic" />
+        android:textSize="25sp"
+         />
 
     <TextView
-        android:layout_marginTop="60dp"
-        android:text="你想吃什么好吃的呢"
+        android:layout_marginTop="50dp"
         android:id="@+id/big_five_text_below"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,8 +35,8 @@
         android:layout_below="@+id/big_five_text"
         android:paddingLeft="10dp"
         android:textColor="#ffffff"
-        android:textSize="18sp"
-        android:textStyle="bold|italic" />
+        android:textSize="16sp"
+         />
 
 
 

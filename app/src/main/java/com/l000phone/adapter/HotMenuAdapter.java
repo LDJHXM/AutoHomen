@@ -91,6 +91,7 @@ public class HotMenuAdapter extends BaseAdapter {
 
             }else {
 
+
                 break;
             }
 

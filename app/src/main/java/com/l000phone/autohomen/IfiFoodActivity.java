@@ -1,12 +1,13 @@
 package com.l000phone.autohomen;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.l000phone.adapter.IfiFoodAdapter;
 import com.l000phone.entity.Cate_Ifi_Food;
@@ -48,6 +49,7 @@ public class IfiFoodActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
 
         String title = bundle.getString("title");
+        String id = bundle.getString("id");
 
         mTv.setText(title);
 
@@ -60,7 +62,7 @@ public class IfiFoodActivity extends AppCompatActivity {
         HaoDouCate_Ifi_Food hdc = retrofit.create(HaoDouCate_Ifi_Food.class);
 
         Call<Cate_Ifi_Food> call =
-                hdc.getData(GetMap.getMap_Ifi_Food());
+                hdc.getData(GetMap.getMap_Ifi_Food(id));
 
 
         call.enqueue(new Callback<Cate_Ifi_Food>() {
@@ -93,7 +95,7 @@ public class IfiFoodActivity extends AppCompatActivity {
      *
      * @param list
      */
-    private void aboutListView(List<Cate_Ifi_Food.ResultBean.ListBean> list) {
+    private void aboutListView(final List<Cate_Ifi_Food.ResultBean.ListBean> list) {
 
         //适配器
         IfiFoodAdapter adapter = new IfiFoodAdapter(list, this);
@@ -106,7 +108,16 @@ public class IfiFoodActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Toast.makeText(IfiFoodActivity.this, "你点击了" + i, Toast.LENGTH_SHORT).show();
+
+                String url = "http://www.haodou.com/recipe/"+list.get(i).getRecipeId()+"/";
+
+                Log.i("url",url);
+
+                Intent intent = new Intent(IfiFoodActivity.this, Web1Activity.class);
+
+                intent.putExtra("url",url);
+
+                startActivity(intent);
 
             }
         });

@@ -122,13 +122,13 @@ public class GetMap {
     }
 
 
-    public static Map<String, String> getMap_Ifi_Food() {
+    public static Map<String, String> getMap_Ifi_Food(String info) {
 
         Map<String, String> agg = new HashMap<>();
 
         agg.put("limit", "20");
         agg.put("scene", "t1");
-        agg.put("tagid", "323");
+        agg.put("tagid", info);
         agg.put("uuid", "bdf542fa8eb3bcbc457a5383dc48fc0c");
         agg.put("offset", "0");
 
@@ -163,6 +163,19 @@ public class GetMap {
         agg.put("offset", "0");
         agg.put("type", "0");
         agg.put("cid","");
+
+        return agg;
+
+    }
+
+
+    public static Map<String, String> getMap_Hot_Video() {
+
+        Map<String, String> agg = new HashMap<>();
+
+        agg.put("sign", "");
+        agg.put("uid", "0");
+        agg.put("appqs", "haodourecipe://haodou.com/Video/index/");
 
         return agg;
 

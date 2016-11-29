@@ -4,15 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="10dp"
-    android:background="#DEB887"
+    android:background="#cccccc"
 
     android:minHeight="300dp">
 
     <LinearLayout
-        android:background="#ffffff"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
+        android:background="#FAF0E6"
         android:orientation="vertical">
 
 
@@ -26,30 +26,30 @@
         <TextView
             android:id="@+id/text_text"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
             android:gravity="center_vertical"
-            android:text="w醉了"
             android:textColor="#000000"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textStyle="bold|italic" />
 
         <TextView
             android:id="@+id/text_text_2"
+
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
             android:gravity="center_vertical"
-            android:text="w醉了"
-            android:textColor="#000000"
-            android:textSize="19sp" />
+            android:textSize="18sp" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/text_dish_num"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="210dp"
         android:gravity="center"
         android:text="-- 15道菜 --"
         android:textColor="#ffffff"

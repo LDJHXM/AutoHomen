@@ -60,7 +60,16 @@ public class Cate_Hot_Menu {
             private String UserName;
             private String LikeCount;
             private String CreateTime;
+            private String RecipeId;
             private List<TagsBean> Tags;
+
+            public String getRecipeId() {
+                return RecipeId;
+            }
+
+            public void setRecipeId(String RecipeId) {
+                this.RecipeId = RecipeId;
+            }
 
             public String getCover() {
                 return Cover;

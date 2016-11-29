@@ -58,6 +58,7 @@
         <activity android:name=".HotEventActivity"/>
         <activity android:name=".MenuClassification"/>
         <activity android:name=".IfiFoodActivity"/>
+        <activity android:name=".HotVideoActivity"/>
         <activity
             android:name="io.vov.vitamio.activity.InitActivity"
             android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
@@ -66,6 +67,7 @@
             android:windowSoftInputMode="stateAlwaysHidden" />
 
         <activity android:name=".VideoActivity"/>
+        <activity android:name=".Web1Activity"/>
 
         <!-- 友盟AppKey， 需要替换成你自己的 -->
         <meta-data
