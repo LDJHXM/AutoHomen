@@ -7,7 +7,7 @@ import java.util.List;
  * Created by DJ on 2016/11/23.
  */
 
-public class Cate_Video {
+public class Cate_Video implements  Serializable{
 
 
     /**
@@ -44,7 +44,7 @@ public class Cate_Video {
         this.request_id = request_id;
     }
 
-    public static class ResultBean {
+    public static class ResultBean implements  Serializable {
         /**
          * info : {"UserId":5662523,"RecipeId":1006888,"Rate":5,"Status":0,"Cover":"http://recipe0.hoto.cn/pic/recipe/l/28/5d/1006888_de0654.jpg","Title":"牛肉焖锅","Intro":"牛肉要用卤牛肉，因为制作时间短，卤牛肉做出来肉质才会软烂易嚼。鸡精根据个人口味吧，我这里是没有加鸡精的。如果喜欢汤汁浓郁最后也可以勾芡哦。","CreateTime":"创建日期:2015-12-04","CookTime":"30分钟-1小时","ReadyTime":"10-20分钟","Tips":"无","PhotoCount":0,"ReviewTime":"2015-12-04","Type":1,"UserCount":"","Tags":[{"Id":490,"Name":"焖"},{"Id":481,"Name":"煮"},{"Id":30700,"Name":"聚会"}],"PhotoList":["http://recipe0.hoto.cn/pic/recipe/l/28/5d/1006888_de0654.jpg"],"Steps":[{"StepPhoto":"http://recipe1.hoto.cn/pic/step/g_800/67/fe/4324967.jpg","Intro":"鹌鹑蛋煮熟去壳。"},{"StepPhoto":"http://recipe0.hoto.cn/pic/step/g_800/68/fe/4324968.jpg","Intro":"锅入油，下入鹌鹑蛋，炸至表面金黄。"},{"StepPhoto":"http://recipe1.hoto.cn/pic/step/g_800/69/fe/4324969.jpg","Intro":"砂锅入油，冰糖，炒出糖色。"},{"StepPhoto":"http://recipe0.hoto.cn/pic/step/g_800/6a/fe/4324970.jpg","Intro":"卤牛肉切块放入砂锅中拌匀，淋入料酒，花椒、香叶、干辣椒倒入锅中拌匀。"},{"StepPhoto":"http://recipe1.hoto.cn/pic/step/g_800/6b/fe/4324971.jpg","Intro":"姜切片、蒜子切片、大葱切片。"},{"StepPhoto":"http://recipe0.hoto.cn/pic/step/g_800/6c/fe/4324972.jpg","Intro":"全部放入锅中拌匀，加水，小火焖15分钟。"},{"StepPhoto":"http://recipe1.hoto.cn/pic/step/g_800/6d/fe/4324973.jpg","Intro":"加入鹌鹑蛋拌匀。"},{"StepPhoto":"http://recipe0.hoto.cn/pic/step/g_800/6e/fe/4324974.jpg","Intro":"香菇洗净，顶部切十字花刀"},{"StepPhoto":"http://recipe1.hoto.cn/pic/step/g_800/6f/fe/4324975.jpg","Intro":"加入砂锅中，再次加水，淋入生抽，大火煮5分钟即可。"}],"Stuff":[{"name":"卤牛肉","weight":"适量","id":12834,"type":1,"cateid":18,"cate":"熟食","food_flag":1},{"name":"鹌鹑蛋","weight":"数个","id":67,"type":1,"cateid":9,"cate":"肉蛋类","food_flag":1},{"name":"香菇","weight":"数朵","id":270,"type":1,"cateid":10,"cate":"蔬菜","food_flag":1},{"name":"葱","weight":"适量","id":0,"type":2,"cateid":10,"cate":"蔬菜","food_flag":0},{"name":"姜","weight":"适量","id":0,"type":2,"cateid":10,"cate":"蔬菜","food_flag":0},{"name":"蒜子","weight":"适量","id":0,"type":2,"cateid":10,"cate":"蔬菜","food_flag":0},{"name":"花椒","weight":"适量","id":0,"type":2,"cateid":2,"cate":"调味料","food_flag":0},{"name":"香叶","weight":"适量","id":0,"type":2,"cateid":2,"cate":"调味料","food_flag":0},{"name":"干辣椒","weight":"适量","id":0,"type":2,"cateid":2,"cate":"调味料","food_flag":0},{"name":"料酒","weight":"适量","id":0,"type":2,"cateid":2,"cate":"调味料","food_flag":0},{"name":"生抽","weight":"适量","id":0,"type":2,"cateid":2,"cate":"调味料","food_flag":0},{"name":"冰糖","weight":"适量","id":0,"type":2,"cateid":2,"cate":"调味料","food_flag":0},{"name":"鸡精","weight":"适量","id":0,"type":2,"cateid":2,"cate":"调味料","food_flag":0}],"MainStuff":[{"name":"卤牛肉","weight":"适量","id":12834,"type":1,"cateid":18,"cate":"熟食","food_flag":1},{"name":"鹌鹑蛋","weight":"数个","id":67,"type":1,"cateid":9,"cate":"肉蛋类","food_flag":1},{"name":"香菇","weight":"数朵","id":270,"type":1,"cateid":10,"cate":"蔬菜","food_flag":1}],"OtherStuff":[{"name":"葱","weight":"适量","id":0,"type":2,"cateid":10,"cate":"蔬菜","food_flag":0},{"name":"姜","weight":"适量","id":0,"type":2,"cateid":10,"cate":"蔬菜","food_flag":0},{"name":"蒜子","weight":"适量","id":0,"type":2,"cateid":10,"cate":"蔬菜","food_flag":0},{"name":"花椒","weight":"适量","id":0,"type":2,"cateid":2,"cate":"调味料","food_flag":0},{"name":"香叶","weight":"适量","id":0,"type":2,"cateid":2,"cate":"调味料","food_flag":0},{"name":"干辣椒","weight":"适量","id":0,"type":2,"cateid":2,"cate":"调味料","food_flag":0},{"name":"料酒","weight":"适量","id":0,"type":2,"cateid":2,"cate":"调味料","food_flag":0},{"name":"生抽","weight":"适量","id":0,"type":2,"cateid":2,"cate":"调味料","food_flag":0},{"name":"冰糖","weight":"适量","id":0,"type":2,"cateid":2,"cate":"调味料","food_flag":0},{"name":"鸡精","weight":"适量","id":0,"type":2,"cateid":2,"cate":"调味料","food_flag":0}],"ad_flag":0,"ad_data":{},"UserInfo":{"UserId":5662523,"UserName":"木籽食语","Gender":0,"Intro":"微信sofia20061118","Avatar":"http://avatar1.hoto.cn/3b/67/5662523_185.jpg?v=1","FavoriteList":[{"Id":"11","Name":"奶香浓郁"},{"Id":"12","Name":"酸甜可口"},{"Id":"13","Name":"无辣不欢"}],"Relation":0,"OpenUrl":"haodourecipe://haodou.com/user/wo/?id=5662523","Vip":0},"RecommendTopic":[{"TopicId":"498655","UserId":"2265367","UserName":"漪弈","Avatar":"http://avatar1.hoto.cn/17/91/2265367_185.jpg","CommentCount":"12回复","Title":"导师帖11月第4课：老婆饼","Url":"haodourecipe://haodou.com/opentopic/?url=http%3A%2F%2Fm.haodou.com%2Ftopic-498655.html%3F_v%3Dnohead&id=498655","Collection":"23分钟前   12回复回复","LastPostTime":"23分钟前"},{"TopicId":"490554","UserId":"184392","UserName":"幸福的林冰","Avatar":"http://avatar0.hoto.cn/48/d0/184392_185.jpg?v=2","CommentCount":"8回复","Title":"细火慢熬做出下饭佐粥的牛肉酱","Url":"haodourecipe://haodou.com/opentopic/?url=http%3A%2F%2Fm.haodou.com%2Ftopic-490554.html%3F_v%3Dnohead&id=490554","Collection":"1小时前   8回复回复","LastPostTime":"1小时前"},{"TopicId":"498574","UserId":"113621","UserName":"蓝色南半球","Avatar":"http://avatar1.hoto.cn/d5/bb/113621_185.jpg?v=37","CommentCount":"35回复","Title":"风味独特沙姜紫苏焖鸭","Url":"haodourecipe://haodou.com/opentopic/?url=http%3A%2F%2Fm.haodou.com%2Ftopic-498574.html%3F_v%3Dnohead&id=498574","Collection":"2小时前   35回复回复","LastPostTime":"2小时前"}],"LikeCount":583,"ViewCount":17238,"CommentCount":"16","CommentList":[{"Cid":33115475,"UserId":10207724,"Avatar":"http://avatar0.hoto.cn/ec/c1/10207724_185.jpg?v=1","UserName":"haodou8674825048","AtUserId":0,"AtUserName":"","Content":"牛肉是用放水煮熟了，捞出来放凉再切一块的吗","AtContent":"","IsAuthor":0,"IsVip":0,"Gender":2,"CreateTime":"10-11 19:49","ImageUrl":"","ImageSmallUrl":"","AtImageUrl":"","AtImageSmallUrl":""},{"Cid":31693577,"UserId":3858620,"Avatar":"http://avatar0.hoto.cn/bc/e0/3858620_185.jpg","UserName":"69259684","AtUserId":0,"AtUserName":"","Content":"不错，背景音乐也很好听！","AtContent":"","IsAuthor":0,"IsVip":0,"Gender":2,"CreateTime":"05-15 09:31","ImageUrl":"","ImageSmallUrl":"","AtImageUrl":"","AtImageSmallUrl":""},{"Cid":30111197,"UserId":3771181,"Avatar":"http://avatar1.hoto.cn/2d/8b/3771181_185.jpg","UserName":"60912764","AtUserId":0,"AtUserName":"","Content":"这样的做法适合用牛腩做，","AtContent":"","IsAuthor":0,"IsVip":0,"Gender":2,"CreateTime":"01-20 21:55","ImageUrl":"","ImageSmallUrl":"","AtImageUrl":"","AtImageSmallUrl":""},{"Cid":30104066,"UserId":2484295,"Avatar":"http://avatar1.hoto.cn/47/e8/2484295_185.jpg","UserName":"250523","AtUserId":0,"AtUserName":"","Content":"木有砂锅能用啥代替一下[委屈]","AtContent":"","IsAuthor":0,"IsVip":0,"Gender":2,"CreateTime":"01-20 14:04","ImageUrl":"","ImageSmallUrl":"","AtImageUrl":"","AtImageSmallUrl":""},{"Cid":30095160,"UserId":9386928,"Avatar":"http://avatar0.hoto.cn/b0/3b/9386928_185.jpg","UserName":"haodou4512669635","AtUserId":0,"AtUserName":"","Content":"真的很棒","AtContent":"","IsAuthor":0,"IsVip":0,"Gender":2,"CreateTime":"01-19 20:38","ImageUrl":"","ImageSmallUrl":"","AtImageUrl":"","AtImageSmallUrl":""}],"ProductCount":0,"Product":[],"HasVideo":1,"Duration":"播放时长 03:51","VideoCover":"http://recipe0.hoto.cn/pic/recipe/vc/28/5d/1006888_de0654.jpg","Collection":"播放时长 03:51","Reward":{"Id":1006888,"Type":0,"Words":["超赞","帅呆了","酷毙","仰慕","天下无双","太经典了","小意思","宇宙无敌精彩","好到我心坎里了"],"Title":"打赏啦！只需<font color=\"#ff6600\">10豆币<\/font>哦~","Desc":"赶紧告诉Ta: 激动的心情无法用言语表达, 赏您10豆币请笑纳哈~","RewardAble":1,"UserListUrl":"haodourecipe://haodou.com/reward/users/?id=1006888&ItemType=0","UserListDesc":"枫逍","IsReward":0,"RewardCount":1},"MallUrl":"haodourecipe://haodou.com/index/discovery/","TalkUrl":"haodourecipe://haodou.com/douquan/","IsDigg":0,"DiggCount":580,"IsLike":0,"LastDiggUsers":[{"Avatar":"http://avatar0.hoto.cn/dc/d4/9295068_185.jpg","OpenUrl":"haodourecipe://haodou.com/user/wo/?id=9295068","UserId":9295068},{"Avatar":"http://avatar1.hoto.cn/71/20/8003697_185.jpg","OpenUrl":"haodourecipe://haodou.com/user/wo/?id=8003697","UserId":8003697},{"Avatar":"http://avatar1.hoto.cn/d7/a9/9873879_185.jpg?v=1","OpenUrl":"haodourecipe://haodou.com/user/wo/?id=9873879","UserId":9873879},{"Avatar":"http://avatar0.hoto.cn/54/a1/9544020_185.jpg?v=2","OpenUrl":"haodourecipe://haodou.com/user/wo/?id=9544020","UserId":9544020},{"Avatar":"http://avatar0.hoto.cn/0a/df/7855882_185.jpg","OpenUrl":"haodourecipe://haodou.com/user/wo/?id=7855882","UserId":7855882},{"Avatar":"http://avatar0.hoto.cn/2c/b8/9746476_185.jpg?v=1","OpenUrl":"haodourecipe://haodou.com/user/wo/?id=9746476","UserId":9746476},{"Avatar":"http://avatar0.hoto.cn/10/81/8225040_185.jpg","OpenUrl":"haodourecipe://haodou.com/user/wo/?id=8225040","UserId":8225040},{"Avatar":"http://avatar1.hoto.cn/d7/a4/8889559_185.jpg?v=1","OpenUrl":"haodourecipe://haodou.com/user/wo/?id=8889559","UserId":8889559},{"Avatar":"http://avatar1.hoto.cn/ff/5a/9198335_185.jpg?v=1","OpenUrl":"haodourecipe://haodou.com/user/wo/?id=9198335","UserId":9198335}],"DiggUsersUrl":"haodourecipe://haodou.com/digg/getDiggUserList/?id=1006888&type=4","AlbumMoreUrl":"haodourecipe://haodou.com/collect/list/fromrecipe/?id=1006888","AlbumCount":0,"Album":[]}
          */
@@ -524,10 +524,10 @@ public class Cate_Video {
                 this.Album = Album;
             }
 
-            public static class AdDataBean {
+            public static class AdDataBean implements  Serializable {
             }
 
-            public static class UserInfoBean {
+            public static class UserInfoBean implements  Serializable {
                 /**
                  * UserId : 5662523
                  * UserName : 木籽食语
@@ -622,7 +622,7 @@ public class Cate_Video {
                     this.FavoriteList = FavoriteList;
                 }
 
-                public static class FavoriteListBean {
+                public static class FavoriteListBean  implements  Serializable{
                     /**
                      * Id : 11
                      * Name : 奶香浓郁
@@ -649,7 +649,7 @@ public class Cate_Video {
                 }
             }
 
-            public static class RewardBean {
+            public static class RewardBean implements  Serializable {
                 /**
                  * Id : 1006888
                  * Type : 0
@@ -755,7 +755,7 @@ public class Cate_Video {
                 }
             }
 
-            public static class TagsBean {
+            public static class TagsBean implements  Serializable {
                 /**
                  * Id : 490
                  * Name : 焖
@@ -781,7 +781,7 @@ public class Cate_Video {
                 }
             }
 
-            public static class StepsBean {
+            public static class StepsBean  implements  Serializable{
                 /**
                  * StepPhoto : http://recipe1.hoto.cn/pic/step/g_800/67/fe/4324967.jpg
                  * Intro : 鹌鹑蛋煮熟去壳。
@@ -817,7 +817,7 @@ public class Cate_Video {
                 }
             }
 
-            public static class StuffBean {
+            public static class StuffBean implements  Serializable {
                 /**
                  * name : 卤牛肉
                  * weight : 适量
@@ -902,7 +902,7 @@ public class Cate_Video {
                 }
             }
 
-            public static class MainStuffBean {
+            public static class MainStuffBean  implements  Serializable{
                 /**
                  * name : 卤牛肉
                  * weight : 适量
@@ -978,7 +978,7 @@ public class Cate_Video {
                 }
             }
 
-            public static class OtherStuffBean {
+            public static class OtherStuffBean implements  Serializable {
                 /**
                  * name : 葱
                  * weight : 适量
@@ -1054,7 +1054,7 @@ public class Cate_Video {
                 }
             }
 
-            public static class RecommendTopicBean {
+            public static class RecommendTopicBean  implements  Serializable{
                 /**
                  * TopicId : 498655
                  * UserId : 2265367
@@ -1150,7 +1150,7 @@ public class Cate_Video {
                 }
             }
 
-            public static class CommentListBean {
+            public static class CommentListBean implements  Serializable{
                 /**
                  * Cid : 33115475
                  * UserId : 10207724
@@ -1316,7 +1316,7 @@ public class Cate_Video {
                 }
             }
 
-            public static class LastDiggUsersBean {
+            public static class LastDiggUsersBean implements  Serializable{
                 /**
                  * Avatar : http://avatar0.hoto.cn/dc/d4/9295068_185.jpg
                  * OpenUrl : haodourecipe://haodou.com/user/wo/?id=9295068

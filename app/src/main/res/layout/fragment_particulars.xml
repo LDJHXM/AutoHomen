@@ -23,7 +23,7 @@
             android:gravity="center_vertical"
             android:text="吃屎吧你"
             android:textColor="#000000"
-            android:textSize="23sp" />
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,27 +39,27 @@
                 android:layout_gravity="center_vertical"
                 android:gravity="center_vertical"
                 android:text="2015.11.15"
-                android:textSize="15sp" />
+                android:textSize="10sp" />
 
             <TextView
                 android:id="@+id/par_ViewCount"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="100dp"
+                android:layout_marginLeft="90dp"
                 android:gravity="center_vertical"
                 android:text="浏览：12312"
-                android:textSize="15sp" />
+                android:textSize="10sp" />
 
             <TextView
                 android:id="@+id/par_CommentCount"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="18dp"
                 android:gravity="center_vertical"
                 android:text="评论：123"
-                android:textSize="15sp" />
+                android:textSize="10sp" />
 
         </LinearLayout>
 
@@ -73,7 +73,7 @@
                 android:id="@+id/par_Avatar"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@mipmap/ic_launcher" />
+                 />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -118,7 +118,7 @@
                     <Button
                         android:id="@+id/par_FavoriteList_name1"
                         android:layout_width="wrap_content"
-                        android:layout_height="30dp"
+                        android:layout_height="27dp"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="10dp"
                         android:background="#808080"
@@ -127,7 +127,7 @@
                     <Button
                         android:id="@+id/par_FavoriteList_name2"
                         android:layout_width="wrap_content"
-                        android:layout_height="30dp"
+                        android:layout_height="27dp"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="15dp"
                         android:background="#808080"
@@ -136,7 +136,7 @@
                     <Button
                         android:id="@+id/par_FavoriteList_name3"
                         android:layout_width="wrap_content"
-                        android:layout_height="30dp"
+                        android:layout_height="27dp"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="15dp"
                         android:background="#808080"
@@ -221,7 +221,7 @@
             android:layout_height="wrap_content" />
 
         <Button
-            android:layout_marginLeft="180dp"
+            android:layout_marginLeft="145dp"
             android:layout_marginTop="30dp"
             android:textColor="#FFA500"
             android:background="@drawable/dj_buttom"
@@ -308,8 +308,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:src="@drawable/btn_auxiliary_shang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
 
 
 

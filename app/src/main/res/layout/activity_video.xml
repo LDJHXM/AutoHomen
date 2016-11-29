@@ -6,14 +6,30 @@
 
     <LinearLayout
         android:id="@+id/video_ll"
+        android:background="#DAA520"
+android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="40dp">
 
         <Button
+            android:layout_gravity="center_vertical"
             android:layout_width="40dp"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:background="@drawable/btn_header_back_gray"
             android:onClick="back" />
+
+        <TextView
+            android:layout_marginRight="10dp"
+            android:enabled="true"
+            android:textSize="18sp"
+            android:gravity="right|center_vertical"
+            android:textColor="#ffffff"
+            android:id="@+id/picMode"
+            android:text="看图"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
 
         <Button
             android:id="@+id/video_collect"
@@ -49,7 +65,7 @@
     <RelativeLayout
         android:id="@+id/vido_rl"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="220dp"
         android:layout_below="@+id/video_ll"
         android:layout_alignParentStart="true">
 
@@ -71,15 +87,15 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="30dp"
             android:id="@+id/zan_id"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="@drawable/btn_zan_small"
             android:scaleType="fitXY" />
 
         <TextView
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginRight="30dp"
+            android:layout_marginRight="26dp"
             android:layout_marginBottom="10dp"
             android:id="@+id/video_tv_zan"
             android:layout_width="wrap_content"
@@ -89,8 +105,8 @@
 
         <ImageView
             android:id="@+id/video_start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_centerInParent="true"
             android:src="@drawable/video_start" />
 

@@ -1,5 +1,6 @@
 package com.l000phone.autohomen;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +25,7 @@ import com.l000phone.fragment.Video_Particulars;
 import com.l000phone.fragment.Video_comment;
 import com.l000phone.fragment.Video_step;
 import com.l000phone.util.GetMap;
+import com.l000phone.util.NetWorkUtils;
 import com.squareup.picasso.Picasso;
 
 import java.util.LinkedList;
@@ -123,6 +126,7 @@ public class VideoActivity extends AppCompatActivity {
         }
     };
     private LocalBroadcastManager instance;
+    private TextView picMode;
 
 
     @Override
@@ -146,21 +150,34 @@ public class VideoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                aboutVideo();
+                boolean b = NetWorkUtils.isWifiConnected(VideoActivity.this);
 
-                int bufferPercentage = mVv.getBufferPercentage();
+                AlertDialog.Builder builder = new AlertDialog.Builder(VideoActivity.this);
 
-                Log.i("bufferPercentage",bufferPercentage+"");
+                builder.setIcon(R.drawable.icon).setTitle("当前不是WIFI网络，确定要观看视频么?").setNegativeButton("取消",null).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
 
-                mZan.setVisibility(View.INVISIBLE);
+                        aboutVideo();
 
-                mTv.setVisibility(View.INVISIBLE);
+                        int bufferPercentage = mVv.getBufferPercentage();
 
-                mImg.setVisibility(View.INVISIBLE);
+                        Log.i("bufferPercentage",bufferPercentage+"");
 
-                mVp.setCurrentItem(1);
+                        mZan.setVisibility(View.INVISIBLE);
 
-                mStart.setVisibility(View.INVISIBLE);
+                        mTv.setVisibility(View.INVISIBLE);
+
+                        mImg.setVisibility(View.INVISIBLE);
+
+                        mVp.setCurrentItem(1);
+
+                        mStart.setVisibility(View.INVISIBLE);
+
+                    }
+                }).show();
+
+
 
             }
         });
@@ -228,12 +245,29 @@ public class VideoActivity extends AppCompatActivity {
 
                 Cate_Video body = response.body();
 
-                Cate_Video.ResultBean.InfoBean info = body.getResult().getInfo();
+                final Cate_Video.ResultBean.InfoBean info = body.getResult().getInfo();
 
                 Picasso.with(VideoActivity.this).load(info.getCover()).
                         placeholder(R.drawable.splish_logo).into(mImg);
 
                 aboutViewPager(info);
+
+                picMode.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent intent  = new Intent(VideoActivity.this,PhotoActivity.class);
+
+
+                      /*  Bundle bundle = new Bundle();
+
+                        bundle.putParcelable("info",info);
+
+                        intent.putExtras(bundle);*/
+
+                        startActivity(intent);
+                    }
+                });
 
 
             }
@@ -301,6 +335,7 @@ public class VideoActivity extends AppCompatActivity {
         mZan = (ImageView) findViewById(R.id.zan_id);
         mVp = (ViewPager) findViewById(R.id.video_vp);
         mCollect = (Button) findViewById(R.id.video_collect);
+        picMode = (TextView) findViewById(R.id.picMode);
 
     }
 
@@ -308,4 +343,6 @@ public class VideoActivity extends AppCompatActivity {
 
         finish();
     }
+
+
 }

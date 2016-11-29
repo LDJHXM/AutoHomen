@@ -11,13 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.l000phone.adapter.StepListAdapter;
 import com.l000phone.autohomen.R;
 import com.l000phone.entity.Cate_Video;
 import com.l000phone.receiver.VideoBroadcast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -52,10 +52,22 @@ public class Video_step extends Fragment {
 
         ListView mLv = (ListView) view.findViewById(R.id.step_listview);
 
-        List<Cate_Video.ResultBean.InfoBean.StepsBean> steps = info.getSteps();
+        final List<Cate_Video.ResultBean.InfoBean.StepsBean> steps = info.getSteps();
 
 
         StepListAdapter adapter = new StepListAdapter(steps, getActivity());
+
+        final ArrayList<String> images = new ArrayList<>();
+
+        final ArrayList<String> texts = new ArrayList<>();
+
+
+        for(int i =0;i<steps.size();i++){
+
+            images.add(steps.get(i).getStepPhoto());
+
+            texts.add(steps.get(i).getIntro());
+        }
 
         mLv.setAdapter(adapter);
 
@@ -63,7 +75,25 @@ public class Video_step extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Toast.makeText(getActivity(), "稍后再说"+i, Toast.LENGTH_SHORT).show();
+
+
+
+               /* Intent intent = new Intent(getActivity(),PhotoActivity.class);
+
+                intent.putStringArrayListExtra("images",  images);
+
+                intent.putStringArrayListExtra("texts",  texts);
+
+              *//*  Bundle bundle  = new Bundle();
+
+                bundle.putSerializable("info",info);
+
+                intent.putExtras(bundle);*//*
+
+                intent.putExtra("position",i);
+
+                startActivity(intent);*/
+
             }
         });
 

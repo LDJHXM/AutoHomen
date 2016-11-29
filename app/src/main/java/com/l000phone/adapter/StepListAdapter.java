@@ -1,7 +1,7 @@
 package com.l000phone.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -86,7 +86,7 @@ public class StepListAdapter extends BaseAdapter {
                     vh.tv1 = (TextView) view.findViewById(R.id.step_tv1);
                     vh.tv2 = (TextView) view.findViewById(R.id.step_tv2);
 
-                    view.setBackgroundColor(Color.RED);
+                    view.setBackgroundColor(ContextCompat.getColor(context,R.color.cornflowerblue));
 
                     view.setTag(vh);
 

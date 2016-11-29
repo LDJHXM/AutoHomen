@@ -16,7 +16,6 @@
 
     <TextView
         android:layout_marginTop="3dp"
-        android:text="sdas"
         android:id="@+id/five_text"
         android:layout_width="50dp"
         android:layout_height="match_parent"

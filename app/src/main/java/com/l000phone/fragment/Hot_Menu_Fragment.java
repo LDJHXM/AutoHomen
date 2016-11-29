@@ -1,5 +1,6 @@
 package com.l000phone.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -46,6 +47,7 @@ public class Hot_Menu_Fragment extends Fragment {
     private List<Cate_Hot_Menu.ResultBean.ListBean> list;
     private Retrofit retrofit;
     private HotMenuAdapter adapter;
+    private ProgressDialog dialog;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,6 +55,11 @@ public class Hot_Menu_Fragment extends Fragment {
         Bundle bundle = getArguments();
 
         url = bundle.getString("tab");
+
+        dialog = new ProgressDialog(getActivity());
+
+        dialog.show();
+
 
         super.onCreate(savedInstanceState);
     }
@@ -145,6 +152,8 @@ public class Hot_Menu_Fragment extends Fragment {
 
                 aboutListView(list);
 
+                dialog.dismiss();
+
 
             }
 
@@ -179,13 +188,18 @@ public class Hot_Menu_Fragment extends Fragment {
             public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
 
 
+
+
                 HaoDouCate_Hot_Menu hhm = retrofit.create(HaoDouCate_Hot_Menu.class);
 
                 Call<Cate_Hot_Menu> call = hhm.getData(GetMap.getMap_HoutMeun("热门菜谱"));
 
+
                 call.enqueue(new Callback<Cate_Hot_Menu>() {
                     @Override
                     public void onResponse(Call<Cate_Hot_Menu> call, Response<Cate_Hot_Menu> response) {
+
+
                         Cate_Hot_Menu body = response.body();
 
                         List<Cate_Hot_Menu.ResultBean.ListBean> list1 = body.getResult().getList();

@@ -23,10 +23,10 @@ import com.l000phone.adapter.ListViewAdapter;
 import com.l000phone.adapter.ViewPagerAdapter;
 import com.l000phone.autohomen.HotEventActivity;
 import com.l000phone.autohomen.HotMenuActivity;
-import com.l000phone.autohomen.HotVideoActivity;
 import com.l000phone.autohomen.KitchenActivity;
 import com.l000phone.autohomen.MenuClassification;
 import com.l000phone.autohomen.R;
+import com.l000phone.autohomen.VideoActivity;
 import com.l000phone.autohomen.Web1Activity;
 import com.l000phone.autohomen.WeekActivity;
 import com.l000phone.entity.Cate;
@@ -505,9 +505,9 @@ public class HaoDou extends Fragment {
         mSee.abc_setClick(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), HotVideoActivity.class));
+                //startActivity(new Intent(getActivity(), HotVideoActivity.class));
 
-                //startActivity(new Intent(getActivity(), VideoActivity.class));
+                startActivity(new Intent(getActivity(), VideoActivity.class));
             }
         });
 

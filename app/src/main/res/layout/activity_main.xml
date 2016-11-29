@@ -20,7 +20,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#B0C4DE" />
+        android:background="#FFD700" />
 
 
     <RadioGroup
@@ -42,7 +42,7 @@
             android:drawableTop="@drawable/select_haodou"
             android:gravity="center_horizontal"
             android:text="美食"
-            android:textSize="18sp" />
+            android:textSize="12sp" />
 
         <RadioButton
             android:layout_width="0dp"
@@ -52,7 +52,7 @@
             android:drawableTop="@drawable/select_daojia"
             android:gravity="center_horizontal"
             android:text="到家"
-            android:textSize="18sp" />
+            android:textSize="12sp" />
 
         <RadioButton
             android:layout_width="0dp"
@@ -62,7 +62,7 @@
             android:drawableTop="@drawable/select_square"
             android:gravity="center_horizontal"
             android:text="广场"
-            android:textSize="18sp" />
+            android:textSize="12sp" />
 
         <RadioButton
             android:layout_width="0dp"
@@ -72,7 +72,7 @@
             android:drawableTop="@drawable/select_my"
             android:gravity="center_horizontal"
             android:text="我的"
-            android:textSize="18sp" />
+            android:textSize="12sp" />
 
 
     </RadioGroup>
