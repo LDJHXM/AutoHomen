@@ -26,6 +26,7 @@ import java.util.Map;
 
 public class MyLoginActivity extends AppCompatActivity implements View.OnClickListener{
     public static boolean flags;
+    public static String name;
     private TextView myLoginReturn;
     private Button myLoginRegist;
     private EditText myLoginName;
@@ -96,7 +97,7 @@ public class MyLoginActivity extends AppCompatActivity implements View.OnClickLi
         myLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = myLoginName.getText().toString();
+                name = myLoginName.getText().toString();
                 String pwd = myLoginPwd.getText().toString();
                 SQLiteDatabase sdb = dbHelper.getReadableDatabase();
                 String sql = "select * from user where username=? and password=?";
@@ -105,6 +106,7 @@ public class MyLoginActivity extends AppCompatActivity implements View.OnClickLi
                     cursor.close();
                     setFlags(true);
                     Toast.makeText(MyLoginActivity.this, "登陆成功", Toast.LENGTH_LONG).show();
+
 
                     Intent intent = new Intent();
 
@@ -136,6 +138,7 @@ public class MyLoginActivity extends AppCompatActivity implements View.OnClickLi
         switch (view.getId()){
             case R.id.tv_mylogin_qq:
                 platform = SHARE_MEDIA.QQ;
+
                 break;
             case R.id.tv_mylogin_sina:
                 platform = SHARE_MEDIA.SINA;
@@ -143,32 +146,41 @@ public class MyLoginActivity extends AppCompatActivity implements View.OnClickLi
             default:
                 break;
         }
-        mShareAPI.getPlatformInfo(MyLoginActivity.this, platform, umAuthListener);
+
+        mShareAPI.getPlatformInfo(MyLoginActivity.this, platform, new UMAuthListener() {
+            @Override
+            public void onComplete(SHARE_MEDIA platform, int action, Map<String, String> data) {
+
+                for (String key : data.keySet()) {
+                    Log.e("xxxxxx key = " + key + "    value= " + data.get(key));
+                }
+                Toast.makeText(getApplicationContext(),"授权成功！！",Toast.LENGTH_LONG).show();
+                if (data != null) {
+//                    Toast.makeText(getApplicationContext(), data.toString(), Toast.LENGTH_SHORT).show();
+                    Log.i("xxx", data.toString());
+                    Log.i("xxx=======", data.get("screen_name"));
+//                    myLoginName.setText(data.get("screen_name"));
+                    name = data.get("screen_name");
+                    setFlags(true);
+                    Intent intent = new Intent();
+
+                    intent.setClass(MyLoginActivity.this, MainActivity.class);
+
+
+                    startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onError(SHARE_MEDIA platform, int action, Throwable t) {
+                Toast.makeText(getApplicationContext(), "get fail" + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancel(SHARE_MEDIA platform, int action) {
+            }
+            });
     }
-
-    private UMAuthListener umAuthListener = new UMAuthListener() {
-        @Override
-        public void onComplete(SHARE_MEDIA platform, int action, Map<String, String> data) {
-            for (String key : data.keySet()) {
-                Log.e("xxxxxx key = " + key + "    value= " + data.get(key));
-            }
-            if (data != null) {
-                Toast.makeText(getApplicationContext(), data.toString(), Toast.LENGTH_SHORT).show();
-                Log.i("xxx", data.toString());
-            }
-        }
-
-        @Override
-        public void onError(SHARE_MEDIA platform, int action, Throwable t) {
-            Toast.makeText(getApplicationContext(), "get fail" + t.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        public void onCancel(SHARE_MEDIA platform, int action) {
-            Toast.makeText(getApplicationContext(), "get cancel", Toast.LENGTH_SHORT).show();
-        }
-    };
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

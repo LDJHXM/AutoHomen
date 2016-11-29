@@ -84,9 +84,15 @@ public class MainActivity extends AppCompatActivity {
         //关于RadioGroup的操作（点击下角图标，跳转到相应的Fragment）
         aboutRadioGroup();
 
+
         //默认先展示首页
         currentFragment = list.get(0);
-        startFragment(0);
+
+        if (MyLoginActivity.flags){
+            startFragment(3);
+        }else{
+            startFragment(0);
+        }
     }
 
 
