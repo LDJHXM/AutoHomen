@@ -43,7 +43,7 @@ public class WeekActivity extends AppCompatActivity {
 
 
         //界面实例的获取
-        mBtn = (Button) findViewById(R.id.week_btn_id);
+        //mBtn = (Button) findViewById(R.id.week_btn_id);
         mText = (TextView) findViewById(R.id.week_text_id);
         mRv = (RecyclerView) findViewById(R.id.week_rv_id);
         mSr = (SwipeRefreshLayout) findViewById(R.id.swipe_id);
@@ -200,5 +200,10 @@ public class WeekActivity extends AppCompatActivity {
                 outRect.top = space;
             }
         }
+    }
+
+    public void back (View view){
+
+        finish();
     }
 }

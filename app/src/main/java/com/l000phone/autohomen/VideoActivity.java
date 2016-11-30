@@ -13,21 +13,26 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import com.l000phone.adapter.ViewPagerAdapter2;
 import com.l000phone.entity.Cate_Video;
 import com.l000phone.face.HaoDouCate_Video;
+import com.l000phone.fragment.AnimationVp2;
 import com.l000phone.fragment.Video_Particulars;
 import com.l000phone.fragment.Video_comment;
 import com.l000phone.fragment.Video_step;
 import com.l000phone.util.GetMap;
 import com.l000phone.util.NetWorkUtils;
 import com.squareup.picasso.Picasso;
-
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.UMShareListener;
+import com.umeng.socialize.bean.SHARE_MEDIA;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -56,6 +61,27 @@ public class VideoActivity extends AppCompatActivity {
     private VideoView mVv;
     private ImageView mZan;
     private int cnt;
+    private UMShareListener umShareListener1 = new UMShareListener() {
+        @Override
+        public void onResult(SHARE_MEDIA share_media) {
+
+            Toast.makeText(VideoActivity.this, "分享成功", Toast.LENGTH_LONG).show();
+
+        }
+
+        @Override
+        public void onError(SHARE_MEDIA share_media, Throwable throwable) {
+            Toast.makeText(VideoActivity.this, "分享失败", Toast.LENGTH_LONG).show();
+        }
+
+        @Override
+        public void onCancel(SHARE_MEDIA share_media) {
+
+            Toast.makeText(VideoActivity.this, "分享取消", Toast.LENGTH_LONG).show();
+
+
+        }
+    };
 
     private Handler handler =new Handler(){
 
@@ -127,6 +153,7 @@ public class VideoActivity extends AppCompatActivity {
     };
     private LocalBroadcastManager instance;
     private TextView picMode;
+    private FrameLayout vido_rl;
 
 
     @Override
@@ -152,30 +179,47 @@ public class VideoActivity extends AppCompatActivity {
 
                 boolean b = NetWorkUtils.isWifiConnected(VideoActivity.this);
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(VideoActivity.this);
+                if(b==true) {
 
-                builder.setIcon(R.drawable.icon).setTitle("当前不是WIFI网络，确定要观看视频么?").setNegativeButton("取消",null).setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(VideoActivity.this);
 
-                        aboutVideo();
+                    builder.setIcon(R.drawable.icon).setTitle("当前不是WIFI网络，确定要观看视频么?").setNegativeButton("取消", null).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
 
-                        int bufferPercentage = mVv.getBufferPercentage();
+                            aboutVideo();
 
-                        Log.i("bufferPercentage",bufferPercentage+"");
+                            int bufferPercentage = mVv.getBufferPercentage();
 
-                        mZan.setVisibility(View.INVISIBLE);
+                            Log.i("bufferPercentage", bufferPercentage + "");
 
-                        mTv.setVisibility(View.INVISIBLE);
+                            mZan.setVisibility(View.INVISIBLE);
 
-                        mImg.setVisibility(View.INVISIBLE);
+                            mTv.setVisibility(View.INVISIBLE);
 
-                        mVp.setCurrentItem(1);
+                            mImg.setVisibility(View.INVISIBLE);
 
-                        mStart.setVisibility(View.INVISIBLE);
+                            mVp.setCurrentItem(1);
 
-                    }
-                }).show();
+                            mStart.setVisibility(View.INVISIBLE);
+
+                        }
+                    }).show();
+                }else{
+                    aboutVideo();
+
+                    mZan.setVisibility(View.INVISIBLE);
+
+                    mTv.setVisibility(View.INVISIBLE);
+
+                    mImg.setVisibility(View.INVISIBLE);
+
+                    mVp.setCurrentItem(1);
+
+                    mStart.setVisibility(View.INVISIBLE);
+
+
+                }
 
 
 
@@ -195,7 +239,7 @@ public class VideoActivity extends AppCompatActivity {
 
         mVv.setVideoURI(Uri.parse("http://v.hoto.cn/28/5d/1006888.mp4"));
 
-        MediaController mediaController = new MediaController(this);
+        MediaController mediaController = new MediaController(this,true,vido_rl);
 
         mediaController.setAnchorView(mVv);
 
@@ -319,14 +363,16 @@ public class VideoActivity extends AppCompatActivity {
     //绑定适配器
     mVp.setAdapter(adapter);
 
-}
+        mVp.setPageTransformer(true,new AnimationVp2());
+
+
+    }
 
 
     /**
      * 初始化实例
      */
     private void initViews() {
-        mShare = (Button) findViewById(R.id.video_share);
         mImg = (ImageView) findViewById(R.id.video_img);
         mStart = (ImageView) findViewById(R.id.video_start);
         mTab = (TabLayout) findViewById(R.id.video_tab);
@@ -334,14 +380,76 @@ public class VideoActivity extends AppCompatActivity {
         mTv = (TextView) findViewById(R.id.video_tv_zan);
         mZan = (ImageView) findViewById(R.id.zan_id);
         mVp = (ViewPager) findViewById(R.id.video_vp);
-        mCollect = (Button) findViewById(R.id.video_collect);
         picMode = (TextView) findViewById(R.id.picMode);
+        vido_rl = (FrameLayout) findViewById(R.id.vido_rl);
 
     }
 
     public  void back (View view){
 
         finish();
+    }
+
+
+
+    public void share (View view){
+
+
+        final ShareAction actionsina = new ShareAction(this);
+        actionsina.withTitle("给你看一条菜谱视频");
+        actionsina.withText("牛肉焖锅");
+        actionsina.withTargetUrl("http://v.hoto.cn/28/5d/1006888.mp4");
+
+        View view1 = LayoutInflater.from(this).inflate(R.layout.dialog_share, null);
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setView(view1);
+
+        TextView weixin_circle = (TextView) view1.findViewById(R.id.weixin_circle);
+        TextView weixin_friend = (TextView) view1.findViewById(R.id.weixin_friend);
+        TextView sina = (TextView) view1.findViewById(R.id.sina);
+        TextView qq = (TextView) view1.findViewById(R.id.qq);
+        TextView qzone = (TextView) view1.findViewById(R.id.qzone);
+
+        weixin_circle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                actionsina.setPlatform(SHARE_MEDIA.WEIXIN_CIRCLE).setCallback(umShareListener1).share();
+
+            }
+        });
+        weixin_friend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                actionsina.setPlatform(SHARE_MEDIA.WEIXIN).setCallback(umShareListener1).share();
+
+            }
+        });
+        sina.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                actionsina.setPlatform(SHARE_MEDIA.SINA).setCallback(umShareListener1).share();
+
+            }
+        });
+        qq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                actionsina.setPlatform(SHARE_MEDIA.QQ).setCallback(umShareListener1).share();
+
+            }
+        });
+        qzone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                actionsina.setPlatform(SHARE_MEDIA.QZONE).setCallback(umShareListener1).share();
+
+            }
+        });
+
+        builder.show();
     }
 
 

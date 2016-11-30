@@ -166,6 +166,7 @@ public class HotVideoActivity extends AppCompatActivity {
     private LinkedList<ViewPager_Fragment> pagers;
     private ViewPager mVp;
     private LinearLayout llContainer;
+    private ImageView start;
 
 
     @Override
@@ -179,6 +180,15 @@ public class HotVideoActivity extends AppCompatActivity {
         initViews();
 
         getDate();
+
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(HotVideoActivity.this, VideoActivity.class));
+
+            }
+        });
 
 
 
@@ -233,6 +243,7 @@ public class HotVideoActivity extends AppCompatActivity {
         videomenu_time = (TextView) findViewById(R.id.videomenu_time);
         biginner_title = (TextView) findViewById(R.id.biginner_title);
         biginner_context = (TextView) findViewById(R.id.biginner_context);
+        start = (ImageView) findViewById(R.id.start);
 
     }
 

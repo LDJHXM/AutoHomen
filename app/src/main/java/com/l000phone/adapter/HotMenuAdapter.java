@@ -1,6 +1,7 @@
 package com.l000phone.adapter;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,11 +82,15 @@ public class HotMenuAdapter extends BaseAdapter {
 
                 textView.setTextSize(16);
 
-                textView.setLeft(20);
+                textView.setLeft(10);
 
                 textView.setGravity(Gravity.CENTER_VERTICAL);
 
-                textView.setPadding(30,0,0,0);
+                textView.setPadding(20,0,0,0);
+
+                textView.setSingleLine(true);
+
+                textView.setEllipsize(TextUtils.TruncateAt.END);
 
                 vh.ll_text.addView(textView);
 

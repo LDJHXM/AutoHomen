@@ -18,6 +18,8 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.l000phone.adapter.HotMenuAdapter;
 import com.l000phone.autohomen.R;
 import com.l000phone.autohomen.Web1Activity;
+import com.l000phone.autohomen.db.HotMenuEntityDao;
+import com.l000phone.db.GreenDaoManager;
 import com.l000phone.entity.Cate_Hot_Menu;
 import com.l000phone.face.HaoDouCate_Hot_Menu;
 import com.l000phone.face.HaoDouCate_Hot_Menu2;
@@ -48,6 +50,8 @@ public class Hot_Menu_Fragment extends Fragment {
     private Retrofit retrofit;
     private HotMenuAdapter adapter;
     private ProgressDialog dialog;
+    private int uid = 0;
+    private String tab;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,6 +63,7 @@ public class Hot_Menu_Fragment extends Fragment {
         dialog = new ProgressDialog(getActivity());
 
         dialog.show();
+
 
 
         super.onCreate(savedInstanceState);
@@ -93,6 +98,7 @@ public class Hot_Menu_Fragment extends Fragment {
                 addConverterFactory(GsonConverterFactory.create()).build();
 
         Call<Cate_Hot_Menu> call = null;
+        tab = null;
 
 
         switch (url) {
@@ -101,45 +107,48 @@ public class Hot_Menu_Fragment extends Fragment {
 
                 HaoDouCate_Hot_Menu hhm = retrofit.create(HaoDouCate_Hot_Menu.class);
 
-                call = hhm.getData(GetMap.getMap_HoutMeun("热门菜谱"));
+                call = hhm.getData(GetMap.getMap_HoutMeun("热门菜谱",0+""));
 
+                 tab = "热门菜谱";
                 break;
 
             case "私人":
 
                 HaoDouCate_Hot_Menu2 hhm2 = retrofit.create(HaoDouCate_Hot_Menu2.class);
 
-                call = hhm2.getData(GetMap.getMap_HoutMeun("私人定制"));
+                call = hhm2.getData(GetMap.getMap_HoutMeun("私人定制",0+""));
 
                 break;
             case "时令":
                 HaoDouCate_Hot_Menu3 hhm3 = retrofit.create(HaoDouCate_Hot_Menu3.class);
 
-                call = hhm3.getData(GetMap.getMap_HoutMeun("时令佳肴"));
+                call = hhm3.getData(GetMap.getMap_HoutMeun("时令佳肴",0+""));
 
                 break;
             case "达人":
                 HaoDouCate_Hot_Menu4 hhm4 = retrofit.create(HaoDouCate_Hot_Menu4.class);
 
-                call = hhm4.getData(GetMap.getMap_HoutMeun("达人菜谱"));
+                call = hhm4.getData(GetMap.getMap_HoutMeun("达人菜谱",0+""));
 
                 break;
             case "最新":
                 HaoDouCate_Hot_Menu5 hhm5 = retrofit.create(HaoDouCate_Hot_Menu5.class);
 
-                call = hhm5.getData(GetMap.getMap_HoutMeun("最新菜谱"));
+                call = hhm5.getData(GetMap.getMap_HoutMeun("最新菜谱",0+""));
 
                 break;
             case "烘焙":
                 HaoDouCate_Hot_Menu6 hhm6 = retrofit.create(HaoDouCate_Hot_Menu6.class);
 
-                call = hhm6.getData(GetMap.getMap_HoutMeun("快乐的烘焙"));
+                call = hhm6.getData(GetMap.getMap_HoutMeun("快乐的烘焙",0+""));
 
+                 tab = "快乐的烘焙";
                 break;
 
             default:
                 break;
 
+            //getHotMenuEntityDao().queryBuilder().where(HotMenuEntityDao.Properties.Tab.eq("热门菜谱")).list();
 
         }
 
@@ -187,12 +196,11 @@ public class Hot_Menu_Fragment extends Fragment {
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
 
-
-
+                uid += 10;
 
                 HaoDouCate_Hot_Menu hhm = retrofit.create(HaoDouCate_Hot_Menu.class);
 
-                Call<Cate_Hot_Menu> call = hhm.getData(GetMap.getMap_HoutMeun("热门菜谱"));
+                Call<Cate_Hot_Menu> call = hhm.getData(GetMap.getMap_HoutMeun("热门菜谱",uid+""));
 
 
                 call.enqueue(new Callback<Cate_Hot_Menu>() {
@@ -204,6 +212,21 @@ public class Hot_Menu_Fragment extends Fragment {
 
                         List<Cate_Hot_Menu.ResultBean.ListBean> list1 = body.getResult().getList();
 
+                      /*  for(int i=0;i<list1.size();i++){
+
+                            list1.get(i).getCover();
+                            list1.get(i).getTitle();
+                            list1.get(i).getUserName();
+                            list1.get(i).getLikeCount();
+                            list1.get(i).getCreateTime();
+                            list1.get(i).getRecipeId();
+
+                            HotMenuEntity hme =  new HotMenuEntity(null,tab,list1.get(i).getCover(),list1.get(i).getTitle(),
+                                    list1.get(i).getUserName(),list1.get(i).getLikeCount(),list1.get(i).getCreateTime(),list1.get(i).getRecipeId());
+                            getHotMenuEntityDao().insert(hme);
+
+                        }*/
+
                         list.addAll(0,list1);
 
                         adapter.notifyDataSetChanged();
@@ -214,33 +237,7 @@ public class Hot_Menu_Fragment extends Fragment {
 
                     @Override
                     public void onFailure(Call<Cate_Hot_Menu> call, Throwable t) {
-                        HaoDouCate_Hot_Menu hhm = retrofit.create(HaoDouCate_Hot_Menu.class);
 
-                        Call<Cate_Hot_Menu> call1 = hhm.getData(GetMap.getMap_HoutMeun("热门菜谱"));
-
-
-                        call1.enqueue(new Callback<Cate_Hot_Menu>() {
-                            @Override
-                            public void onResponse(Call<Cate_Hot_Menu> call, Response<Cate_Hot_Menu> response) {
-
-
-                                Cate_Hot_Menu body = response.body();
-
-                                List<Cate_Hot_Menu.ResultBean.ListBean> list1 = body.getResult().getList();
-
-                                list.addAll(list1);
-
-                                adapter.notifyDataSetChanged();
-
-                                mLv.onRefreshComplete();
-
-                            }
-
-                            @Override
-                            public void onFailure(Call<Cate_Hot_Menu> call, Throwable t) {
-
-                            }
-                        });
 
                     }
                 });
@@ -251,7 +248,35 @@ public class Hot_Menu_Fragment extends Fragment {
             @Override
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
 
+                uid += 10;
 
+                HaoDouCate_Hot_Menu hhm = retrofit.create(HaoDouCate_Hot_Menu.class);
+
+                Call<Cate_Hot_Menu> call1 = hhm.getData(GetMap.getMap_HoutMeun("热门菜谱",uid+""));
+
+
+                call1.enqueue(new Callback<Cate_Hot_Menu>() {
+                    @Override
+                    public void onResponse(Call<Cate_Hot_Menu> call, Response<Cate_Hot_Menu> response) {
+
+
+                        Cate_Hot_Menu body = response.body();
+
+                        List<Cate_Hot_Menu.ResultBean.ListBean> list1 = body.getResult().getList();
+
+                        list.addAll(list1);
+
+                        adapter.notifyDataSetChanged();
+
+                        mLv.onRefreshComplete();
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Cate_Hot_Menu> call, Throwable t) {
+
+                    }
+                });
 
 
 
@@ -296,5 +321,10 @@ public class Hot_Menu_Fragment extends Fragment {
         endLabels.setReleaseLabel("放开刷新...");// 下来达到一定距离时，显示的提示
 
 
+    }
+
+    public HotMenuEntityDao getHotMenuEntityDao()
+    {
+        return GreenDaoManager.getInstance().getmDaoSession().getHotMenuEntityDao();
     }
 }

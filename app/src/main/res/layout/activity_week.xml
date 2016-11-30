@@ -8,23 +8,24 @@
 
 
     <LinearLayout
+        android:background="#DAA520"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/week_btn_id"
+            android:layout_gravity="center_vertical"
+            android:onClick="back"
             android:layout_width="40dp"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:background="@drawable/btn_header_back_gray" />
 
         <TextView
             android:id="@+id/week_text_id"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="周末吃啥"
-            android:textSize="22sp" />
+            android:gravity="center_vertical"
+            android:textSize="18sp" />
 
     </LinearLayout>
 

@@ -23,10 +23,10 @@ import com.l000phone.adapter.ListViewAdapter;
 import com.l000phone.adapter.ViewPagerAdapter;
 import com.l000phone.autohomen.HotEventActivity;
 import com.l000phone.autohomen.HotMenuActivity;
+import com.l000phone.autohomen.HotVideoActivity;
 import com.l000phone.autohomen.KitchenActivity;
 import com.l000phone.autohomen.MenuClassification;
 import com.l000phone.autohomen.R;
-import com.l000phone.autohomen.VideoActivity;
 import com.l000phone.autohomen.Web1Activity;
 import com.l000phone.autohomen.WeekActivity;
 import com.l000phone.entity.Cate;
@@ -121,6 +121,9 @@ public class HaoDou extends Fragment {
     private void aboutViewPager(List<Cate.DataBean.HeaderBean.ListBean> list_pager) {
 
         //数据源
+
+        mVp.setPageTransformer(true,new AnimationVp());
+
 
         pagers = new LinkedList<>();
 
@@ -287,7 +290,6 @@ public class HaoDou extends Fragment {
         mF4 = (Five_big_Iv_Tv) view.findViewById(R.id.Five_big_Iv_Tv_4);
         mF5 = (Five_big_Iv_Tv) view.findViewById(R.id.Five_big_Iv_Tv_5);
 
-
     }
 
 
@@ -319,7 +321,6 @@ public class HaoDou extends Fragment {
                 //关于小圆点的操作
                 aboutLittleDots();
 
-
                 //关于五个自定义Five_iv_Tv的操作
 
                 List<Cate.DataBean.HeaderBean.ListBean> list_five
@@ -327,19 +328,15 @@ public class HaoDou extends Fragment {
 
                 aboutFive_iv_Tv(list_five);
 
-
                 //关于五个自定义Five_big_Iv_Tv的操作
                 List<Cate.DataBean.HeaderBean.ListBean> big_list_five
                         = cate.getData().getHeader().get(2).getList();
                 aboutFive_big_iv_Tv(big_list_five);
 
-
                 //关于HaoDouListView的操作
                 list = cate.getData().getList();
 
-
                 aboutHaoDouListView(list);
-
 
             }
 
@@ -348,9 +345,7 @@ public class HaoDou extends Fragment {
 
             }
 
-
         });
-
 
     }
 
@@ -375,13 +370,10 @@ public class HaoDou extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-
                 String url1 = list.get(i).getUrl();
                 Intent intent = new Intent(getActivity(), Web1Activity.class);
 
-
                 String url = "http://mp.haodou.com/h5/message/"+url1.substring(url1.lastIndexOf("=")+1);
-
 
                 Log.i("url",url);
 
@@ -396,7 +388,9 @@ public class HaoDou extends Fragment {
             @Override
             public void onScrollStateChanged(AbsListView absListView, int i) {
 
-                if(i==SCROLL_STATE_IDLE && flg){
+                Log.i("zouleme","走了没");
+
+                if(i==SCROLL_STATE_IDLE ){
 
                     Toast.makeText(getActivity(), "当前数据已加载完毕，别刷了OK？", Toast.LENGTH_SHORT).show();
 
@@ -407,7 +401,7 @@ public class HaoDou extends Fragment {
             @Override
             public void onScroll(AbsListView absListView, int i, int i1, int i2) {
 
-                flg = i + i1 == i2;
+                flg = i-1 + i1 == i2;
 
             }
         });
@@ -505,9 +499,9 @@ public class HaoDou extends Fragment {
         mSee.abc_setClick(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //startActivity(new Intent(getActivity(), HotVideoActivity.class));
+                startActivity(new Intent(getActivity(), HotVideoActivity.class));
 
-                startActivity(new Intent(getActivity(), VideoActivity.class));
+                //startActivity(new Intent(getActivity(), VideoActivity.class));
             }
         });
 

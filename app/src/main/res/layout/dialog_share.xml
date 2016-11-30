@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="15dp"
+        android:gravity="center_vertical"
+        android:text="分享"
+        android:textColor="@color/orange"
+        android:textSize="22dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/orange" />
+
+    <TextView
+        android:id="@+id/weixin_circle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:clickable="true"
+        android:drawableLeft="@drawable/icon_share_weixin_circle"
+        android:gravity="center_vertical"
+        android:text="   微信朋友圈"
+        android:textColor="#000000"
+        android:textSize="20dp" />
+
+    <View
+
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/orange" />
+
+    <TextView
+        android:id="@+id/weixin_friend"
+        android:layout_width="match_parent"
+
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:clickable="true"
+        android:drawableLeft="@drawable/icon_share_weixin_friend"
+        android:gravity="center_vertical"
+        android:text="   微信好友"
+        android:textColor="#000000"
+        android:textSize="20dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/orange" />
+
+    <TextView
+        android:id="@+id/sina"
+        android:layout_width="match_parent"
+
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:clickable="true"
+        android:drawableLeft="@drawable/icon_share_sina"
+        android:gravity="center_vertical"
+        android:text="   新浪微博"
+        android:textColor="#000000"
+        android:textSize="20dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/orange" />
+
+    <TextView
+        android:id="@+id/qq"
+        android:layout_width="match_parent"
+
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:clickable="true"
+        android:drawableLeft="@drawable/icon_share_qq"
+        android:gravity="center_vertical"
+        android:text="   QQ好友"
+        android:textColor="#000000"
+        android:textSize="20dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/orange" />
+
+    <TextView
+        android:id="@+id/qzone"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:clickable="true"
+        android:drawableLeft="@drawable/icon_share_qzone"
+        android:gravity="center_vertical"
+        android:text="   QQ空间"
+        android:textColor="#000000"
+        android:textSize="20dp" />
+
+
+</LinearLayout>

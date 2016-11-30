@@ -130,6 +130,7 @@
                     android:src="@drawable/vip_1" />
 
                 <ImageView
+                    android:id="@+id/start"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
@@ -167,7 +168,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="15dp"
                     android:gravity="center_vertical"
-                    android:text="热门排行" />
+                     />
 
             </LinearLayout>
 
@@ -204,7 +205,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:text="1232132-12312-21"
+
                     android:textSize="18dp" />
 
                 <TextView
@@ -214,7 +215,7 @@
                     android:layout_height="match_parent"
                     android:drawableLeft="@drawable/ico_auxiliary_zan_small"
                     android:gravity="center_vertical"
-                    android:text="36"
+
                     android:textColor="@color/gold"
                     android:textSize="20sp" />
 
@@ -225,7 +226,7 @@
                     android:layout_marginLeft="20dp"
                     android:drawableLeft="@drawable/ico_auxiliary_comment_number"
                     android:gravity="center_vertical"
-                    android:text="36"
+
                     android:textColor="@color/gold"
                     android:textSize="20sp" />
 
@@ -267,7 +268,7 @@
                             android:background="@drawable/bg_vedio_small"
                             android:drawableLeft="@drawable/ico_video_small"
                             android:gravity="center_vertical"
-                            android:text="324122"
+
                             android:textColor="#ffffff" />
 
 
@@ -278,7 +279,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="鞭炮迎春" />
+                      />
 
                 </LinearLayout>
 
@@ -325,7 +326,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="鞭炮迎春" />
+                        />
 
                 </LinearLayout>
 

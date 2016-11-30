@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -74,6 +75,8 @@ public class VideoRvActivity extends AppCompatActivity {
                 adapter.setOnItemClickListener(new VideoRvAdapter.MyItemClickListener() {
                     @Override
                     public void onItemClick(View view, String url3) {
+
+                        Log.i("url3",url3);
 
                         Intent intent = new Intent(VideoRvActivity.this, Web1Activity.class);
 

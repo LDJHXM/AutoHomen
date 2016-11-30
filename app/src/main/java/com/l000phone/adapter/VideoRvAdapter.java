@@ -58,7 +58,7 @@ public class VideoRvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
                     String url = list.get(position).getVideoUrl();
 
-                    String  url2 = url.substring(url.lastIndexOf("id=")+3);
+                    String  url2 = url.substring(url.lastIndexOf("id=")+3,url.lastIndexOf("&"));
 
                     String  url3 = "http://www.haodou.com/recipe/"+url2+"/";
 
